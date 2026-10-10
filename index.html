@@ -85,8 +85,7 @@ body:not(.home) .topbar{height:calc(var(--ah) + 18px);padding-bottom:18px;backgr
 .gbtn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gbtn[aria-expanded="true"]{color:var(--accent)}
 #b-back{grid-column:1}
-/* striscia sopra il notch (cancellabile: togliere questa riga) */
-body::before{content:"";position:fixed;z-index:60;top:0;left:0;right:0;height:calc(env(safe-area-inset-top,0px) + min(18px,env(safe-area-inset-top,0px)));background:linear-gradient(180deg,var(--ground) 0,var(--ground) env(safe-area-inset-top,0px),color-mix(in srgb,var(--ground) 45%,transparent) calc(env(safe-area-inset-top,0px) + 9px),transparent 100%);pointer-events:none}
+button.updbtn{margin-left:8px;padding:6px 12px;border-radius:999px;border:1px solid var(--hair,rgba(120,80,30,.25));background:color-mix(in srgb,var(--ground) 70%,transparent);color:var(--soft);font:500 12.5px/1 var(--f-serif);letter-spacing:.02em;cursor:pointer;-webkit-tap-highlight-color:transparent}
 p.appver{margin:18px 0 6px;text-align:center;font:500 13px/1.2 var(--f-serif);letter-spacing:.06em;color:var(--soft);opacity:.8}
 #tb-t h1.brand{font:600 29px/1.1 var(--f-serif);letter-spacing:.01em;color:var(--ink);overflow:visible;text-shadow:0 0 3px var(--ti-sh),0 1px 1px var(--ti-sh),0 0 6px var(--ti-glow)}
 .blogo{grid-column:1;display:flex;align-items:center;gap:6px;justify-self:start;pointer-events:none}
@@ -3191,7 +3190,7 @@ function renderHome() {
   var tiles = SECTIONS.map(function (s, i) {
     return '<button type="button" class="vtile" data-act="sect" data-s="' + i + '"><span class="vt"><span class="vi">' + esc(STITLE(i)) + '</span><span class="vd" hidden></span></span>' + ICON.chev + '</button>';
   }).join("") + '<button type="button" class="vtile study" data-act="study"><span class="vt"><span class="vi">Dāmodarāṣṭakam</span><span class="vd">' + T("studyDesc") + '</span></span>' + ICON.chev + '</button>';
-  $("#home").innerHTML = '<div class="hero"></div><div class="vlist enter">' + tiles + '</div><p class="appver">V ' + APP_VER + '</p>';
+  $("#home").innerHTML = '<div class="hero"></div><div class="vlist enter">' + tiles + '</div><p class="appver">V ' + APP_VER + ' <button type="button" class="updbtn" data-upd>↻ Controlla aggiornamenti</button></p>';
 }
 function renderSect(si) {
   var s = SECTIONS[si];
@@ -3388,7 +3387,29 @@ function go(v) { view = v; render(); window.scrollTo(0, 0); }
   setInterval(fit,1500);setTimeout(fit,300);
 })();
 /* ============ STUDIO DEL DĀMODARĀṢṬAKAM (app incorporata) ============ */
-var APP_VER = "1.12";
+/* controlla aggiornamenti / aggiorna l'app (i progressi restano salvati) */
+async function appHardRefresh() {
+  try {
+    var regs = (navigator.serviceWorker && await navigator.serviceWorker.getRegistrations()) || [];
+    await Promise.all(regs.map(function (r) { return r.unregister(); }));
+    var ks = (window.caches && await caches.keys()) || [];
+    await Promise.all(ks.map(function (k) { return caches.delete(k); }));
+  } catch (e) {}
+  location.reload();
+}
+document.addEventListener("click", async function (e) {
+  var b = e.target.closest && e.target.closest("[data-upd]");
+  if (!b || b.dataset.busy) return;
+  b.dataset.busy = "1"; b.textContent = "Controllo…";
+  try {
+    var t = await fetch("index.html?u=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.text(); });
+    var m = t.match(/APP_VER = "(\d[^"]*)"/);
+    if (m && m[1] !== APP_VER) { b.textContent = "Scarico V " + m[1] + "…"; await appHardRefresh(); return; }
+    b.textContent = "Sei aggiornato ✓";
+  } catch (err) { b.textContent = "Nessuna connessione"; }
+  setTimeout(function () { b.textContent = "↻ Controlla aggiornamenti"; delete b.dataset.busy; }, 2500);
+});
+var APP_VER = "1.13";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;

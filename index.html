@@ -5272,9 +5272,9 @@ var VIBHAVARI_RU = {
 };
 
 var SECTIONS = [
-  { id: "mangalarati", bg: "r", title: "Maṅgala-ārati", songs: [GURVASTAKAM, PRABHUPADA, MANGALAARATI, VIBHAVARI, JAYARADHE], songsEn: MANGALA_EN, songsEs: MANGALA_ES, songsRu: [null, null, null, VIBHAVARI_RU, null] },
-  { id: "bhajan", bg: "k", title: "Bhajan di Kārtika", titleEn: "Kārtika Bhajans", titleEs: "Bhajans de Kārtika", songs: [DAMODARASTAKAM, NANDANANDANASTAKAM, RADHAKRPA], songsEn: BHAJAN_EN, songsEs: BHAJAN_ES },
-  { id: "gorarati", bg: "g", title: "Gaura-ārati", songs: [GAURAARATI, YUGALAARATI], songsEn: GAURA_EN, songsEs: GAURA_ES }
+  { id: "mangalarati", bg: "r", title: "Maṅgala-ārati", titleRu: "Мангала-арати", songs: [GURVASTAKAM, PRABHUPADA, MANGALAARATI, VIBHAVARI, JAYARADHE], songsEn: MANGALA_EN, songsEs: MANGALA_ES, songsRu: [null, null, null, VIBHAVARI_RU, null] },
+  { id: "bhajan", bg: "k", title: "Bhajan di Kārtika", titleEn: "Kārtika Bhajans", titleEs: "Bhajans de Kārtika", titleRu: "Бхаджаны Картики", songs: [DAMODARASTAKAM, NANDANANDANASTAKAM, RADHAKRPA], songsEn: BHAJAN_EN, songsEs: BHAJAN_ES },
+  { id: "gorarati", bg: "g", title: "Gaura-ārati", titleRu: "Гаура-арати", songs: [GAURAARATI, YUGALAARATI], songsEn: GAURA_EN, songsEs: GAURA_ES }
 ];
 
 /* ============ STRINGHE DELL'INTERFACCIA (it / en) ============ */
@@ -5290,10 +5290,10 @@ var UI = {
   langSoon: ["Questa lingua arriverà presto", "This language is coming soon", "Este idioma llegará pronto", "Этот язык появится позже"],
   noEn: ["", "English is not available for this section yet: it is shown in Italian.", "Esta sección aún no está disponible en inglés: se muestra en italiano.", "Для этого раздела английский пока недоступен: показан итальянский."],
   back: ["Indietro", "Back", "Atrás", "Назад"], settings: ["Impostazioni", "Settings", "Ajustes", "Настройки"],
-  cont: ["Continua", "Continue", "Continuar", "Продолжить"], studyDesc: ["Studia l'Aṣṭakam con vari esercizi", "Study the Aṣṭakam with various exercises", "Estudia el Aṣṭakam con varios ejercicios", "Изучайте Aṣṭakam с помощью разных упражнений"],
+  cont: ["Continua", "Continue", "Continuar", "Продолжить"], studyDesc: ["Studia l'Aṣṭakam con vari esercizi", "Study the Aṣṭakam with various exercises", "Estudia el Aṣṭakam con varios ejercicios", "Изучайте Аштаку с помощью разных упражнений"],
   itOnly: ["", "This song is shown in Italian for now.", "Este canto se muestra por ahora en italiano.", "Это песнопение пока показано на итальянском."],
   tipSet: ["", "Translation and word-by-word are in settings", "La traducción y el palabra por palabra están en los ajustes", "Перевод и пословный перевод находятся в настройках"],
-  studyTitle: ["Studio del Dāmodarāṣṭakam", "Dāmodarāṣṭakam study", "Estudio del Dāmodarāṣṭakam", "Изучение Dāmodarāṣṭakam"],
+  studyTitle: ["Studio del Dāmodarāṣṭakam", "Dāmodarāṣṭakam study", "Estudio del Dāmodarāṣṭakam", "Изучение Дамодараштаки"],
   devShow: ["Mostra la devanāgarī", "Show the devanāgarī", "Mostrar la devanāgarī", "Показать деванагари"], devHide: ["Nascondi la devanāgarī", "Hide the devanāgarī", "Ocultar la devanāgarī", "Скрыть деванагари"],
   glShort: ["Glossario", "Glossary", "Glosario", "Глоссарий"],
   glTap: ["Tocca", "Tap", "Tocar", "Нажатие"],
@@ -5322,7 +5322,7 @@ var UI = {
 function T(k) { var u = UI[k], i = S.lang === "it" ? 0 : S.lang === "es" ? 2 : S.lang === "ru" ? 3 : 1; return u[i] !== undefined ? u[i] : u[1]; }
 /* contenuti dei canti: italiano solo se la lingua è l'italiano; inglese (testo del libro) per tutte le altre */
 function notIt() { return S.lang !== "it"; }
-function STITLE(si) { var s = SECTIONS[si]; if (S.lang === "es" && s.titleEs) return s.titleEs; return (notIt() && s.titleEn) ? s.titleEn : s.title; }
+function STITLE(si) { var s = SECTIONS[si]; if (S.lang === "es" && s.titleEs) return s.titleEs; if (S.lang === "ru" && s.titleRu) return s.titleRu; return (notIt() && s.titleEn) ? s.titleEn : s.title; }
 function SONGS(si) { var s = SECTIONS[si]; if (S.lang === "es" && s.songsEs) return s.songsEs; if (S.lang === "ru" && s.songsRu && s.songsEn) return s.songsEn.map(function (x, i) { return s.songsRu[i] || x; }); return (notIt() && s.songsEn) ? s.songsEn : s.songs; }
 
 /* ============ UTILITÀ ============ */
@@ -5375,6 +5375,55 @@ var tt = null;
 function toast(m) { var t = $("#toast"); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(function () { t.hidden = true; }, 2800); }
 
 /* ============ VISTE ============ */
+/* IAST (+ segni bengalesi ô, ĵ) -> cirillico semplice senza diacritici, come nei testi russi (gitabase, vasudeva.ru) */
+var CYR = (function () {
+  var M = {
+    "a": "а", "ā": "а", "i": "и", "ī": "и", "u": "у", "ū": "у", "ṛ": "ри", "ṝ": "ри", "ḷ": "лри", "e": "е", "o": "о", "ô": "о", "ai": "ай", "au": "ау",
+    "k": "к", "kh": "кх", "g": "г", "gh": "гх", "ṅ": "н", "c": "ч", "ch": "чх", "j": "дж", "ĵ": "дж", "jh": "джх", "ñ": "н",
+    "ṭ": "т", "ṭh": "тх", "ḍ": "д", "ḍh": "дх", "ṇ": "н", "t": "т", "th": "тх", "d": "д", "dh": "дх", "n": "н",
+    "p": "п", "ph": "пх", "b": "б", "bh": "бх", "m": "м", "y": "й", "r": "р", "l": "л", "v": "в",
+    "ś": "ш", "ṣ": "ш", "s": "с", "h": "х", "ṁ": "м", "ṃ": "м", "ḥ": "х", "̃": "н"
+  };
+  var RE = /jñ|kh|gh|ch|jh|ṭh|ḍh|th|dh|ph|bh|ai|au|[A-Za-zāīūṛṝḷṅñṭḍṇśṣḥṁṃĵôĀĪŪṚṄÑṬḌṆŚṢḤṀĴ̃]/gi;
+  function cap(x) { return x.charAt(0).toUpperCase() + x.slice(1); }
+  return function (str) {
+    var s = String(str).normalize("NFC").replace(/[’']/g, "");
+    var out = "", last = 0, m, prevJn = false, skip = false, yv = "";
+    RE.lastIndex = 0;
+    while ((m = RE.exec(s))) {
+      out += s.slice(last, m.index);
+      last = m.index + m[0].length;
+      var tok = m[0], low = tok.toLowerCase(), r;
+      var initial = !/[A-Za-zāīūṛṝḷṅñṭḍṇśṣḥṁṃĵôĀĪŪṚṄÑṬḌṆŚṢḤṀĴ̃]/.test(s.charAt(m.index - 1) || " ");
+      var pc = (s.charAt(m.index - 1) || " ").toLowerCase();
+      var nx = (s.charAt(m.index + 1) || "").toLowerCase();
+      if (low === "jñ") { r = "гь"; prevJn = true; }
+      else {
+        r = M[low];
+        if (low === "y") {
+          var afterVowel = initial || /[aāiīuūeoôṛ]/.test(pc);
+          var nx2 = (s.charAt(m.index + 2) || "").toLowerCase();
+          if (nx === "a" && (nx2 === "i" || nx2 === "u")) { r = afterVowel ? "я" : "ья"; yv = nx2 === "i" ? "й" : "у"; }
+          else if (nx === "a" || nx === "ā") { r = afterVowel ? "я" : "ья"; skip = true; }
+          else if (nx === "u" || nx === "ū") { r = afterVowel ? "ю" : "ью"; skip = true; }
+          else if (!afterVowel && /[eiīo]/.test(nx)) r = "ь";
+        }
+        if (prevJn && (low === "a" || low === "ā")) r = "я";
+        prevJn = false;
+        if (initial && low === "e") r = "э";
+      }
+      if (r === undefined) r = tok;
+      if (skip && low !== "y") { skip = false; r = ""; }
+      else if (yv && (low === "ai" || low === "au")) { r = yv; yv = ""; }
+      
+      out += (tok.charAt(0) !== low.charAt(0) && pc !== "-" ? cap(r) : r);
+    }
+    return out + s.slice(last);
+  };
+})();
+/* in russo anche le parole sanscrite si scrivono in cirillico */
+function SK(t) { return S.lang === "ru" ? CYR(t) : t; }
+function SKB(t) { return S.lang === "ru" ? CYR(t).replace(/Махараджа/g, "Махарадж").replace(/Тхакура/g, "Тхакур") : t; }
 var view = { v: "home" };
 function sil(t) { return esc(t).replace(/\{/g, '<span class="sil">').replace(/\}/g, '</span>'); }
 function parseW(s) { var i = s.indexOf("="); var g = s.slice(i + 1); return { t: s.slice(0, i), g: g.charAt(0) === "?" ? g.slice(1) : g, q: g.charAt(0) === "?" }; }
@@ -5383,17 +5432,17 @@ function renderHome() {
   var cont = "";
   if (S.last && SECTIONS[S.last[0]] && SONGS(S.last[0])[S.last[1]] && !SONGS(S.last[0])[S.last[1]].soon) {
     var ls = SONGS(S.last[0])[S.last[1]];
-    cont = '<div class="center"><button type="button" class="cont" data-act="song" data-s="' + S.last[0] + '" data-n="' + S.last[1] + '" aria-label="' + T("cont") + ': ' + esc(ls.title) + '">' + ICON.play + '<span class="cont-k">' + T("cont") + '</span><span class="cont-v">' + esc(ls.title) + '</span></button></div>';
+    cont = '<div class="center"><button type="button" class="cont" data-act="song" data-s="' + S.last[0] + '" data-n="' + S.last[1] + '" aria-label="' + T("cont") + ': ' + esc(SK(ls.title)) + '">' + ICON.play + '<span class="cont-k">' + T("cont") + '</span><span class="cont-v">' + esc(SK(ls.title)) + '</span></button></div>';
   }
   var tiles = SECTIONS.map(function (s, i) {
     return '<button type="button" class="vtile" data-act="sect" data-s="' + i + '"><span class="vt"><span class="vi">' + esc(STITLE(i)) + '</span><span class="vd" hidden></span></span>' + ICON.chev + '</button>';
-  }).join("") + '<button type="button" class="vtile study" data-act="study"><span class="vt"><span class="vi">Dāmodarāṣṭakam</span><span class="vd">' + T("studyDesc") + '</span></span>' + ICON.chev + '</button>';
+  }).join("") + '<button type="button" class="vtile study" data-act="study"><span class="vt"><span class="vi">' + (S.lang === "ru" ? "Дамодараштака" : "Dāmodarāṣṭakam") + '</span><span class="vd">' + T("studyDesc") + '</span></span>' + ICON.chev + '</button>';
   $("#home").innerHTML = '<div class="hero"></div><div class="vlist enter">' + tiles + '</div><p class="appver">V ' + APP_VER + ' <button type="button" class="updbtn" data-upd>' + T("updCheck") + '</button></p>';
 }
 function renderSect(si) {
   var s = SECTIONS[si];
   var tiles = SONGS(si).map(function (g, n) {
-    return '<button type="button" class="vtile' + (g.soon ? " off" : "") + '" data-act="song" data-s="' + si + '" data-n="' + n + '"><span class="vt"><span class="vi">' + esc(g.title) + '</span>' + (g.soon ? '<span class="vd">' + T("soon") + '</span>' : (g.byline ? '<span class="vd">' + esc(g.byline) + '</span>' : "")) + '</span>' + ICON.chev + '</button>';
+    return '<button type="button" class="vtile' + (g.soon ? " off" : "") + '" data-act="song" data-s="' + si + '" data-n="' + n + '"><span class="vt"><span class="vi">' + esc(SK(g.title)) + '</span>' + (g.soon ? '<span class="vd">' + T("soon") + '</span>' : (g.byline ? '<span class="vd">' + esc(SKB(g.byline)) + '</span>' : "")) + '</span>' + ICON.chev + '</button>';
   }).join("");
   $("#sect").innerHTML = '<div class="hero"></div><div class="vlist enter">' + tiles + '</div>';
 }
@@ -5424,7 +5473,7 @@ function glBox(v) {
   var items = [];
   v.lines.forEach(function (ln) { ln.forEach(function (w) {
     var p = parseW(w);
-    items.push('<b>' + esc(p.t.replace(/[{}]/g, "")) + '</b>—' + esc(glShort(p.g)) + (p.q ? " (?)" : ""));
+    items.push('<b>' + esc(SK(p.t).replace(/[{}]/g, "")) + '</b>—' + esc(glShort(p.g)) + (p.q ? " (?)" : ""));
   }); });
   return '<div class="glbox"><span class="gln">' + v.n + '</span> ' + items.join("; ") + '.</div>';
 }
@@ -5441,7 +5490,7 @@ function renderSong(si, n) {
       var lines = v.lines.map(function (ln, li) {
         var t = ln.map(function (w, wi) {
           var p = parseW(w);
-          return showW ? '<button type="button" class="w" data-act="word" data-v="' + vi + '" data-l="' + li + '" data-w="' + wi + '" aria-pressed="false">' + sil(p.t) + '</button>' : sil(p.t);
+          return showW ? '<button type="button" class="w" data-act="word" data-v="' + vi + '" data-l="' + li + '" data-w="' + wi + '" aria-pressed="false">' + sil(SK(p.t)) + '</button>' : sil(SK(p.t));
         }).join(" ");
         return '<div class="fitline">' + t + '</div>';
       }).join("");
@@ -5512,11 +5561,11 @@ function render() {
   $("#b-back").setAttribute("aria-label", T("back")); $("#set-pop").setAttribute("aria-label", T("settings"));
   var tb = $("#tb-t"); tb.innerHTML = "";
   if (view.v === "home") { tb.innerHTML = '<h1 class="brand">Kārtika</h1>'; renderHome(); }
-  else if (view.v === "study") { tb.innerHTML = '<h1 class="brand">Dāmodarāṣṭakam</h1>'; renderStudy(); }
+  else if (view.v === "study") { tb.innerHTML = '<h1 class="brand">' + (S.lang === "ru" ? "Дамодараштака" : "Dāmodarāṣṭakam") + '</h1>'; renderStudy(); }
   else if (view.v === "sect") { tb.innerHTML = '<h1 class="brand">' + esc(STITLE(view.s)) + '</h1>'; renderSect(view.s); if (notIt() && !SECTIONS[view.s].songsEn) toast(T("noEn")); }
   else {
     var sg = SONGS(view.s)[view.n];
-    tb.innerHTML = '<h1>' + esc(sg.title) + '</h1><p>' + esc(STITLE(view.s)) + '</p>';
+    tb.innerHTML = '<h1>' + esc(SK(sg.title)) + '</h1><p>' + esc(STITLE(view.s)) + '</p>';
     if (!sg.soon) { S.last = [view.s, view.n]; save(); }
     renderSong(view.s, view.n);
     if (notIt() && sg.itOnly) toast(T("itOnly"));
@@ -5607,7 +5656,7 @@ document.addEventListener("click", async function (e) {
   } catch (err) { b.textContent = T("updOff"); }
   setTimeout(function () { b.textContent = T("updCheck"); delete b.dataset.busy; }, 2500);
 });
-var APP_VER = "1.19";
+var APP_VER = "1.20";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;
@@ -5687,7 +5736,7 @@ function closeWord() { wpop.hidden = true; if (wFor) wFor.setAttribute("aria-pre
 function openWord(el) {
   var song = SONGS(view.s)[view.n];
   var w = parseW(song.verses[+el.dataset.v].lines[+el.dataset.l][+el.dataset.w]);
-  wpop.innerHTML = '<b>' + esc(w.t.replace(/[{}]/g, '')) + '</b>' + esc(w.g) + (w.q ? '<i>' + T("verify") + '</i>' : "");
+  wpop.innerHTML = '<b>' + esc(SK(w.t).replace(/[{}]/g, '')) + '</b>' + esc(w.g) + (w.q ? '<i>' + T("verify") + '</i>' : "");
   wpop.hidden = false; wFor = el; el.setAttribute("aria-pressed", "true");
   var r = el.getBoundingClientRect(), pw = wpop.offsetWidth, ph = wpop.offsetHeight;
   var left = Math.min(Math.max(8, r.left + r.width / 2 - pw / 2), window.innerWidth - pw - 8);

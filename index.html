@@ -3461,7 +3461,7 @@ document.addEventListener("click", async function (e) {
   } catch (err) { b.textContent = T("updOff"); }
   setTimeout(function () { b.textContent = T("updCheck"); delete b.dataset.busy; }, 2500);
 });
-var APP_VER = "1.15";
+var APP_VER = "1.16";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;
@@ -3571,7 +3571,7 @@ document.addEventListener("click", function (e) {
   if (act === "langmenu") { if ($("#lang-pop").hidden) { closeSet(); openLang(); } else closeLang(); return; }
   if ($("#lang-pop").contains(a)) {
     var lg = a.dataset.val;
-    if (lg === "it" || lg === "en" || lg === "es") { S.lang = lg; save(); syncStudy(); render(); if (lg === "es") toast(T("esNote")); }
+    if (lg === "it" || lg === "en" || lg === "es") { S.lang = lg; save(); syncStudy(); render(); }
     else { closeLang(); toast(T("langSoon")); }
     return;
   }
@@ -3583,7 +3583,6 @@ document.addEventListener("click", function (e) {
       if (lv === "it" || lv === "en" || lv === "es") {
         S.lang = lv; save(); syncStudy();
         render(); openSet();
-        if (lv === "es") toast(T("esNote"));
       }
       else toast(T("langSoon"));
     }

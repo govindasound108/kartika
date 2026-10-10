@@ -216,7 +216,6 @@ body.home .vtile{background:linear-gradient(140deg,color-mix(in srgb,var(--lq-a)
 #aa-val{flex:1;text-align:center;font:600 15px var(--f-ui);color:var(--ink)}
 .chip{min-height:40px;padding:0 14px;border:0;border-radius:999px;cursor:pointer;font:500 13.5px var(--f-ui);color:var(--ink);background:var(--gl-btn);-webkit-backdrop-filter:blur(6px) saturate(1.5);backdrop-filter:blur(6px) saturate(1.5)}
 .chip[aria-pressed="true"]{background:linear-gradient(140deg,var(--lq-sel-a),var(--lq-sel-b));color:var(--sel-ink);font-weight:600;box-shadow:inset 0 1px 1px var(--lq-in)}
-body.study::after{content:"v8";position:fixed;z-index:50;left:50%;bottom:calc(2px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);font:600 11px/1 system-ui,sans-serif;color:#7a4a1a;opacity:.7;pointer-events:none}
 .study #study{position:fixed;z-index:2;left:0;right:0;top:var(--ah);bottom:calc(-1 * var(--sgap,0px))}
 body.study.studyhome .topbar{height:calc(var(--ah) + 34px);padding-bottom:34px;background:linear-gradient(180deg,var(--ground) 0%,var(--ground) 80%,color-mix(in srgb,var(--ground) 40%,transparent) 92%,transparent 100%)}
 body.study.studyhome #study{top:0}
@@ -3312,7 +3311,7 @@ function render() {
   paintSetBtn();
   $("#b-back").setAttribute("aria-label", T("back")); $("#set-pop").setAttribute("aria-label", T("settings"));
   var tb = $("#tb-t"); tb.innerHTML = "";
-  if (view.v === "home") { tb.innerHTML = '<h1 class="brand">Kārtika</h1>'; renderHome(); }
+  if (view.v === "home") { tb.innerHTML = '<h1 class="brand">Kārtika</h1><p class="appver">V ' + APP_VER + '</p>'; renderHome(); }
   else if (view.v === "study") { tb.innerHTML = '<h1 class="brand">Dāmodarāṣṭakam</h1>'; renderStudy(); }
   else if (view.v === "sect") { tb.innerHTML = '<h1 class="brand">' + esc(STITLE(view.s)) + '</h1>'; renderSect(view.s); if (S.lang === "en" && !SECTIONS[view.s].songsEn) toast(T("noEn")); }
   else {
@@ -3386,6 +3385,7 @@ function go(v) { view = v; render(); window.scrollTo(0, 0); }
   setInterval(fit,1500);setTimeout(fit,300);
 })();
 /* ============ STUDIO DEL DĀMODARĀṢṬAKAM (app incorporata) ============ */
+var APP_VER = "1.7";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;
@@ -3539,7 +3539,16 @@ render();
 
 <script>
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });
+  var hadCtl = !!navigator.serviceWorker.controller, reloaded = false;
+  navigator.serviceWorker.addEventListener("controllerchange", function () {
+    if (!hadCtl || reloaded) return; reloaded = true; location.reload();
+  });
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("sw.js").then(function (reg) {
+      reg.update().catch(function () {});
+      document.addEventListener("visibilitychange", function () { if (!document.hidden) reg.update().catch(function () {}); });
+    }).catch(function () {});
+  });
 }
 </script>
 </body></html>

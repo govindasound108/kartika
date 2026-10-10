@@ -7181,6 +7181,14 @@ var ICON = {
 var KEY = "kartika-v2";
 var S = { theme: "auto", vs: 0, mode: "trad", tr: true, wbw: false, gl: false, last: null, wl: false, hintSeen: false, instSeen: false, lang: "en" };
 try { var j = localStorage.getItem(KEY); if (j) { var o = JSON.parse(j); for (var k in o) { if (k in S) S[k] = o[k]; } } } catch (e) {}
+/* prima apertura (nessuna lingua salvata): usa la lingua del telefono se è una delle quattro */
+try {
+  var savedLang = null; try { var j2 = localStorage.getItem(KEY); if (j2) savedLang = JSON.parse(j2).lang; } catch (e) {}
+  if (!savedLang) {
+    var nl = ((navigator.languages && navigator.languages[0]) || navigator.language || "en").slice(0, 2).toLowerCase();
+    S.lang = (nl === "it" || nl === "es" || nl === "ru") ? nl : "en";
+  }
+} catch (e) {}
 if (["auto", "light", "dark"].indexOf(S.theme) < 0) S.theme = "auto";
 S.tr = S.tr !== false; S.wbw = S.wbw === true; S.gl = S.gl === true;
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
@@ -7497,7 +7505,7 @@ document.addEventListener("click", async function (e) {
   } catch (err) { b.textContent = T("updOff"); }
   setTimeout(function () { b.textContent = T("updCheck"); delete b.dataset.busy; }, 2500);
 });
-var APP_VER = "1.23";
+var APP_VER = "1.24";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;

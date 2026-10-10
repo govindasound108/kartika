@@ -192,6 +192,18 @@ body.home .vtile{background:linear-gradient(140deg,color-mix(in srgb,var(--lq-a)
 #vnav button:active{transform:scale(.97)}
 #vnav .cnt{font:600 13px var(--f-ui);color:var(--soft);font-variant-numeric:tabular-nums;padding:0 6px}
 
+/* tre tastini indipendenti sopra il canto (prova sul Gurvāṣṭakam): traduzione / parola per parola breve / parola per parola con tocco */
+.glrow{display:flex;justify-content:center;margin:2px 0 -4px}
+.gltri{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:linear-gradient(140deg,var(--lq-a),var(--lq-b) 55%,var(--lq-c));box-shadow:var(--gl-edge),var(--gl-sh);-webkit-backdrop-filter:blur(24px) saturate(1.7);backdrop-filter:blur(24px) saturate(1.7)}
+.glbtn{width:46px;height:36px;padding:0;border:0;border-radius:999px;display:grid;place-items:center;cursor:pointer;color:var(--soft);background:none;transition:transform .16s ease}
+.glbtn:active{transform:scale(.94)}
+.glbtn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.glbtn[aria-pressed="true"]{color:var(--sel-ink);background:linear-gradient(140deg,var(--lq-sel-a),var(--lq-sel-b));box-shadow:inset 0 1px 1px var(--lq-in),0 6px 14px -9px rgba(90,50,10,.35)}
+.glbox{display:none;margin:12px 4px 0;font:400 14.5px/1.65 var(--f-ui);color:var(--soft);text-wrap:pretty}
+#song.gl-on .glbox{display:block}
+.glbox b{font-weight:600;color:var(--ink)}
+.glbox .gln{display:inline-grid;place-items:center;min-width:19px;height:19px;margin-right:3px;border:1.5px solid var(--accent);border-radius:50%;font:600 11px var(--f-ui);color:var(--accent);vertical-align:1px}
+
 /* impostazioni e finestrella della parola */
 #set-pop{position:fixed;z-index:12;top:calc(var(--ah) + 6px);right:max(16px,calc((100vw - 560px)/2 + 16px));width:min(290px,calc(100vw - 32px));padding:16px;border-radius:26px;display:grid;gap:14px;
   background:linear-gradient(140deg,var(--lq-a),var(--lq-b) 55%,var(--lq-c));background-color:color-mix(in srgb,var(--ground) 80%,transparent);box-shadow:var(--gl-edge),0 18px 40px -14px rgba(0,0,0,.4);
@@ -3090,7 +3102,9 @@ var UI = {
   cont: ["Continua", "Continue"], studyDesc: ["Studia l'Aṣṭakam con vari esercizi", "Study the Aṣṭakam with various exercises"],
   itOnly: ["", "This song is shown in Italian for now."],
   studyTitle: ["Studio del Dāmodarāṣṭakam", "Dāmodarāṣṭakam study"],
-  devShow: ["Mostra la devanāgarī", "Show the devanāgarī"], devHide: ["Nascondi la devanāgarī", "Hide the devanāgarī"]
+  devShow: ["Mostra la devanāgarī", "Show the devanāgarī"], devHide: ["Nascondi la devanāgarī", "Hide the devanāgarī"],
+  glShort: ["Glossario", "Glossary"],
+  glTap: ["Tocca", "Tap"]
 };
 function T(k) { var u = UI[k]; return S.lang === "en" ? u[1] : u[0]; }
 function STITLE(si) { var s = SECTIONS[si]; return (S.lang === "en" && s.titleEn) ? s.titleEn : s.title; }
@@ -3110,10 +3124,10 @@ var ICON = {
 
 /* ============ IMPOSTAZIONI ============ */
 var KEY = "kartika-v2";
-var S = { theme: "auto", vs: 0, mode: "trad", tr: true, wbw: false, last: null, wl: false, hintSeen: false, lang: "en" };
+var S = { theme: "auto", vs: 0, mode: "trad", tr: true, wbw: false, gl: false, last: null, wl: false, hintSeen: false, lang: "en" };
 try { var j = localStorage.getItem(KEY); if (j) { var o = JSON.parse(j); for (var k in o) { if (k in S) S[k] = o[k]; } } } catch (e) {}
 if (["auto", "light", "dark"].indexOf(S.theme) < 0) S.theme = "auto";
-S.tr = S.tr !== false; S.wbw = S.wbw === true;
+S.tr = S.tr !== false; S.wbw = S.wbw === true; S.gl = S.gl === true;
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
 
 var root = document.documentElement, hostTheme = root.getAttribute("data-theme");
@@ -3169,8 +3183,38 @@ function renderSect(si) {
   $("#sect").innerHTML = '<div class="hero"></div><div class="vlist enter">' + tiles + '</div>';
 }
 function modeBtn(val, label) { return '<button type="button" data-act="mode" data-val="' + val + '" aria-pressed="' + (S.mode === val) + '">' + label + '</button>'; }
+var GL_I = {
+  tr: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg>',
+  gl: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8h4.5M3.5 13h4.5M3.5 18h4.5"></path><path d="M11 8h9.5M11 13h9.5M11 18h9.5" opacity=".5"></path></svg>',
+  wbw: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3.5v9.2l2.3-2 1.6 3.6 1.7-.8-1.6-3.5 3.2-.2z"></path><path d="M4 20h16"></path></svg>'
+};
+function glBtnHtml() {
+  var lab = { tr: T("translation"), gl: T("glShort"), wbw: T("glTap") };
+  return '<div class="glrow"><div class="gltri" role="group">' + ["tr", "gl", "wbw"].map(function (k) {
+    return '<button type="button" class="glbtn" data-act="gl-' + k + '" aria-pressed="' + !!S[k] + '" aria-label="' + esc(lab[k]) + '" title="' + esc(lab[k]) + '">' + GL_I[k] + '</button>';
+  }).join("") + '</div></div>';
+}
+function glShort(g) {
+  var i = g.lastIndexOf(": "), pre = i >= 0 ? g.slice(0, i) : g;
+  var s = i >= 0 ? g.slice(i + 2) : g;
+  s = s.replace(/\s*\((?:genitive|dative|instrumental|locative|accusative|vocative|nominative|ablative|continued|genitivo|dativo|strumentale|locativo|accusativo|vocativo|nominativo|ablativo|continua)[^)]*\)\s*$/i, "");
+  if (/^continu/i.test(s) || (i < 0 && / \+ /.test(g))) {
+    var m = pre.match(/\(([^)]*)\)/g);
+    if (m) s = m.map(function (x) { return x.slice(1, -1); }).join(", ");
+  }
+  if (/\s\u2013\s/.test(s)) s = s.split(/;\s*/).map(function (x) { var q = x.split(/\s\u2013\s/); return q.length > 1 ? q.slice(1).join(" \u2013 ") : x; }).join(", ");
+  return s.replace(/^\?/, "").trim();
+}
+function glBox(v) {
+  var items = [];
+  v.lines.forEach(function (ln) { ln.forEach(function (w) {
+    var p = parseW(w);
+    items.push('<b>' + esc(p.t.replace(/[{}]/g, "")) + '</b>—' + esc(glShort(p.g)) + (p.q ? " (?)" : ""));
+  }); });
+  return '<div class="glbox"><span class="gln">' + v.n + '</span> ' + items.join("; ") + '.</div>';
+}
 function renderSong(si, n) {
-  var song = SONGS(si)[n], h = "", showTr = S.tr, showW = S.wbw;
+  var song = SONGS(si)[n], h = "", showTr = S.tr, showW = S.wbw, hasGl = true;
   if (song.soon) {
     h = '<div class="soon">' + T("soonMsg") + '</div>';
   } else {
@@ -3189,6 +3233,7 @@ function renderSong(si, n) {
       var max = sz ? sz : 21, mn = sz ? sz : 16.5;
       if (vi > 0) h += '<div class="vsep" aria-hidden="true"><i></i></div>';
       h += '<section class="verse"><div class="fitbox" data-max="' + max + '" data-min="' + mn + '">' + lines + '</div><div class="vnum">\u2016 ' + v.n + ' \u2016</div>';
+      if (hasGl) h += glBox(v);
       if (showTr) {
         h += '<p class="trad" style="font-size:' + (sz ? Math.max(14, Math.round(sz * 0.8)) : 15) + 'px">' + esc(v.tr) + '</p>';
         if (v.note) h += '<p class="note">' + esc(v.note) + '</p>';
@@ -3197,6 +3242,7 @@ function renderSong(si, n) {
     });
   }
   $("#song").innerHTML = h;
+  $("#song").classList.toggle("gl-on", hasGl && !!S.gl);
   var vn = $("#vnav"), last = n === SONGS(si).length - 1;
   vn.innerHTML = (n > 0
       ? '<button type="button" data-act="song" data-s="' + si + '" data-n="' + (n - 1) + '">' + ICON.left + T("prev") + '</button>'
@@ -3331,7 +3377,11 @@ function setHtml() {
   h += '<div><div class="aa-l">' + T("language") + '</div><div class="seg seg4" role="group" aria-label="' + T("language") + '">' + [["en", "English"], ["it", "Italiano"], ["es", "Español"], ["ru", "Русский"]].map(function (l) { return '<button type="button" data-act="lang" data-val="' + l[0] + '" lang="' + l[0] + '" aria-pressed="' + (l[0] === S.lang) + '">' + l[1] + '</button>'; }).join("") + '</div></div>';
   if (view.v === "song") {
     h += '<div><div class="aa-l">' + T("textSize") + '</div><div class="aa-row"><button type="button" class="gbtn" data-act="vs-minus" aria-label="' + T("smaller") + '">A−</button><span id="aa-val">' + (S.vs ? S.vs + " px" : T("auto")) + '</span><button type="button" class="gbtn" data-act="vs-plus" aria-label="' + T("bigger") + '">A+</button><button type="button" class="chip" data-act="vs-auto" aria-pressed="' + !S.vs + '">' + T("auto") + '</button></div></div>';
-    h += '<div><div class="aa-l">' + T("show") + '</div><div class="seg" role="group" aria-label="' + T("show") + '"><button type="button" data-act="tog-tr" aria-pressed="' + !!S.tr + '">' + T("translation") + '</button><button type="button" data-act="tog-wbw" aria-pressed="' + !!S.wbw + '">' + T("wbw") + '</button></div></div>';
+    var tri = true;
+    h += '<div><div class="aa-l">' + T("show") + '</div><div class="seg seg4" role="group" aria-label="' + T("show") + '"><button type="button" data-act="tog-tr" aria-pressed="' + !!S.tr + '">' + T("translation") + '</button>'
+      + (tri ? '<button type="button" data-act="tog-gl" aria-pressed="' + !!S.gl + '">' + T("glShort") + '</button>' : '')
+      + '<button type="button" data-act="tog-wbw" aria-pressed="' + !!S.wbw + '">' + (tri ? T("glTap") : T("wbw")) + '</button></div></div>';
+      + (view.s === 0 && view.n === 0 ? '<div class="seg" role="group" style="margin-top:6px"><button type="button" data-act="tog-gl" aria-pressed="' + !!S.gl + '">' + T("glShort") + '</button></div>' : '') + '</div>';
   }
   if (view.v === "study" && studyVerse) {
     h += '<div><div class="aa-l">' + T("textSize") + '</div><div class="aa-row"><button type="button" class="gbtn" data-act="st-vs-minus" aria-label="' + T("smaller") + '">A−</button><span id="aa-val">' + esc(studySt.vs) + '</span><button type="button" class="gbtn" data-act="st-vs-plus" aria-label="' + T("bigger") + '">A+</button><button type="button" class="chip" data-act="st-vs-auto" aria-pressed="' + (studySt.vs === "Auto") + '">' + T("auto") + '</button></div></div>';
@@ -3371,6 +3421,7 @@ document.addEventListener("click", function (e) {
   var act = a.dataset.act;
   if (!$("#set-pop").hidden && !$("#set-pop").contains(t)) { closeSet(); return; }
   if (act === "word") { var wh = document.getElementById("wHint"); if (wh) wh.remove(); if (!S.hintSeen) { S.hintSeen = true; save(); } if (wFor === a) closeWord(); else { closeWord(); openWord(a); } return; }
+  if (act === "gl-tr" || act === "gl-gl" || act === "gl-wbw") { closeWord(); var kk = act.slice(3); S[kk] = !S[kk]; save(); var y0 = window.pageYOffset; renderSong(view.s, view.n); window.scrollTo(0, y0); return; }
   if (!wpop.hidden) closeWord();
   if (act === "set") { if ($("#set-pop").hidden) openSet(); else closeSet(); return; }
   if ($("#set-pop").contains(a)) {
@@ -3393,7 +3444,7 @@ document.addEventListener("click", function (e) {
     else if (act === "st-vs-plus") studyCmd("vs-plus");
     else if (act === "st-vs-auto") studyCmd("vs-auto");
     else if (act === "st-dev") studyCmd("dev");
-    else if (act === "tog-tr" || act === "tog-wbw") { if (act === "tog-tr") S.tr = !S.tr; else S.wbw = !S.wbw; save(); renderSong(view.s, view.n); $("#set-pop").innerHTML = setHtml(); }
+    else if (act === "tog-tr" || act === "tog-wbw" || act === "tog-gl") { if (act === "tog-tr") S.tr = !S.tr; else if (act === "tog-gl") S.gl = !S.gl; else S.wbw = !S.wbw; save(); renderSong(view.s, view.n); $("#set-pop").innerHTML = setHtml(); }
     return;
   }
   closeSet();
@@ -3409,7 +3460,6 @@ document.addEventListener("click", function (e) {
 applyTheme();
 render();
 </script>
-
 
 <script>
 if ("serviceWorker" in navigator) {

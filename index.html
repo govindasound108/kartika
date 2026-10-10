@@ -7307,15 +7307,42 @@ function glBtnHtml() {
     return '<button type="button" class="glbtn" data-act="gl-' + k + '" aria-pressed="' + !!S[k] + '" aria-label="' + esc(lab[k]) + '" title="' + esc(lab[k]) + '">' + GL_I[k] + '</button>';
   }).join("") + '</div></div>';
 }
-function glShort(g) {
-  var i = g.lastIndexOf(": "), pre = i >= 0 ? g.slice(0, i) : g;
-  var s = i >= 0 ? g.slice(i + 2) : g;
-  s = s.replace(/\s*\((?:genitive|dative|instrumental|locative|accusative|vocative|nominative|ablative|continued|genitivo|dativo|strumentale|locativo|accusativo|vocativo|nominativo|ablativo|continua)[^)]*\)\s*$/i, "");
-  if (/^continu/i.test(s) || (i < 0 && / \+ /.test(g))) {
-    var m = pre.match(/\(([^)]*)\)/g);
-    if (m) s = m.map(function (x) { return x.slice(1, -1); }).join(", ");
+function glTop(str, open, close) {
+  /* gli elementi tra parentesi di primo livello (le parentesi annidate restano dentro) */
+  var out = [], d = 0, st = -1;
+  for (var k = 0; k < str.length; k++) {
+    var c = str.charAt(k);
+    if (c === open) { if (d === 0) st = k + 1; d++; }
+    else if (c === close && d > 0) { d--; if (d === 0 && st >= 0) { out.push(str.slice(st, k)); st = -1; } }
   }
-  if (/\s\u2013\s/.test(s)) s = s.split(/;\s*/).map(function (x) { var q = x.split(/\s\u2013\s/); return q.length > 1 ? q.slice(1).join(" \u2013 ") : x; }).join(", ");
+  return out;
+}
+function glColon(g) {
+  /* l'ultimo ": " fuori da ogni parentesi */
+  var d = 0, idx = -1;
+  for (var k = 0; k < g.length - 1; k++) {
+    var c = g.charAt(k);
+    if (c === "(" || c === "[") d++; else if ((c === ")" || c === "]") && d > 0) d--;
+    else if (c === ":" && g.charAt(k + 1) === " " && d === 0) idx = k;
+  }
+  return idx;
+}
+var CONT_RE = /[,;:]?\s*(?:continua nella riga seguente|continued on the next line|continues in the next line|contin[uú]a en la l[ií]nea siguiente|продолжение на следующей строке)\s*$/i;
+function glShort(g) {
+  var i = glColon(g), pre = i >= 0 ? g.slice(0, i) : g;
+  var s = i >= 0 ? g.slice(i + 2) : g;
+  s = s.replace(/\s*\((?:genitive|dative|instrumental|locative|accusative|vocative|nominative|ablative|continued|genitivo|dativo|strumentale|locativo|accusativo|vocativo|nominativo|ablativo|continua|acusativo|continúa|именительный|родительный|дательный|винительный|творительный|предложный|звательный|продолжение)[^)]*\)\s*$/i, "");
+  if (/^(continu|continú|продолжени)/i.test(s) || (i < 0 && / \+ /.test(g))) {
+    var m = glTop(pre, "(", ")");
+    if (m.length) s = m.join(", ");
+  } else if (i < 0) {
+    var one = g.match(/^[^\s(]+\s\(([^()\u00b7]+?)\s\u00b7\s.*\)$/);
+    if (one) s = one[1];
+  }
+  s = s.replace(/\s*\([^()]*\s·\s[^()]*\)\s*$/, "").replace(/\s·\s.*$/, "");
+  s = s.replace(CONT_RE, "").replace(/\s*\((?:continua|continued|continúa|продолжение)\)\s*$/i, "");
+  if (/\s–\s/.test(s)) s = s.split(/;\s*/).map(function (x) { var q = x.split(/\s–\s/); return q.length > 1 ? q.slice(1).join(" – ") : x; }).join(", ");
+  s = s.replace(CONT_RE, "").replace(/ \+ /g, " ").replace(/[,;]\s*$/, "");
   return s.replace(/^\?/, "").trim();
 }
 function glBox(v) {
@@ -7505,7 +7532,7 @@ document.addEventListener("click", async function (e) {
   } catch (err) { b.textContent = T("updOff"); }
   setTimeout(function () { b.textContent = T("updCheck"); delete b.dataset.busy; }, 2500);
 });
-var APP_VER = "1.24";
+var APP_VER = "1.25";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;

@@ -249,6 +249,34 @@ body.song.bars-off #vnav{transform:translateY(160%);opacity:0;pointer-events:non
 #lang-pop .chip{width:100%;min-height:44px;text-align:left;font-size:15px}
 @media (max-width:340px){body.home #tb-t h1.brand{font-size:25px}}
 @media (prefers-reduced-motion:reduce){.enter>*{animation:none}.gbtn,.vtile,.cont,#vnav button{transition:none}}
+/* pop-up "come installare l'app" */
+#inst-ov{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));background:rgba(31,42,92,.4);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);overflow-y:auto}
+:root[data-theme="dark"] #inst-ov{background:rgba(4,6,20,.66)}
+#inst-dlg{position:relative;width:min(420px,100%);padding:26px 22px 22px;border-radius:30px;
+  background:linear-gradient(140deg,var(--lq-a),var(--lq-b) 55%,var(--lq-c));background-color:color-mix(in srgb,var(--ground) 84%,transparent);box-shadow:var(--gl-edge),0 22px 48px -14px rgba(0,0,0,.45);
+  -webkit-backdrop-filter:blur(30px) saturate(1.8);backdrop-filter:blur(30px) saturate(1.8);animation:instrise .3s cubic-bezier(.2,.8,.2,1) both}
+@keyframes instrise{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
+#inst-dlg .inst-x{position:absolute;top:10px;right:10px}
+#inst-dlg h2{font:600 24px/1.25 var(--f-serif);margin:0;padding-right:44px;color:var(--ink);text-wrap:balance}
+#inst-dlg h2:focus{outline:none}
+#inst-dlg .inst-lead{margin:10px 0 0;font-size:17px;line-height:1.5;color:var(--soft)}
+#inst-dlg .inst-choose{display:grid;gap:12px;margin-top:24px}
+#inst-dlg .inst-big{min-height:62px;border:0;border-radius:999px;cursor:pointer;font:600 20px var(--f-serif);color:var(--ink);
+  background:linear-gradient(140deg,color-mix(in srgb,var(--accent) 22%,var(--lq-a)),var(--lq-b) 55%,color-mix(in srgb,var(--accent) 12%,var(--lq-c)));box-shadow:var(--gl-edge),var(--gl-sh);transition:transform .16s ease}
+#inst-dlg .inst-big:active{transform:scale(.97)}
+#inst-dlg .inst-steps{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:18px}
+#inst-dlg .inst-steps li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;align-items:start}
+#inst-dlg .inst-n{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--on-accent);font:600 16px var(--f-ui)}
+#inst-dlg .inst-steps p{margin:0;font-size:17px;line-height:1.5;color:var(--ink)}
+#inst-dlg .inst-steps .inst-sub{display:block;margin-top:6px;font-size:15px;line-height:1.45;color:var(--soft)}
+#inst-dlg .inst-steps svg.inst-i{display:inline-block;width:22px;height:22px;vertical-align:-5px;margin-inline:2px;fill:none;stroke:var(--accent);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+#inst-dlg .inst-steps .chip{margin-top:10px;min-height:44px;padding:0 16px}
+#inst-dlg .inst-foot{display:grid;grid-template-columns:auto 1fr;gap:10px;margin-top:24px}
+#inst-dlg .inst-ghost,#inst-dlg .inst-prim{min-height:52px;border:0;border-radius:999px;cursor:pointer;font:600 16px var(--f-ui)}
+#inst-dlg .inst-ghost{padding:0 20px;background:var(--gl-btn);color:var(--ink)}
+#inst-dlg .inst-prim{background:var(--accent);color:var(--on-accent)}
+#set-pop .inst-open{width:100%;min-height:44px}
+@media (prefers-reduced-motion:reduce){#inst-dlg{animation:none}#inst-dlg .inst-big{transition:none}}
 </style>
 
 <div id="bg" aria-hidden="true"><div id="bgb"></div></div>
@@ -269,6 +297,7 @@ body.song.bars-off #vnav{transform:translateY(160%);opacity:0;pointer-events:non
 <div id="wpop" hidden></div>
 <div id="vnav" hidden></div>
 <div id="toast" hidden></div>
+<div id="inst-ov" hidden><div id="inst-dlg" role="dialog" aria-modal="true" aria-labelledby="inst-t"><button type="button" class="gbtn inst-x" data-inst="close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button><div id="inst-body"></div></div></div>
 <div id="tip" hidden role="status"></div>
 
 <script>
@@ -3121,7 +3150,23 @@ var UI = {
   studyTitle: ["Studio del Dāmodarāṣṭakam", "Dāmodarāṣṭakam study"],
   devShow: ["Mostra la devanāgarī", "Show the devanāgarī"], devHide: ["Nascondi la devanāgarī", "Hide the devanāgarī"],
   glShort: ["Glossario", "Glossary"],
-  glTap: ["Tocca", "Tap"]
+  glTap: ["Tocca", "Tap"],
+  instHow: ["Come installare l'app", "How to install the app"],
+  instClose: ["Chiudi", "Close"], instBack: ["Indietro", "Back"], instDone: ["Ho capito", "Got it"],
+  instTitle: ["Installa Kārtika sul telefono", "Install Kārtika on your phone"],
+  instLead: ["Si apre con un tocco, come le altre app, e funziona anche senza internet.", "It opens with one tap, like any other app, and works without internet."],
+  instIos: ["iPhone", "iPhone"], instAnd: ["Android", "Android"],
+  instIosT: ["Su iPhone", "On iPhone"], instAndT: ["Su Android", "On Android"],
+  iosS1: ["Apri questa pagina con Safari (l'icona della bussola azzurra).", "Open this page in Safari (the blue compass icon)."],
+  iosS1b: ["L'hai aperta da WhatsApp o Instagram? Copia il link e incollalo in Safari.", "Opened it from WhatsApp or Instagram? Copy the link and paste it in Safari."],
+  instCopy: ["Copia il link", "Copy link"], instCopied: ["Link copiato", "Link copied"],
+  iosS2: ["Tocca il tasto Condividi {share} (un quadrato con una freccia verso l'alto), poi scorri in basso e tocca “Aggiungi alla schermata Home”.", "Tap the Share button {share} (a square with an arrow pointing up), then scroll down and tap “Add to Home Screen”."],
+  iosS2b: ["Su alcuni iPhone il tasto Condividi si trova sotto il tasto “…”.", "On some iPhones the Share button is under the “…” button."],
+  iosS3: ["Tocca “Aggiungi”. L'icona di Kārtika compare nella schermata Home.", "Tap “Add”. The Kārtika icon appears on your Home screen."],
+  andS1: ["Apri questa pagina con Chrome (l'icona rotonda rossa, gialla, verde e blu).", "Open this page in Chrome (the round red, yellow, green and blue icon)."],
+  andS2: ["Tocca i tre puntini {dots} in alto a destra.", "Tap the three dots {dots} at the top right."],
+  andS3: ["Tocca “Installa app” (su alcuni telefoni c'è scritto “Aggiungi a schermata Home”), poi conferma con “Installa”.", "Tap “Install app” (on some phones it says “Add to Home screen”), then confirm with “Install”."],
+  andS3b: ["L'icona di Kārtika compare tra le tue app.", "The Kārtika icon appears among your apps."]
 };
 function T(k) { var u = UI[k]; return S.lang === "en" ? u[1] : u[0]; }
 function STITLE(si) { var s = SECTIONS[si]; return (S.lang === "en" && s.titleEn) ? s.titleEn : s.title; }
@@ -3141,7 +3186,7 @@ var ICON = {
 
 /* ============ IMPOSTAZIONI ============ */
 var KEY = "kartika-v2";
-var S = { theme: "auto", vs: 0, mode: "trad", tr: true, wbw: false, gl: false, last: null, wl: false, hintSeen: false, lang: "en" };
+var S = { theme: "auto", vs: 0, mode: "trad", tr: true, wbw: false, gl: false, last: null, wl: false, hintSeen: false, instSeen: false, lang: "en" };
 try { var j = localStorage.getItem(KEY); if (j) { var o = JSON.parse(j); for (var k in o) { if (k in S) S[k] = o[k]; } } } catch (e) {}
 if (["auto", "light", "dark"].indexOf(S.theme) < 0) S.theme = "auto";
 S.tr = S.tr !== false; S.wbw = S.wbw === true; S.gl = S.gl === true;
@@ -3409,7 +3454,7 @@ document.addEventListener("click", async function (e) {
   } catch (err) { b.textContent = "Nessuna connessione"; }
   setTimeout(function () { b.textContent = "↻ Controlla aggiornamenti"; delete b.dataset.busy; }, 2500);
 });
-var APP_VER = "1.13";
+var APP_VER = "1.14";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;
@@ -3459,6 +3504,7 @@ function setHtml() {
     h += '<div><div class="aa-l">' + T("textSize") + '</div><div class="aa-row"><button type="button" class="gbtn" data-act="st-vs-minus" aria-label="' + T("smaller") + '">A−</button><span id="aa-val">' + esc(studySt.vs) + '</span><button type="button" class="gbtn" data-act="st-vs-plus" aria-label="' + T("bigger") + '">A+</button><button type="button" class="chip" data-act="st-vs-auto" aria-pressed="' + (studySt.vs === "Auto") + '">' + T("auto") + '</button></div></div>';
     h += '<div><div class="aa-l">Devanāgarī</div><button type="button" class="chip" data-act="st-dev" aria-pressed="' + !!studySt.dev + '" style="width:100%">' + (studySt.dev ? T("devHide") : T("devShow")) + '</button></div>';
   }
+  if (!isInstalled()) h += '<div><button type="button" class="chip inst-open" data-act="howto">' + T("instHow") + '</button></div>';
   return h;
 }
 function openSet() { var p = $("#set-pop"); p.innerHTML = setHtml(); p.hidden = false; $("#b-set").setAttribute("aria-expanded", "true"); applyTheme(); }
@@ -3535,6 +3581,7 @@ document.addEventListener("click", function (e) {
       else toast(T("langSoon"));
     }
     else if (act === "theme-set") { S.theme = a.dataset.val; save(); applyTheme(); }
+    else if (act === "howto") { openInstall(a); }
     else if (act === "vs-minus" || act === "vs-plus") {
       var cs = S.vs; if (!cs) { var fl = $("#song .fitline"); cs = fl ? Math.round(parseFloat(getComputedStyle(fl).fontSize)) : 0; if (!cs || isNaN(cs)) cs = 19; }
       S.vs = Math.max(13, Math.min(30, cs + (act === "vs-plus" ? 1 : -1))); save(); renderSong(view.s, view.n); $("#aa-val").textContent = S.vs + " px"; $("#set-pop").innerHTML = setHtml();
@@ -3556,9 +3603,73 @@ document.addEventListener("click", function (e) {
   }
 });
 
+/* ============ POP-UP "COME INSTALLARE L'APP" ============ */
+/* compare da solo una sola volta, solo nel browser (mai nell'app installata); si riapre dalle impostazioni */
+var INST_ICON = {
+  share: '<svg class="inst-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10H7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1"></path><path d="M12 15V3M8.5 6.5L12 3l3.5 3.5"></path></svg>',
+  dots: '<svg class="inst-i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.4"></circle><circle cx="12" cy="12" r="1.4"></circle><circle cx="12" cy="19" r="1.4"></circle></svg>'
+};
+var instView = "intro", instOpener = null;
+function isInstalled() {
+  try { return (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) || window.navigator.standalone === true; } catch (e) { return false; }
+}
+function instStep(n, h) { return '<li><span class="inst-n">' + n + '</span><div>' + h + '</div></li>'; }
+function instHtml() {
+  if (instView === "intro") {
+    return '<h2 id="inst-t" tabindex="-1">' + esc(T("instTitle")) + '</h2><p class="inst-lead">' + esc(T("instLead")) + '</p>'
+      + '<div class="inst-choose"><button type="button" class="inst-big" data-inst="ios">' + esc(T("instIos")) + '</button><button type="button" class="inst-big" data-inst="android">' + esc(T("instAnd")) + '</button></div>';
+  }
+  var items;
+  if (instView === "ios") {
+    items = instStep(1, '<p>' + esc(T("iosS1")) + '</p><span class="inst-sub">' + esc(T("iosS1b")) + '</span><button type="button" class="chip" data-inst="copy">' + esc(T("instCopy")) + '</button>')
+      + instStep(2, '<p>' + esc(T("iosS2")).replace("{share}", INST_ICON.share) + '</p><span class="inst-sub">' + esc(T("iosS2b")) + '</span>')
+      + instStep(3, '<p>' + esc(T("iosS3")) + '</p>');
+  } else {
+    items = instStep(1, '<p>' + esc(T("andS1")) + '</p>')
+      + instStep(2, '<p>' + esc(T("andS2")).replace("{dots}", INST_ICON.dots) + '</p>')
+      + instStep(3, '<p>' + esc(T("andS3")) + '</p><span class="inst-sub">' + esc(T("andS3b")) + '</span>');
+  }
+  return '<h2 id="inst-t" tabindex="-1">' + esc(T(instView === "ios" ? "instIosT" : "instAndT")) + '</h2><ol class="inst-steps">' + items + '</ol>'
+    + '<div class="inst-foot"><button type="button" class="inst-ghost" data-inst="intro">← ' + esc(T("instBack")) + '</button><button type="button" class="inst-prim" data-inst="close">' + esc(T("instDone")) + '</button></div>';
+}
+function instPaint() {
+  $("#inst-body").innerHTML = instHtml();
+  $("#inst-dlg .inst-x").setAttribute("aria-label", T("instClose"));
+  var h = $("#inst-t"); if (h) h.focus();
+}
+function openInstall(from) {
+  instOpener = from || null; instView = "intro"; closeSet(); closeWord(); hideTip();
+  instPaint(); $("#inst-ov").hidden = false; document.body.style.overflow = "hidden";
+}
+function closeInstall() {
+  $("#inst-ov").hidden = true; document.body.style.overflow = "";
+  if (instOpener && instOpener.focus && document.contains(instOpener)) instOpener.focus();
+  instOpener = null;
+}
+$("#inst-ov").addEventListener("click", function (e) {
+  if (e.target === this) { closeInstall(); return; }
+  var b = e.target.closest("[data-inst]"); if (!b) return;
+  var a = b.dataset.inst;
+  if (a === "close") closeInstall();
+  else if (a === "ios" || a === "android" || a === "intro") { instView = a; instPaint(); }
+  else if (a === "copy") {
+    var url = window.location.href.split("#")[0];
+    var done = function () { toast(T("instCopied")); };
+    var fb = function () { try { var ta = document.createElement("textarea"); ta.value = url; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;opacity:0"; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta); done(); } catch (x) {} };
+    try { navigator.clipboard.writeText(url).then(done, fb); } catch (x) { fb(); }
+  }
+});
+document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#inst-ov").hidden) closeInstall(); });
+function maybeShowInstall() {
+  if (isInstalled() || S.instSeen) return;
+  S.instSeen = true; save();
+  setTimeout(function () { if ($("#inst-ov").hidden) openInstall(null); }, 700);
+}
+
 /* ============ AVVIO ============ */
 applyTheme();
 render();
+maybeShowInstall();
 </script>
 
 <script>

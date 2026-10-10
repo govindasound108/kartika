@@ -85,6 +85,7 @@ body:not(.home) .topbar{height:calc(var(--ah) + 18px);padding-bottom:18px;backgr
 .gbtn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gbtn[aria-expanded="true"]{color:var(--accent)}
 #b-back{grid-column:1}
+button.updbtn .updok{color:#2f9e5b;font-weight:700}
 button.updbtn{margin-left:8px;padding:6px 12px;border-radius:999px;border:1px solid var(--hair,rgba(120,80,30,.25));background:color-mix(in srgb,var(--ground) 70%,transparent);color:var(--soft);font:500 12.5px/1 var(--f-serif);letter-spacing:.02em;cursor:pointer;-webkit-tap-highlight-color:transparent}
 p.appver{margin:18px 0 6px;text-align:center;font:500 13px/1.2 var(--f-serif);letter-spacing:.06em;color:var(--soft);opacity:.8}
 #tb-t h1.brand{font:600 29px/1.1 var(--f-serif);letter-spacing:.01em;color:var(--ink);overflow:visible;text-shadow:0 0 3px var(--ti-sh),0 1px 1px var(--ti-sh),0 0 6px var(--ti-glow)}
@@ -7492,11 +7493,11 @@ document.addEventListener("click", async function (e) {
     var t = await fetch("index.html?u=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.text(); });
     var m = t.match(/APP_VER = "(\d[^"]*)"/);
     if (m && m[1] !== APP_VER) { b.textContent = T("updGet") + m[1] + "…"; await appHardRefresh(); return; }
-    b.textContent = T("updOk");
+    b.innerHTML = esc(T("updOk").replace(/\s*✓\s*$/, "")) + ' <span class="updok">✓</span>';
   } catch (err) { b.textContent = T("updOff"); }
   setTimeout(function () { b.textContent = T("updCheck"); delete b.dataset.busy; }, 2500);
 });
-var APP_VER = "1.22";
+var APP_VER = "1.23";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;

@@ -85,6 +85,8 @@ body:not(.home) .topbar{height:calc(var(--ah) + 18px);padding-bottom:18px;backgr
 .gbtn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gbtn[aria-expanded="true"]{color:var(--accent)}
 #b-back{grid-column:1}
+/* striscia sopra il notch (cancellabile: togliere questa riga) */
+body::before{content:"";position:fixed;z-index:60;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--ground);pointer-events:none}
 p.appver{margin:18px 0 6px;text-align:center;font:500 13px/1.2 var(--f-serif);letter-spacing:.06em;color:var(--soft);opacity:.8}
 #tb-t h1.brand{font:600 29px/1.1 var(--f-serif);letter-spacing:.01em;color:var(--ink);overflow:visible;text-shadow:0 0 3px var(--ti-sh),0 1px 1px var(--ti-sh),0 0 6px var(--ti-glow)}
 .blogo{grid-column:1;display:flex;align-items:center;gap:6px;justify-self:start;pointer-events:none}
@@ -3386,7 +3388,7 @@ function go(v) { view = v; render(); window.scrollTo(0, 0); }
   setInterval(fit,1500);setTimeout(fit,300);
 })();
 /* ============ STUDIO DEL DĀMODARĀṢṬAKAM (app incorporata) ============ */
-var APP_VER = "1.9";
+var APP_VER = "1.10";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;

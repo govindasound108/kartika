@@ -1,6 +1,6 @@
 /* Kārtika — service worker: tutto in cache al primo avvio, poi funziona senza rete.
    Per pubblicare un aggiornamento, cambia il numero di VERSION. */
-const VERSION = "kartika-v11";
+const VERSION = "kartika-v12";
 const CORE = ["./", "index.html", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png"];
 const FONTS_CSS = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Noto+Serif+Devanagari:wght@400;600&display=swap";
 

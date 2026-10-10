@@ -5812,8 +5812,17 @@ $("#inst-ov").addEventListener("click", function (e) {
   }
 });
 document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("#inst-ov").hidden) closeInstall(); });
+/* telefono o tablet (iPhone, Android, iPad anche in modalità "sito desktop"): il pop-up di installazione compare solo qui, mai sul computer */
+function isPhoneOrTablet() {
+  try {
+    var ua = navigator.userAgent || "";
+    if (/Android|iPhone|iPad|iPod|Mobile/i.test(ua)) return true;
+    if (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) return true;
+  } catch (e) {}
+  return false;
+}
 function maybeShowInstall() {
-  if (isInstalled() || S.instSeen) return;
+  if (!isPhoneOrTablet() || isInstalled() || S.instSeen) return;
   S.instSeen = true; save();
   setTimeout(function () { if ($("#inst-ov").hidden) openInstall(null); }, 700);
 }

@@ -3132,45 +3132,52 @@ var SECTIONS = [
 
 /* ============ STRINGHE DELL'INTERFACCIA (it / en) ============ */
 var UI = {
-  soon: ["Testo in arrivo", "Text coming soon"],
-  soonMsg: ["Il testo di questo canto non è ancora stato inserito.", "The text of this song has not been added yet."],
-  hint: ["Tocca una parola per vederne il significato; toccala di nuovo per chiuderlo. Il parola per parola è generato con l'IA.", "Tap a word to see its meaning; tap it again to close it. The word-by-word is AI-generated."],
-  prev: ["Precedente", "Previous"], list: ["Elenco", "List"], lastSong: ["Ultimo canto", "Last song"], next: ["Successivo", "Next"],
-  theme: ["Tema", "Theme"], auto: ["Auto", "Auto"], day: ["Giorno", "Day"], night: ["Notte", "Night"],
-  language: ["Lingua", "Language"], textSize: ["Grandezza del testo", "Text size"], smaller: ["Più piccolo", "Smaller"], bigger: ["Più grande", "Bigger"],
-  show: ["Cosa mostrare", "What to show"], translation: ["Traduzione", "Translation"], wbw: ["Parola per parola", "Word by word"],
-  verify: ["Significato da verificare", "Meaning to be verified"],
-  langSoon: ["Questa lingua arriverà presto", "This language is coming soon"],
-  esNote: ["Per ora lo spagnolo vale solo per lo studio del Dāmodarāṣṭakam", "For now Spanish only applies to the Dāmodarāṣṭakam study"],
-  noEn: ["", "English is not available for this section yet: it is shown in Italian."],
-  back: ["Indietro", "Back"], settings: ["Impostazioni", "Settings"],
-  cont: ["Continua", "Continue"], studyDesc: ["Studia l'Aṣṭakam con vari esercizi", "Study the Aṣṭakam with various exercises"],
-  itOnly: ["", "This song is shown in Italian for now."],
-  tipSet: ["", "Translation and word-by-word are in settings"],
-  studyTitle: ["Studio del Dāmodarāṣṭakam", "Dāmodarāṣṭakam study"],
-  devShow: ["Mostra la devanāgarī", "Show the devanāgarī"], devHide: ["Nascondi la devanāgarī", "Hide the devanāgarī"],
-  glShort: ["Glossario", "Glossary"],
-  glTap: ["Tocca", "Tap"],
-  instHow: ["Come installare l'app", "How to install the app"],
-  instClose: ["Chiudi", "Close"], instBack: ["Indietro", "Back"], instDone: ["Ho capito", "Got it"],
-  instTitle: ["Installa Kārtika sul telefono", "Install Kārtika on your phone"],
-  instLead: ["Si apre con un tocco, come le altre app, e funziona anche senza internet.", "It opens with one tap, like any other app, and works without internet."],
-  instIos: ["iPhone", "iPhone"], instAnd: ["Android", "Android"],
-  instIosT: ["Su iPhone", "On iPhone"], instAndT: ["Su Android", "On Android"],
-  iosS1: ["Apri questa pagina con Safari (l'icona della bussola azzurra).", "Open this page in Safari (the blue compass icon)."],
-  iosS1b: ["L'hai aperta da WhatsApp o Instagram? Copia il link e incollalo in Safari.", "Opened it from WhatsApp or Instagram? Copy the link and paste it in Safari."],
-  instCopy: ["Copia il link", "Copy link"], instCopied: ["Link copiato", "Link copied"],
-  iosS2: ["Tocca il tasto Condividi {share} (un quadrato con una freccia verso l'alto), poi scorri in basso e tocca “Aggiungi alla schermata Home”.", "Tap the Share button {share} (a square with an arrow pointing up), then scroll down and tap “Add to Home Screen”."],
-  iosS2b: ["Su alcuni iPhone il tasto Condividi si trova sotto il tasto “…”.", "On some iPhones the Share button is under the “…” button."],
-  iosS3: ["Tocca “Aggiungi”. L'icona di Kārtika compare nella schermata Home.", "Tap “Add”. The Kārtika icon appears on your Home screen."],
-  andS1: ["Apri questa pagina con Chrome (l'icona rotonda rossa, gialla, verde e blu).", "Open this page in Chrome (the round red, yellow, green and blue icon)."],
-  andS2: ["Tocca i tre puntini {dots} in alto a destra.", "Tap the three dots {dots} at the top right."],
-  andS3: ["Tocca “Installa app” (su alcuni telefoni c'è scritto “Aggiungi a schermata Home”), poi conferma con “Installa”.", "Tap “Install app” (on some phones it says “Add to Home screen”), then confirm with “Install”."],
-  andS3b: ["L'icona di Kārtika compare tra le tue app.", "The Kārtika icon appears among your apps."]
+  soon: ["Testo in arrivo", "Text coming soon", "Texto próximamente"],
+  soonMsg: ["Il testo di questo canto non è ancora stato inserito.", "The text of this song has not been added yet.", "El texto de este canto aún no se ha añadido."],
+  hint: ["Tocca una parola per vederne il significato; toccala di nuovo per chiuderlo. Il parola per parola è generato con l'IA.", "Tap a word to see its meaning; tap it again to close it. The word-by-word is AI-generated.", "Toca una palabra para ver su significado; tócala de nuevo para cerrarlo. El palabra por palabra está generado con IA."],
+  prev: ["Precedente", "Previous", "Anterior"], list: ["Elenco", "List", "Lista"], lastSong: ["Ultimo canto", "Last song", "Último canto"], next: ["Successivo", "Next", "Siguiente"],
+  theme: ["Tema", "Theme", "Tema"], auto: ["Auto", "Auto", "Auto"], day: ["Giorno", "Day", "Día"], night: ["Notte", "Night", "Noche"],
+  language: ["Lingua", "Language", "Idioma"], textSize: ["Grandezza del testo", "Text size", "Tamaño del texto"], smaller: ["Più piccolo", "Smaller", "Más pequeño"], bigger: ["Più grande", "Bigger", "Más grande"],
+  show: ["Cosa mostrare", "What to show", "Qué mostrar"], translation: ["Traduzione", "Translation", "Traducción"], wbw: ["Parola per parola", "Word by word", "Palabra por palabra"],
+  verify: ["Significato da verificare", "Meaning to be verified", "Significado por verificar"],
+  langSoon: ["Questa lingua arriverà presto", "This language is coming soon", "Este idioma llegará pronto"],
+  esNote: ["Per ora i canti restano in inglese (testo del libro): la traduzione spagnola dei canti arriverà più avanti", "For now the songs stay in English (the book's text): the Spanish translation of the songs is coming later", "Por ahora los cantos se muestran en inglés (texto del libro); la traducción al español llegará más adelante"],
+  noEn: ["", "English is not available for this section yet: it is shown in Italian.", "Esta sección aún no está disponible en inglés: se muestra en italiano."],
+  back: ["Indietro", "Back", "Atrás"], settings: ["Impostazioni", "Settings", "Ajustes"],
+  cont: ["Continua", "Continue", "Continuar"], studyDesc: ["Studia l'Aṣṭakam con vari esercizi", "Study the Aṣṭakam with various exercises", "Estudia el Aṣṭakam con varios ejercicios"],
+  itOnly: ["", "This song is shown in Italian for now.", "Este canto se muestra por ahora en italiano."],
+  tipSet: ["", "Translation and word-by-word are in settings", "La traducción y el palabra por palabra están en los ajustes"],
+  studyTitle: ["Studio del Dāmodarāṣṭakam", "Dāmodarāṣṭakam study", "Estudio del Dāmodarāṣṭakam"],
+  devShow: ["Mostra la devanāgarī", "Show the devanāgarī", "Mostrar la devanāgarī"], devHide: ["Nascondi la devanāgarī", "Hide the devanāgarī", "Ocultar la devanāgarī"],
+  glShort: ["Glossario", "Glossary", "Glosario"],
+  glTap: ["Tocca", "Tap", "Tocar"],
+  updCheck: ["↻ Controlla aggiornamenti", "↻ Check for updates", "↻ Buscar actualizaciones"],
+  updBusy: ["Controllo…", "Checking…", "Comprobando…"],
+  updGet: ["Scarico V ", "Downloading V ", "Descargando V "],
+  updOk: ["Sei aggiornato ✓", "You're up to date ✓", "Estás al día ✓"],
+  updOff: ["Nessuna connessione", "No connection", "Sin conexión"],
+  instHow: ["Come installare l'app", "How to install the app", "Cómo instalar la app"],
+  instClose: ["Chiudi", "Close", "Cerrar"], instBack: ["Indietro", "Back", "Atrás"], instDone: ["Ho capito", "Got it", "Entendido"],
+  instTitle: ["Installa Kārtika sul telefono", "Install Kārtika on your phone", "Instala Kārtika en tu teléfono"],
+  instLead: ["Si apre con un tocco, come le altre app, e funziona anche senza internet.", "It opens with one tap, like any other app, and works without internet.", "Se abre con un toque, como cualquier otra app, y funciona sin internet."],
+  instIos: ["iPhone", "iPhone", "iPhone"], instAnd: ["Android", "Android", "Android"],
+  instIosT: ["Su iPhone", "On iPhone", "En iPhone"], instAndT: ["Su Android", "On Android", "En Android"],
+  iosS1: ["Apri questa pagina con Safari (l'icona della bussola azzurra).", "Open this page in Safari (the blue compass icon).", "Abre esta página en Safari (el icono de la brújula azul)."],
+  iosS1b: ["L'hai aperta da WhatsApp o Instagram? Copia il link e incollalo in Safari.", "Opened it from WhatsApp or Instagram? Copy the link and paste it in Safari.", "¿La abriste desde WhatsApp o Instagram? Copia el enlace y pégalo en Safari."],
+  instCopy: ["Copia il link", "Copy link", "Copiar enlace"], instCopied: ["Link copiato", "Link copied", "Enlace copiado"],
+  iosS2: ["Tocca il tasto Condividi {share} (un quadrato con una freccia verso l'alto), poi scorri in basso e tocca “Aggiungi alla schermata Home”.", "Tap the Share button {share} (a square with an arrow pointing up), then scroll down and tap “Add to Home Screen”.", "Toca el botón Compartir {share} (un cuadrado con una flecha hacia arriba), baja y toca “Añadir a pantalla de inicio”."],
+  iosS2b: ["Su alcuni iPhone il tasto Condividi si trova sotto il tasto “…”.", "On some iPhones the Share button is under the “…” button.", "En algunos iPhone el botón Compartir está bajo el botón “…”."],
+  iosS3: ["Tocca “Aggiungi”. L'icona di Kārtika compare nella schermata Home.", "Tap “Add”. The Kārtika icon appears on your Home screen.", "Toca “Añadir”. El icono de Kārtika aparece en tu pantalla de inicio."],
+  andS1: ["Apri questa pagina con Chrome (l'icona rotonda rossa, gialla, verde e blu).", "Open this page in Chrome (the round red, yellow, green and blue icon).", "Abre esta página en Chrome (el icono redondo rojo, amarillo, verde y azul)."],
+  andS2: ["Tocca i tre puntini {dots} in alto a destra.", "Tap the three dots {dots} at the top right.", "Toca los tres puntos {dots} arriba a la derecha."],
+  andS3: ["Tocca “Installa app” (su alcuni telefoni c'è scritto “Aggiungi a schermata Home”), poi conferma con “Installa”.", "Tap “Install app” (on some phones it says “Add to Home screen”), then confirm with “Install”.", "Toca “Instalar aplicación” (en algunos teléfonos dice “Añadir a la pantalla de inicio”) y confirma con “Instalar”."],
+  andS3b: ["L'icona di Kārtika compare tra le tue app.", "The Kārtika icon appears among your apps.", "El icono de Kārtika aparece entre tus apps."]
 };
-function T(k) { var u = UI[k]; return S.lang === "en" ? u[1] : u[0]; }
-function STITLE(si) { var s = SECTIONS[si]; return (S.lang === "en" && s.titleEn) ? s.titleEn : s.title; }
-function SONGS(si) { var s = SECTIONS[si]; return (S.lang === "en" && s.songsEn) ? s.songsEn : s.songs; }
+function T(k) { var u = UI[k], i = S.lang === "it" ? 0 : S.lang === "es" ? 2 : 1; return u[i] !== undefined ? u[i] : u[1]; }
+/* contenuti dei canti: italiano solo se la lingua è l'italiano; inglese (testo del libro) per tutte le altre */
+function notIt() { return S.lang !== "it"; }
+function STITLE(si) { var s = SECTIONS[si]; return (notIt() && s.titleEn) ? s.titleEn : s.title; }
+function SONGS(si) { var s = SECTIONS[si]; return (notIt() && s.songsEn) ? s.songsEn : s.songs; }
 
 /* ============ UTILITÀ ============ */
 var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -3235,7 +3242,7 @@ function renderHome() {
   var tiles = SECTIONS.map(function (s, i) {
     return '<button type="button" class="vtile" data-act="sect" data-s="' + i + '"><span class="vt"><span class="vi">' + esc(STITLE(i)) + '</span><span class="vd" hidden></span></span>' + ICON.chev + '</button>';
   }).join("") + '<button type="button" class="vtile study" data-act="study"><span class="vt"><span class="vi">Dāmodarāṣṭakam</span><span class="vd">' + T("studyDesc") + '</span></span>' + ICON.chev + '</button>';
-  $("#home").innerHTML = '<div class="hero"></div><div class="vlist enter">' + tiles + '</div><p class="appver">V ' + APP_VER + ' <button type="button" class="updbtn" data-upd>↻ Controlla aggiornamenti</button></p>';
+  $("#home").innerHTML = '<div class="hero"></div><div class="vlist enter">' + tiles + '</div><p class="appver">V ' + APP_VER + ' <button type="button" class="updbtn" data-upd>' + T("updCheck") + '</button></p>';
 }
 function renderSect(si) {
   var s = SECTIONS[si];
@@ -3360,14 +3367,14 @@ function render() {
   var tb = $("#tb-t"); tb.innerHTML = "";
   if (view.v === "home") { tb.innerHTML = '<h1 class="brand">Kārtika</h1>'; renderHome(); }
   else if (view.v === "study") { tb.innerHTML = '<h1 class="brand">Dāmodarāṣṭakam</h1>'; renderStudy(); }
-  else if (view.v === "sect") { tb.innerHTML = '<h1 class="brand">' + esc(STITLE(view.s)) + '</h1>'; renderSect(view.s); if (S.lang === "en" && !SECTIONS[view.s].songsEn) toast(T("noEn")); }
+  else if (view.v === "sect") { tb.innerHTML = '<h1 class="brand">' + esc(STITLE(view.s)) + '</h1>'; renderSect(view.s); if (notIt() && !SECTIONS[view.s].songsEn) toast(T("noEn")); }
   else {
     var sg = SONGS(view.s)[view.n];
     tb.innerHTML = '<h1>' + esc(sg.title) + '</h1><p>' + esc(STITLE(view.s)) + '</p>';
     if (!sg.soon) { S.last = [view.s, view.n]; save(); }
     renderSong(view.s, view.n);
-    if (S.lang === "en" && sg.itOnly) toast(T("itOnly"));
-    if (S.lang === "en" && tipSec !== view.s) { tipSec = view.s; showTip(); }
+    if (notIt() && sg.itOnly) toast(T("itOnly"));
+    if (notIt() && tipSec !== view.s) { tipSec = view.s; showTip(); }
   }
 }
 /* fumetto di aiuto (prova): compare una sola volta per visita, sul primo canto aperto di ogni sezione (riappare dopo essere usciti dalla sezione), solo in inglese; sparisce dopo 6 secondi, al primo tocco o scorrendo */
@@ -3445,16 +3452,16 @@ async function appHardRefresh() {
 document.addEventListener("click", async function (e) {
   var b = e.target.closest && e.target.closest("[data-upd]");
   if (!b || b.dataset.busy) return;
-  b.dataset.busy = "1"; b.textContent = "Controllo…";
+  b.dataset.busy = "1"; b.textContent = T("updBusy");
   try {
     var t = await fetch("index.html?u=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.text(); });
     var m = t.match(/APP_VER = "(\d[^"]*)"/);
-    if (m && m[1] !== APP_VER) { b.textContent = "Scarico V " + m[1] + "…"; await appHardRefresh(); return; }
-    b.textContent = "Sei aggiornato ✓";
-  } catch (err) { b.textContent = "Nessuna connessione"; }
-  setTimeout(function () { b.textContent = "↻ Controlla aggiornamenti"; delete b.dataset.busy; }, 2500);
+    if (m && m[1] !== APP_VER) { b.textContent = T("updGet") + m[1] + "…"; await appHardRefresh(); return; }
+    b.textContent = T("updOk");
+  } catch (err) { b.textContent = T("updOff"); }
+  setTimeout(function () { b.textContent = T("updCheck"); delete b.dataset.busy; }, 2500);
 });
-var APP_VER = "1.14";
+var APP_VER = "1.15";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;

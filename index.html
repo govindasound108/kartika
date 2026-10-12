@@ -130,14 +130,6 @@ body.home{padding-block-end:40px}
 #sect .hh{text-align:left;padding:var(--ah) 4px 10px}
 #sect .hh h1{font:600 30px/1.15 var(--f-serif);letter-spacing:0;text-shadow:none}
 .hh .sub{margin:5px 0 0;font-size:13.5px;color:var(--soft)}
-.center{display:flex;justify-content:center;margin-bottom:6px}
-.cont{display:inline-flex;align-items:center;max-width:100%;min-height:38px;padding:0 16px 0 12px;gap:8px;border:0;border-radius:999px;cursor:pointer;color:var(--ink);
-  background:linear-gradient(140deg,color-mix(in srgb,var(--accent) 22%,var(--lq-a)),var(--lq-b) 55%,color-mix(in srgb,var(--accent) 12%,var(--lq-c)));
-  box-shadow:var(--gl-edge),var(--gl-sh);-webkit-backdrop-filter:blur(24px) saturate(1.7);backdrop-filter:blur(24px) saturate(1.7);transition:transform .16s ease}
-.cont:active{transform:scale(.97)}
-.cont svg{flex:0 0 auto;width:14px;height:14px;fill:var(--accent)}
-.cont-k{flex:0 0 auto;font:600 11.5px var(--f-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-.cont-v{min-width:0;font:italic 500 15px/1.2 var(--f-serif);color:var(--soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
 /* elenchi in vetro */
 .vlist{display:flex;flex-direction:column;gap:10px;margin-block:12px 18px}
@@ -249,7 +241,7 @@ body.song.bars-off #vnav{transform:translateY(160%);opacity:0;pointer-events:non
 #lang-pop{position:fixed;z-index:12;top:calc(var(--ah) + 6px);right:max(16px,calc((100vw - 560px)/2 + 68px));width:min(190px,calc(100vw - 32px));padding:10px;border-radius:24px;display:grid;gap:4px;background:linear-gradient(140deg,var(--lq-a),var(--lq-b) 55%,var(--lq-c));background-color:color-mix(in srgb,var(--ground) 80%,transparent);box-shadow:var(--gl-edge),0 18px 40px -14px rgba(0,0,0,.4);-webkit-backdrop-filter:blur(30px) saturate(1.8);backdrop-filter:blur(30px) saturate(1.8)}
 #lang-pop .chip{width:100%;min-height:44px;text-align:left;font-size:15px}
 @media (max-width:340px){body.home #tb-t h1.brand{font-size:25px}}
-@media (prefers-reduced-motion:reduce){.enter>*{animation:none}.gbtn,.vtile,.cont,#vnav button{transition:none}}
+@media (prefers-reduced-motion:reduce){.enter>*{animation:none}.gbtn,.vtile,#vnav button{transition:none}}
 /* pop-up "come installare l'app" */
 #inst-ov{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));background:rgba(31,42,92,.4);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);overflow-y:auto}
 :root[data-theme="dark"] #inst-ov{background:rgba(4,6,20,.66)}
@@ -569,7 +561,7 @@ const NANDANANDANASTAKAM = {
     { n: 2,
       lines: [
         ["sudīrgha-netra-paṅkajaṁ=su (molto) + dīrgha (lungo) + netra (occhio) + paṅkaja (loto): dagli occhi di loto molto allungati"],
-        ["śikhi-śikhaṇḍa-mūrdhajam=śikhin (pavone) + śikhaṇḍa (piuma) + mūrdhaja (?lett. «nato sul capo», cioè i capelli): con piume di pavone sul capo"],
+        ["śikhi-śikhaṇḍa-mūrdhajam=śikhin (pavone) + śikhaṇḍa (piuma) + mūrdhaja (lett. «nato sul capo», cioè i capelli): con piume di pavone sul capo"],
         ["anaṅga-koṭi-mohanaṁ=anaṅga (senza corpo: Kāmadeva, Cupido) + koṭi (dieci milioni) + mohana (che incanta): che incanta milioni di Cupidi"],
         ["namāmi=mi inchino, offro omaggio", "nanda-nandanam=il figlio di Nanda"]
       ],
@@ -577,7 +569,7 @@ const NANDANANDANASTAKAM = {
     { n: 3,
       lines: [
         ["sunāsikāgra-mauktikaṁ=su (bello) + nāsikā (naso) + agra (punta) + mauktika (perla): perla sulla punta del bel naso"],
-        ["svacchanda-danta-paṅktikam=?svacchanda (spontaneo, di per sé; significato incerto nel composto) + danta (dente) + paṅkti (fila): file di denti che brillano naturalmente"],
+        ["svacchanda-danta-paṅktikam=svacchanda (spontaneo, di per sé; significato incerto nel composto) + danta (dente) + paṅkti (fila): file di denti che brillano naturalmente"],
         ["navāmbudāṅga-cikkaṇaṁ=nava (fresco, nuovo) + ambuda (nuvola) + aṅga (corpo) + cikkaṇa (liscio, lucente): dal corpo lucente come una nuvola di pioggia fresca"],
         ["namāmi=mi inchino, offro omaggio", "nanda-nandanam=il figlio di Nanda"]
       ],
@@ -601,7 +593,7 @@ const NANDANANDANASTAKAM = {
     { n: 6,
       lines: [
         ["sugandha-aṅga-saurabham=su-gandha (buon profumo) + aṅga (corpo) + saurabha (fragranza): dal corpo di fragranza deliziosa"],
-        ["uro-virāji-kaustubham=uras (petto) + ?virāji (che risplende) + kaustubha (la gemma Kaustubha): sul petto risplende la gemma Kaustubha"],
+        ["uro-virāji-kaustubham=uras (petto) + virāji (che risplende) + kaustubha (la gemma Kaustubha): sul petto risplende la gemma Kaustubha"],
         ["sphurac-chrīvatsa-lāñchanaṁ=sphurat (che brilla) + śrīvatsa (il segno Śrīvatsa) + lāñchana (contrassegno, marchio): contrassegnato dal segno di Śrīvatsa che brilla"],
         ["namāmi=mi inchino, offro omaggio", "nanda-nandanam=il figlio di Nanda"]
       ],
@@ -609,7 +601,7 @@ const NANDANANDANASTAKAM = {
     { n: 7,
       lines: [
         ["vṛndāvana-sunāgaraṁ=Vṛndāvana + su (molto) + nāgara (raffinato; amante abile): l'abile amante di Vṛndāvana"],
-        ["vilāsānuga-vāsasam=vilāsa (gioco, passatempo) + ?anuga (che segue, adatto a) + vāsas (veste): con una veste adatta ai Suoi passatempi"],
+        ["vilāsānuga-vāsasam=vilāsa (gioco, passatempo) + anuga (che segue, adatto a) + vāsas (veste): con una veste adatta ai Suoi passatempi"],
         ["surendra-garva-mocanaṁ=surendra (Indra, re degli dèi) + garva (orgoglio) + mocana (che libera): che libera Indra dal suo orgoglio"],
         ["namāmi=mi inchino, offro omaggio", "nanda-nandanam=il figlio di Nanda"]
       ],
@@ -625,15 +617,15 @@ const NANDANANDANASTAKAM = {
     { n: 9,
       lines: [
         ["śrī-nanda-nandanāṣṭakaṁ=śrī (sacro) + nanda-nandana (figlio di Nanda) + aṣṭaka (ottetto, otto versi): gli otto versi sul figlio di Nanda"],
-        ["paṭhed=?reciti (ottativo di paṭh)", "yaḥ=chi", "śraddhayānvitaḥ=śraddhayā (con fede) + anvita (dotato): provvisto di fede"],
-        ["tared=?attraversi (ottativo di tṛ)", "bhavābdhiṁ=bhava (esistenza materiale) + abdhi (oceano): l'oceano dell'esistenza materiale", "dustaraṁ=dus (difficile) + tara (da attraversare): insormontabile"],
-        ["labhet=?ottenga (ottativo di labh)", "tad-aṅghri-yugmakam=tad (Suo) + aṅghri (piede) + yugmaka (coppia): la coppia dei Suoi piedi"]
+        ["paṭhed=reciti (ottativo di paṭh)", "yaḥ=chi", "śraddhayānvitaḥ=śraddhayā (con fede) + anvita (dotato): provvisto di fede"],
+        ["tared=attraversi (ottativo di tṛ)", "bhavābdhiṁ=bhava (esistenza materiale) + abdhi (oceano): l'oceano dell'esistenza materiale", "dustaraṁ=dus (difficile) + tara (da attraversare): insormontabile"],
+        ["labhet=ottenga (ottativo di labh)", "tad-aṅghri-yugmakam=tad (Suo) + aṅghri (piede) + yugmaka (coppia): la coppia dei Suoi piedi"]
       ],
       tr: "Chiunque con fede reciti questi otto versi che glorificano il figlio di Nanda supererà facilmente l'insormontabile oceano dell'esistenza materiale e otterrà rifugio ai Suoi due piedi di loto." }
   ]
 };
 
-const KREF = ["kadā=quando", "kariṣyasīha=?kariṣyasi (farai) + iha (qui, in questo mondo): farai qui", "māṁ=me", "kṛpā-kaṭākṣa-bhājanam?=kṛpā (misericordia) + kaṭākṣa (sguardo obliquo) + bhājana (recipiente, destinatario): destinatario del Tuo sguardo obliquo di misericordia"];
+const KREF = ["kadā=quando", "kariṣyasīha=kariṣyasi (farai) + iha (qui, in questo mondo): farai qui", "māṁ=me", "kṛpā-kaṭākṣa-bhājanam?=kṛpā (misericordia) + kaṭākṣa (sguardo obliquo) + bhājana (recipiente, destinatario): destinatario del Tuo sguardo obliquo di misericordia"];
 const RADHAKRPA = {
   title: "Śrī Rādhā-kṛpā-kaṭākṣa-stava-rāja",
   byline: "Pronunciato da Śiva nell'Urdhvāmnāya-tantra",
@@ -650,16 +642,16 @@ const RADHAKRPA = {
     { n: 2,
       lines: [
         ["aśoka-vṛkṣa-vallarī-vitāna-maṇḍapa-sthite=aśoka (albero aśoka) + vṛkṣa (albero) + vallarī (rampicante) + vitāna (baldacchino, intreccio) + maṇḍapa (padiglione) + sthita (che sta, presente): o Tu presente in un padiglione di rampicanti intrecciati agli alberi aśoka"],
-        ["pravāla-vāla-pallava-prabhāruṇāṅghri-komale=?pravāla (corallo) + vāla (giovane, tenero: lettura incerta) + pallava (germoglio) + prabhā (splendore) + aruṇa (rossastro) + aṅghri (piede) + komala (tenero): o Tu dai teneri piedi rossastri, con lo splendore del corallo e dei germogli novelli"],
+        ["pravāla-vāla-pallava-prabhāruṇāṅghri-komale=pravāla (corallo) + vāla (giovane, tenero: lettura incerta) + pallava (germoglio) + prabhā (splendore) + aruṇa (rossastro) + aṅghri (piede) + komala (tenero): o Tu dai teneri piedi rossastri, con lo splendore del corallo e dei germogli novelli"],
         ["varābhaya-sphurat-kare=vara (benedizione) + abhaya (assenza di paura) + sphurat (che risplende) + kara (mano): o Tu la cui mano [alzata] risplende donando benedizioni e assenza di paura", "prabhūta-sampadālaye=prabhūta (abbondante, infinita) + sampad (opulenza) + ālaya (dimora): o dimora di infinita opulenza"],
         KREF
       ],
       tr: "O Tu che dimori in un padiglione fatto di rampicanti intrecciati attorno agli alberi aśoka, i cui bei piedi teneri e rossastri hanno il lucore del corallo e dei germogli rossastri appena spuntati, e la cui mano [alzata] concede benedizioni e assenza di paura. O dimora di infinita opulenza, quando farai di me il destinatario del Tuo misericordioso sguardo obliquo?" },
     { n: 3,
       lines: [
-        ["anaṅga-raṅga-maṅgala-prasaṅga-bhaṅgura-bhruvāṁ=?anaṅga (amore, Cupido) + raṅga (palcoscenico) + maṅgala (auspicioso) + prasaṅga (discorso, occasione) + bhaṅgura (curvo) + bhrū (sopracciglio): (con) le sopracciglia curvate nel corso di un auspicioso discorso sul palcoscenico dell'amore"],
-        ["savibhramaṁ=?sa (con) + vibhrama (turbamento, stupore): con stupore", "sasambhramaṁ=?sa (con) + sambhrama (agitazione, stupore): con agitazione", "dṛganta-bāṇa-pātanaiḥ=dṛś (occhio) + anta (angolo) + bāṇa (freccia) + pātana (lancio): con il lancio delle frecce degli angoli degli occhi (sguardi obliqui)"],
-        ["nirantaraṁ=senza interruzione, continuamente", "vaśī-kṛta-pratīti-nanda-nandane=?vaśī-kṛta (reso soggetto, sottomesso) + pratīti (convinzione, certezza: senso incerto nel composto) + nanda-nandana (figlio di Nanda): o Tu che hai sottomesso il figlio di Nanda"],
+        ["anaṅga-raṅga-maṅgala-prasaṅga-bhaṅgura-bhruvāṁ=anaṅga (amore, Cupido) + raṅga (palcoscenico) + maṅgala (auspicioso) + prasaṅga (discorso, occasione) + bhaṅgura (curvo) + bhrū (sopracciglio): (con) le sopracciglia curvate nel corso di un auspicioso discorso sul palcoscenico dell'amore"],
+        ["savibhramaṁ=sa (con) + vibhrama (turbamento, stupore): con stupore", "sasambhramaṁ=sa (con) + sambhrama (agitazione, stupore): con agitazione", "dṛganta-bāṇa-pātanaiḥ=dṛś (occhio) + anta (angolo) + bāṇa (freccia) + pātana (lancio): con il lancio delle frecce degli angoli degli occhi (sguardi obliqui)"],
+        ["nirantaraṁ=senza interruzione, continuamente", "vaśī-kṛta-pratīti-nanda-nandane=vaśī-kṛta (reso soggetto, sottomesso) + pratīti (convinzione, certezza: senso incerto nel composto) + nanda-nandana (figlio di Nanda): o Tu che hai sottomesso il figlio di Nanda"],
         KREF
       ],
       tr: "O Tu che, sul palcoscenico dei giochi amorosi, nel corso di un auspicioso colloquio, esprimi meraviglia incurvando le Tue sopracciglia come archi e poi scoccando all'improvviso le frecce dei Tuoi sguardi obliqui, trafiggendo il figlio di Śrī Nanda con un incanto amoroso e portandolo sotto il Tuo perpetuo controllo, quando farai di me il destinatario del Tuo misericordioso sguardo obliquo?" },
@@ -667,37 +659,37 @@ const RADHAKRPA = {
       lines: [
         ["taḍit-suvarṇa-campaka-pradīpta-gaura-vigrahe=taḍit (lampo) + suvarṇa (oro) + campaka (fiore campaka) + pradīpta (splendente) + gaura (chiaro, dorato) + vigraha (forma): o Tu dalla forma dorata e radiosa, simile a lampo, oro e fiori campaka"],
         ["mukha-prabhā-parāsta-koṭi-śāradendu-maṇḍale=mukha (volto) + prabhā (splendore) + parāsta (sconfitto) + koṭi (dieci milioni) + śārada (autunnale) + indu (luna) + maṇḍala (disco): o Tu il cui splendore del volto sconfigge milioni di lune autunnali"],
-        ["vicitra-citra-sañcarac-cakora-śāva-locane=vicitra (vario) + citra (stupefacente) + sañcarat (che si muove) + cakora (uccello cakora) + ?śāva (piccolo, cucciolo) + locana (occhio): o Tu dagli occhi irrequieti come quelli di un giovane cakora, che compiono a ogni istante varie espressioni stupefacenti"],
+        ["vicitra-citra-sañcarac-cakora-śāva-locane=vicitra (vario) + citra (stupefacente) + sañcarat (che si muove) + cakora (uccello cakora) + śāva (piccolo, cucciolo) + locana (occhio): o Tu dagli occhi irrequieti come quelli di un giovane cakora, che compiono a ogni istante varie espressioni stupefacenti"],
         KREF
       ],
       tr: "O Tu la cui forma radiosa e dorata somiglia al lampo, all'oro e ai fiori campaka, il cui viso di loto sconfigge lo splendore di milioni di lune autunnali, e i cui occhi, irrequieti come quelli di un giovane uccello cakora, fanno a ogni istante varie espressioni stupefacenti, quando farai di me il destinatario del Tuo misericordioso sguardo obliquo?" },
     { n: 5,
       lines: [
-        ["madonmadāti-yauvane=?mada (ebbrezza) + unmadāti (esaltazione: lettura incerta) + yauvana (giovinezza): o Tu inebriata dalla Tua giovinezza", "pramoda-māna-maṇḍite=pramoda (diletto, gioia) + māna (broncio amoroso, rancore) + maṇḍita (adornata): o Tu adornata dal delizioso ornamento del broncio"],
+        ["madonmadāti-yauvane=mada (ebbrezza) + unmadāti (esaltazione: lettura incerta) + yauvana (giovinezza): o Tu inebriata dalla Tua giovinezza", "pramoda-māna-maṇḍite=pramoda (diletto, gioia) + māna (broncio amoroso, rancore) + maṇḍita (adornata): o Tu adornata dal delizioso ornamento del broncio"],
         ["priyānurāga-rañjite=priya (amato) + anurāga (attaccamento, amore) + rañjita (colorata, deliziata): o Tu che gioisci dell'attaccamento del Tuo amato", "kalā-vilāsa-paṇḍite=kalā (arte) + vilāsa (gioco amoroso) + paṇḍita (esperta): o Tu espertissima nell'arte dei giochi d'amore"],
-        ["ananya-dhanya-kuñja-rājya-kāma-keli-kovide=?ananya (esclusivo, riservato) + dhanya (benedetto, auspicioso) + kuñja (boschetto) + rājya (regno) + kāma (amore) + keli (gioco) + kovida (esperta): o Tu espertissima nei giochi d'amore nel regno dei Tuoi boschetti riservati e auspiciosi"],
+        ["ananya-dhanya-kuñja-rājya-kāma-keli-kovide=ananya (esclusivo, riservato) + dhanya (benedetto, auspicioso) + kuñja (boschetto) + rājya (regno) + kāma (amore) + keli (gioco) + kovida (esperta): o Tu espertissima nei giochi d'amore nel regno dei Tuoi boschetti riservati e auspiciosi"],
         KREF
       ],
       tr: "O Tu che sei inebriata dalla Tua giovinezza, che sei adornata dal delizioso ornamento del broncio, che gioisci dell'attaccamento a Te del Tuo amato e che sei sommamente esperta nell'arte degli affari amorosi. O Tu, la più sapiente nella conoscenza dei giochi amorosi entro il regno dei Tuoi boschetti riservati e auspiciosi, quando farai di me il destinatario del Tuo misericordioso sguardo obliquo?" },
     { n: 6,
       lines: [
-        ["aśeṣa-hāva-bhāva-dhīra-hīra-hāra-bhūṣite=?a-śeṣa (senza resto, tutti) + hāva (espressione amorosa sottile) + bhāva (emozione) + dhīra (saldezza, gravità) + hīra (diamante) + hāra (collana) + bhūṣita (adornata): o Tu adorna di tutti gli hāva e bhāva e di una collana di diamanti di saldezza"],
+        ["aśeṣa-hāva-bhāva-dhīra-hīra-hāra-bhūṣite=a-śeṣa (senza resto, tutti) + hāva (espressione amorosa sottile) + bhāva (emozione) + dhīra (saldezza, gravità) + hīra (diamante) + hāra (collana) + bhūṣita (adornata): o Tu adorna di tutti gli hāva e bhāva e di una collana di diamanti di saldezza"],
         ["prabhūta-śāta-kumbha-kumbha-kumbhi-kumbha-sustani=prabhūta (abbondante, grande) + śāta-kumbha (oro) + kumbha (brocca) + kumbhi (elefante) + kumbha (protuberanza frontale) + su-stanī (dal bel seno): o Tu dal seno come grandi brocche d'oro, simili alle due protuberanze sulla testa di un elefante"],
-        ["praśasta-manda-hāsya-cūrṇa-pūrṇa-saukhya-sāgare=?praśasta (glorioso) + manda (lieve) + hāsya (sorriso) + cūrṇa (polvere: senso incerto nel composto) + pūrṇa (pieno) + saukhya (beatitudine) + sāgara (oceano): o Tu il cui glorioso, lieve sorriso è un oceano pieno di beatitudine"],
+        ["praśasta-manda-hāsya-cūrṇa-pūrṇa-saukhya-sāgare=praśasta (glorioso) + manda (lieve) + hāsya (sorriso) + cūrṇa (polvere: senso incerto nel composto) + pūrṇa (pieno) + saukhya (beatitudine) + sāgara (oceano): o Tu il cui glorioso, lieve sorriso è un oceano pieno di beatitudine"],
         KREF
       ],
       tr: "O Tu che sei adornata dagli ornamenti degli anubhāva, come hāva e bhāva, e da una collana di diamanti di dolcezza e gravità, il cui seno è come brocche d'acqua d'oro puro e somiglia ai due rilievi sulla testa di un elefante. O Tu il cui glorioso, dolce sorriso è come un oceano pieno di beatitudine, quando farai di me il destinatario del Tuo misericordioso sguardo obliquo?" },
     { n: 7,
       lines: [
-        ["mṛṇāla-vāla-vallarī=mṛṇāla (stelo di loto) + ?vāla (giovane, tenero) + vallarī (rampicante, stelo)", "taraṅga-raṅga-dor-late=taraṅga (onda) + raṅga (gioco, danza) + dor (braccio) + latā (rampicante): o Tu le cui braccia sono come rampicanti che danzano sulle onde"],
+        ["mṛṇāla-vāla-vallarī=mṛṇāla (stelo di loto) + vāla (giovane, tenero) + vallarī (rampicante, stelo)", "taraṅga-raṅga-dor-late=taraṅga (onda) + raṅga (gioco, danza) + dor (braccio) + latā (rampicante): o Tu le cui braccia sono come rampicanti che danzano sulle onde"],
         ["latāgra-lāsya-lola-nīla-locanāvalokane=latā (rampicante) + agra (punta) + lāsya (danza) + lola (ondeggiante) + nīla (blu) + locana (occhio) + avalokana (sguardo): o Tu il cui sguardo dagli occhi blu è come punte di rampicanti che danzano ondeggiando"],
-        ["lalal-lulan-milan-manojña-mugdha-mohanāśrite=?lalat (che gioca) + lulat (che ondeggia) + milat (che incontra) [lettura incerta] + manojña (incantevole) + mugdha (incantato) + mohana (Mohana, Colui che incanta) + āśrita (che ha preso rifugio): composto complesso, senso incerto; la traduzione: dai rifugio a Mana-mohana"],
+        ["lalal-lulan-milan-manojña-mugdha-mohanāśrite=lalat (che gioca) + lulat (che ondeggia) + milat (che incontra) [lettura incerta] + manojña (incantevole) + mugdha (incantato) + mohana (Mohana, Colui che incanta) + āśrita (che ha preso rifugio): composto complesso, senso incerto; la traduzione: dai rifugio a Mana-mohana"],
         KREF
       ],
       tr: "O Tu le cui braccia sono come teneri steli di loto che ondeggiano sulle onde dell'acqua, il cui sguardo dagli occhi blu somiglia alle punte dei rampicanti che danzano nella brezza, che attiri Mana-mohana a seguirTi e, incontrandolo, Gli rubi la mente e Gli dai rifugio nel Suo stato di incanto, quando farai di me il destinatario del Tuo misericordioso sguardo obliquo?" },
     { n: 8,
       lines: [
-        ["suvarṇa-mālikāñcita-tri-rekha-kambu-kaṇṭhage=?suvarṇa (oro) + mālikā (collana) + añcita (adorna) + tri (tre) + rekhā (linea) + kambu (conchiglia) + kaṇṭha (collo) + ga (che è): o Tu dal collo come conchiglia, segnato da tre linee e adorno di collane d'oro"],
+        ["suvarṇa-mālikāñcita-tri-rekha-kambu-kaṇṭhage=suvarṇa (oro) + mālikā (collana) + añcita (adorna) + tri (tre) + rekhā (linea) + kambu (conchiglia) + kaṇṭha (collo) + ga (che è): o Tu dal collo come conchiglia, segnato da tre linee e adorno di collane d'oro"],
         ["tri-sūtra-maṅgalī-guṇa-tri-ratna-dīpti-dīdhiti=tri-sūtra (collana a tre fili) + maṅgalī (auspiciosa) + guṇa (filo) + tri (tre) + ratna (gemma) + dīpti (luce) + dīdhiti (raggio, splendore): o Tu risplendente di tre tipi di gemme sull'auspicioso tri-sūtra"],
         ["sa-lola-nīla-kuntala-prasūna-guccha-gumphite=sa (con) + lola (ondeggiante) + nīla (blu scuro) + kuntala (chioma) + prasūna (fiore) + guccha (grappolo) + gumphita (intrecciata): o Tu dalle chiome nero-bluastre ondeggianti, intrecciate con grappoli di fiori"],
         KREF
@@ -708,29 +700,29 @@ const RADHAKRPA = {
       lines: [
         ["nitamba-bimba-lambamāna-puṣpa-mekhalā-guṇe=nitamba (fianchi) + bimba (rotondo, disco) + lambamāna (che pende) + puṣpa (fiore) + mekhalā (cintura, ghirlanda) + guṇa (filo): o Tu dai fianchi rotondi da cui pende una ghirlanda di fiori"],
         ["praśasta-ratna-kiṅkiṇī-kalāpa-madhya-mañjule=praśasta (eccellente) + ratna (gemma) + kiṅkiṇī (campanellino) + kalāpa (insieme, cintura) + madhya (vita) + mañjula (incantevole, dolce): o Tu dalla vita incantevole, dove tintinna una cintura di campanellini di gemme"],
-        ["karīndra-śuṇḍa-daṇḍikā-varoha-saubhagoruke=karīndra (re degli elefanti) + śuṇḍā (proboscide) + daṇḍikā (piccolo bastone, forma allungata) + ?varoha (che digrada, si assottiglia) + saubhaga (bellezza) + ūruka (coscia): o Tu dalle belle cosce che digradano come la proboscide del re degli elefanti"],
+        ["karīndra-śuṇḍa-daṇḍikā-varoha-saubhagoruke=karīndra (re degli elefanti) + śuṇḍā (proboscide) + daṇḍikā (piccolo bastone, forma allungata) + varoha (che digrada, si assottiglia) + saubhaga (bellezza) + ūruka (coscia): o Tu dalle belle cosce che digradano come la proboscide del re degli elefanti"],
         KREF
       ],
       tr: "O Tu dai cui fianchi rotondi pende una ghirlanda di fiori eccellenti, sulla cui vita sottile e incantevole tintinna dolcemente una sublime cintura di minuscoli campanellini ingemmati, e le cui belle cosce si assottigliano come la proboscide inclinata del re degli elefanti, quando farai di me il destinatario del Tuo misericordioso sguardo obliquo?" },
     { n: 10,
       lines: [
-        ["aneka-mantra-nāda-mañju-nūpurā-rava-skhalat-=aneka (molti) + mantra (mantra) + nāda (suono) + mañju (dolce) + nūpura (cavigliera) + rava (tintinnio) + ?skhalat (che vacilla, che inciampa): continua nella riga seguente"],
-        ["samāja-rāja-haṁsa-vaṁśa-nikvaṇāti-gaurave=?samāja (stormo) + rāja-haṁsa (cigno reale) + vaṁśa (schiera) + nikvaṇa (tubare, canto) + ati (oltre) + gaurava (maestà): composto incerto; il senso: simile (o superiore) al tubare di uno stormo di cigni reali"],
+        ["aneka-mantra-nāda-mañju-nūpurā-rava-skhalat-=aneka (molti) + mantra (mantra) + nāda (suono) + mañju (dolce) + nūpura (cavigliera) + rava (tintinnio) + skhalat (che vacilla, che inciampa): continua nella riga seguente"],
+        ["samāja-rāja-haṁsa-vaṁśa-nikvaṇāti-gaurave=samāja (stormo) + rāja-haṁsa (cigno reale) + vaṁśa (schiera) + nikvaṇa (tubare, canto) + ati (oltre) + gaurava (maestà): composto incerto; il senso: simile (o superiore) al tubare di uno stormo di cigni reali"],
         ["vilola-hema-vallarī-viḍambi-cāru-caṅkrame=vilola (ondeggiante) + hema (oro) + vallarī (rampicante) + viḍambi (che imita, che deride) + cāru (bello) + caṅkrama (andatura): o Tu la cui bella andatura deride un ondeggiante rampicante d'oro"],
         KREF
       ],
       tr: "O Tu i cui sonagli alle caviglie, dolcemente risonanti di una schiera di mantra vedici, somigliano al tubare di uno stormo di cigni reali, e la cui bella andatura schernisce i movimenti di un ondeggiante rampicante d'oro, mi renderai destinatario del Tuo misericordioso sguardo obliquo?" },
     { n: 11,
       lines: [
-        ["ananta-koṭi-viṣṇu-loka-namra-padmajārcite=?ananta (infinito) + koṭi (dieci milioni) + viṣṇu-loka (mondi di Viṣṇu, Vaikuṇṭha) + namra (che si inchina) + padmajā (nata dal loto: Lakṣmī) + arcita (adorata): o Tu adorata da Lakṣmī (Padmajā), signora di infiniti Vaikuṇṭha"],
+        ["ananta-koṭi-viṣṇu-loka-namra-padmajārcite=ananta (infinito) + koṭi (dieci milioni) + viṣṇu-loka (mondi di Viṣṇu, Vaikuṇṭha) + namra (che si inchina) + padmajā (nata dal loto: Lakṣmī) + arcita (adorata): o Tu adorata da Lakṣmī (Padmajā), signora di infiniti Vaikuṇṭha"],
         ["himādrijā-pulomajā-viriñcajā-vara-prade=himādri-jā (nata dall'Himālaya: Pārvatī) + puloma-jā (figlia di Puloman: Indrāṇī) + viriñca-jā (nata da Viriñci, Brahmā: Sarasvatī) + vara (benedizione) + prada (che dona): o Tu che doni benedizioni a Pārvatī, Indrāṇī e Sarasvatī"],
-        ["apāra-siddhi-ṛddhi-digdha-sat-padāṅgulī-nakhe=a-pāra (senza limite) + siddhi (perfezione) + ṛddhi (prosperità) + ?digdha (cosparso, pervaso) + sat (reale, buono) + pada (piede) + aṅgulī (dito) + nakha (unghia): o Tu, una cui sola unghia dei piedi dà origine a infinite perfezioni"],
+        ["apāra-siddhi-ṛddhi-digdha-sat-padāṅgulī-nakhe=a-pāra (senza limite) + siddhi (perfezione) + ṛddhi (prosperità) + digdha (cosparso, pervaso) + sat (reale, buono) + pada (piede) + aṅgulī (dito) + nakha (unghia): o Tu, una cui sola unghia dei piedi dà origine a infinite perfezioni"],
         KREF
       ],
       tr: "O Tu che sei adorata da Lakṣmī-devī, la signora degli innumerevoli pianeti Vaikuṇṭha, e che concedi benedizioni a Śrī Pārvatī, Indrāṇī e Sarasvatī, anche una sola delle unghie dei Tuoi piedi di loto dà origine a un'infinita varietà di perfezioni spirituali. Oh, quando farai di me il destinatario del Tuo misericordioso sguardo obliquo?" },
     { n: 12,
       lines: [
-        ["makheśvari=makha (sacrificio) + īśvarī (signora): o Signora dei sacrifici", "kriyeśvari=kriyā (azione) + īśvarī: o Signora di tutte le attività", "svadheśvari=?svadhā (offerta, mantra della svadhā) + īśvarī: o Signora dei mantra pronunciati durante lo yajña", "sureśvari=sura (dèi) + īśvarī: o Signora di tutti gli dèi"],
+        ["makheśvari=makha (sacrificio) + īśvarī (signora): o Signora dei sacrifici", "kriyeśvari=kriyā (azione) + īśvarī: o Signora di tutte le attività", "svadheśvari=svadhā (offerta, mantra della svadhā) + īśvarī: o Signora dei mantra pronunciati durante lo yajña", "sureśvari=sura (dèi) + īśvarī: o Signora di tutti gli dèi"],
         ["triveda-bhāratīśvari=tri (tre) + veda + bhāratī (parola, insegnamento) + īśvarī: o Signora degli insegnamenti dei tre Veda", "pramāṇa-śāsaneśvari=pramāṇa (autorità, principio scritturale) + śāsana (governo, comando) + īśvarī: o Signora dell'applicazione dei principi scritturali"],
         ["rameśvari=ramā (dea della fortuna) + īśvarī: o Signora della dea della fortuna", "kṣameśvari=kṣamā (perdono) + īśvarī: o Signora del perdono", "pramoda-kānaneśvari=pramoda (gioia, diletto) + kānana (foresta) + īśvarī: o Signora della deliziosa foresta [di Vṛndāvana]"],
         ["vrajeśvari=vraja + īśvarī: o Signora di Vraja", "vrajādhipe=vraja + adhipā (sovrana): o Sovrana di Vraja", "śrī=sacra, auspiciosa", "rādhike=o Rādhikā", "namo=omaggio", "'stu=sia (astu)", "te=a Te"]
@@ -923,7 +915,7 @@ const MANGALAARATI = {
       tr: "Durante il Tuo sonno, le jīva restano addormentate in questo mondo, ma al Tuo sorgere l'intero mondo si risveglia." },
     { n: 4, lines: [
         [ "śubha=¦śubha – auspicioso", "dṛṣṭi=¦dṛṣṭi – sguardo", "karô=¦karo – fai", "ebe=¦ebe – ora", "(prabhu)=¦prabhu – o Signore", "jagater{a}=¦jagatera – del mondo", "prati=¦prati – verso" ],
-        [ "jāguk{a}=¦jāguka – possa risvegliarsi", "hṛdaye=¦hṛdaye – nel cuore", "mor{a}=¦mora – ?mio", "sumaṅgalā=¦sumaṅgalā – sommamente auspicioso", "rati=¦rati – attaccamento" ] ],
+        [ "jāguk{a}=¦jāguka – possa risvegliarsi", "hṛdaye=¦hṛdaye – nel cuore", "mor{a}=¦mora – mio", "sumaṅgalā=¦sumaṅgalā – sommamente auspicioso", "rati=¦rati – attaccamento" ] ],
       tr: "[O Signore!] Concedi ora il Tuo sguardo benefico al mondo. Possa quella rati supremamente auspiciosa risvegliarsi nel mio cuore." },
     { n: 5, lines: [
         [ "mayūr{a}-śukādi=¦mayūra – pavoni|śukā – pappagalli maschi|ādi – e così via", "sāri=¦sāri – pappagalle femmine", "katô=¦kato – molti", "pikarāj{a}=¦pikarāja – cuculi" ],
@@ -938,7 +930,7 @@ const MANGALAARATI = {
         [ "maṅgal{a}=¦maṅgala – auspicioso", "saurabha=¦saurabha – profumo", "bahe=¦bahe – portano", "pavan{a}-kallol{a}=¦pavana – brezze|kallola – ondate" ] ],
       tr: "In uno stagno ricco di fiori di molte varietà, i loti ondeggiano avanti e indietro. Dolci brezze portano in ogni direzione la loro fragranza auspiciosa." },
     { n: 8, lines: [
-        [ "jhā̃jhar{a}=¦jhājhara – ?whompers", "kā̃sar{a}=¦kāsara – gong", "ghaṇṭā=¦ghaṇṭā – campana", "śaṅkha=¦śaṅkha – conchiglia", "karatāl{a}=¦karatāla – karatāla" ],
+        [ "jhā̃jhar{a}=¦jhājhara – whompers", "kā̃sar{a}=¦kāsara – gong", "ghaṇṭā=¦ghaṇṭā – campana", "śaṅkha=¦śaṅkha – conchiglia", "karatāl{a}=¦karatāla – karatāla" ],
         [ "maṅgal{a}=¦maṅgala – auspicioso", "mṛdaṅga=¦mṛdaṅga – tamburo mṛdaṅga", "bāje=¦bāje – risuonano", "param{a}=¦parama – supremo", "rasāla=¦rasāla – dolcezza" ] ],
       tr: "Grandi cimbali, gong, campane, conchiglie, karatāla e auspiciosi mṛdaṅga risuonano dolcissimamente." },
     { n: 9, lines: [
@@ -1330,7 +1322,7 @@ var MANGALA_EN = [
     "n": 4,
     "lines": [
         [ "śubha=¦śubha – auspicious", "dṛṣṭi=¦dṛṣṭi – glance", "karô=¦karo – do", "ebe=¦ebe – now", "(prabhu)=¦prabhu – O Lord", "jagater{a}=¦jagatera – world's", "prati=¦prati – toward" ],
-        [ "jāguk{a}=¦jāguka – may awaken", "hṛdaye=¦hṛdaye – in the heart", "mor{a}=¦mora – ?my", "sumaṅgalā=¦sumaṅgalā – most auspicious", "rati=¦rati – attachment" ] ],
+        [ "jāguk{a}=¦jāguka – may awaken", "hṛdaye=¦hṛdaye – in the heart", "mor{a}=¦mora – my", "sumaṅgalā=¦sumaṅgalā – most auspicious", "rati=¦rati – attachment" ] ],
     "tr": "[O Lord!] Bestow Your beneficent glance upon the world, just now. May that most auspicious rati awaken in my heart."
    },
    {
@@ -1357,7 +1349,7 @@ var MANGALA_EN = [
    {
     "n": 8,
     "lines": [
-        [ "jhā̃jhar{a}=¦jhājhara – ?whompers", "kā̃sar{a}=¦kāsara – gong", "ghaṇṭā=¦ghaṇṭā – bell", "śaṅkha=¦śaṅkha – conch", "karatāl{a}=¦karatāla – karatālas" ],
+        [ "jhā̃jhar{a}=¦jhājhara – whompers", "kā̃sar{a}=¦kāsara – gong", "ghaṇṭā=¦ghaṇṭā – bell", "śaṅkha=¦śaṅkha – conch", "karatāl{a}=¦karatāla – karatālas" ],
         [ "maṅgal{a}=¦maṅgala – auspicious", "mṛdaṅga=¦mṛdaṅga – mṛdaṅga drum", "bāje=¦bāje – resonate", "param{a}=¦parama – supreme", "rasāla=¦rasāla – sweetness" ] ],
     "tr": "Large cymbals, gongs, bells, conches, karatālas, and auspicious mṛdaṅgas resonate most sweetly."
    },
@@ -1902,7 +1894,7 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
      "sudīrgha-netra-paṅkajaṁ=su (very) + dīrgha (long) + netra (eye) + paṅkaja (lotus): with very long lotus eyes"
     ],
     [
-     "śikhi-śikhaṇḍa-mūrdhajam=śikhin (peacock) + śikhaṇḍa (feather) + mūrdhaja (?lit. “born on the head”, i.e. the hair): with peacock feathers on the head"
+     "śikhi-śikhaṇḍa-mūrdhajam=śikhin (peacock) + śikhaṇḍa (feather) + mūrdhaja (lit. “born on the head”, i.e. the hair): with peacock feathers on the head"
     ],
     [
      "anaṅga-koṭi-mohanaṁ=anaṅga (bodiless: Kāmadeva, Cupid) + koṭi (ten million) + mohana (enchanting): who enchants millions of Cupids"
@@ -1921,7 +1913,7 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
      "sunāsikāgra-mauktikaṁ=su (beautiful) + nāsikā (nose) + agra (tip) + mauktika (pearl): a pearl at the tip of the beautiful nose"
     ],
     [
-     "svacchanda-danta-paṅktikam=?svacchanda (spontaneous, by itself; meaning uncertain in the compound) + danta (tooth) + paṅkti (row): rows of teeth that shine naturally"
+     "svacchanda-danta-paṅktikam=svacchanda (spontaneous, by itself; meaning uncertain in the compound) + danta (tooth) + paṅkti (row): rows of teeth that shine naturally"
     ],
     [
      "navāmbudāṅga-cikkaṇaṁ=nava (fresh, new) + ambuda (cloud) + aṅga (body) + cikkaṇa (smooth, shining): with a body shining like a fresh raincloud"
@@ -1979,7 +1971,7 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
      "sugandha-aṅga-saurabham=su-gandha (good fragrance) + aṅga (body) + saurabha (fragrance): with a body of delightful fragrance"
     ],
     [
-     "uro-virāji-kaustubham=uras (chest) + ?virāji (shining) + kaustubha (the Kaustubha gem): on the chest shines the Kaustubha gem"
+     "uro-virāji-kaustubham=uras (chest) + virāji (shining) + kaustubha (the Kaustubha gem): on the chest shines the Kaustubha gem"
     ],
     [
      "sphurac-chrīvatsa-lāñchanaṁ=sphurat (shining) + śrīvatsa (the Śrīvatsa mark) + lāñchana (mark, sign): marked with the shining Śrīvatsa sign"
@@ -1998,7 +1990,7 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
      "vṛndāvana-sunāgaraṁ=Vṛndāvana + su (very) + nāgara (refined; skilled lover): the skilled lover of Vṛndāvana"
     ],
     [
-     "vilāsānuga-vāsasam=vilāsa (play, pastime) + ?anuga (following, suited to) + vāsas (garment): with a garment suited to His pastimes"
+     "vilāsānuga-vāsasam=vilāsa (play, pastime) + anuga (following, suited to) + vāsas (garment): with a garment suited to His pastimes"
     ],
     [
      "surendra-garva-mocanaṁ=surendra (Indra, king of the gods) + garva (pride) + mocana (liberating): who frees Indra from his pride"
@@ -2038,17 +2030,17 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
      "śrī-nanda-nandanāṣṭakaṁ=śrī (sacred) + nanda-nandana (son of Nanda) + aṣṭaka (set of eight, eight verses): the eight verses on the son of Nanda"
     ],
     [
-     "paṭhed=?may one recite (optative of paṭh)",
+     "paṭhed=may one recite (optative of paṭh)",
      "yaḥ=who",
      "śraddhayānvitaḥ=śraddhayā (with faith) + anvita (endowed): endowed with faith"
     ],
     [
-     "tared=?may one cross (optative of tṛ)",
+     "tared=may one cross (optative of tṛ)",
      "bhavābdhiṁ=bhava (material existence) + abdhi (ocean): the ocean of material existence",
      "dustaraṁ=dus (difficult) + tara (to cross): insurmountable"
     ],
     [
-     "labhet=?may one obtain (optative of labh)",
+     "labhet=may one obtain (optative of labh)",
      "tad-aṅghri-yugmakam=tad (His) + aṅghri (foot) + yugmaka (pair): the pair of His feet"
     ]
    ],
@@ -2077,7 +2069,7 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
     ],
     [
      "kadā=when",
-     "kariṣyasīha=?kariṣyasi (You will make) + iha (here, in this world): You will make here",
+     "kariṣyasīha=kariṣyasi (You will make) + iha (here, in this world): You will make here",
      "māṁ=me",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (mercy) + kaṭākṣa (sidelong glance) + bhājana (vessel, recipient): recipient of Your merciful sidelong glance"
     ]
@@ -2091,7 +2083,7 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
      "aśoka-vṛkṣa-vallarī-vitāna-maṇḍapa-sthite=aśoka (aśoka tree) + vṛkṣa (tree) + vallarī (creeper) + vitāna (canopy, entwining) + maṇḍapa (pavilion) + sthita (staying, present): O You present in a pavilion of creepers entwined around aśoka trees"
     ],
     [
-     "pravāla-vāla-pallava-prabhāruṇāṅghri-komale=?pravāla (coral) + vāla (young, tender: uncertain reading) + pallava (sprout) + prabhā (splendor) + aruṇa (reddish) + aṅghri (foot) + komala (tender): O You with tender reddish feet, with the splendor of coral and fresh sprouts"
+     "pravāla-vāla-pallava-prabhāruṇāṅghri-komale=pravāla (coral) + vāla (young, tender: uncertain reading) + pallava (sprout) + prabhā (splendor) + aruṇa (reddish) + aṅghri (foot) + komala (tender): O You with tender reddish feet, with the splendor of coral and fresh sprouts"
     ],
     [
      "varābhaya-sphurat-kare=vara (benediction) + abhaya (fearlessness) + sphurat (shining) + kara (hand): O You whose [raised] hand shines, granting benedictions and fearlessness",
@@ -2099,7 +2091,7 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
     ],
     [
      "kadā=when",
-     "kariṣyasīha=?kariṣyasi (You will make) + iha (here, in this world): You will make here",
+     "kariṣyasīha=kariṣyasi (You will make) + iha (here, in this world): You will make here",
      "māṁ=me",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (mercy) + kaṭākṣa (sidelong glance) + bhājana (vessel, recipient): recipient of Your merciful sidelong glance"
     ]
@@ -2110,20 +2102,20 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
    "n": 3,
    "lines": [
     [
-     "anaṅga-raṅga-maṅgala-prasaṅga-bhaṅgura-bhruvāṁ=?anaṅga (love, Cupid) + raṅga (stage) + maṅgala (auspicious) + prasaṅga (discourse, occasion) + bhaṅgura (curved) + bhrū (eyebrow): (with) eyebrows curved in the course of an auspicious discussion on the stage of love"
+     "anaṅga-raṅga-maṅgala-prasaṅga-bhaṅgura-bhruvāṁ=anaṅga (love, Cupid) + raṅga (stage) + maṅgala (auspicious) + prasaṅga (discourse, occasion) + bhaṅgura (curved) + bhrū (eyebrow): (with) eyebrows curved in the course of an auspicious discussion on the stage of love"
     ],
     [
-     "savibhramaṁ=?sa (with) + vibhrama (bewilderment, amazement): with amazement",
-     "sasambhramaṁ=?sa (with) + sambhrama (agitation, amazement): with agitation",
+     "savibhramaṁ=sa (with) + vibhrama (bewilderment, amazement): with amazement",
+     "sasambhramaṁ=sa (with) + sambhrama (agitation, amazement): with agitation",
      "dṛganta-bāṇa-pātanaiḥ=dṛś (eye) + anta (corner) + bāṇa (arrow) + pātana (shooting): by shooting the arrows of the corners of the eyes (sidelong glances)"
     ],
     [
      "nirantaraṁ=without interruption, continuously",
-     "vaśī-kṛta-pratīti-nanda-nandane=?vaśī-kṛta (brought under control, subdued) + pratīti (conviction, certainty: meaning uncertain in the compound) + nanda-nandana (son of Nanda): O You who have subdued the son of Nanda"
+     "vaśī-kṛta-pratīti-nanda-nandane=vaśī-kṛta (brought under control, subdued) + pratīti (conviction, certainty: meaning uncertain in the compound) + nanda-nandana (son of Nanda): O You who have subdued the son of Nanda"
     ],
     [
      "kadā=when",
-     "kariṣyasīha=?kariṣyasi (You will make) + iha (here, in this world): You will make here",
+     "kariṣyasīha=kariṣyasi (You will make) + iha (here, in this world): You will make here",
      "māṁ=me",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (mercy) + kaṭākṣa (sidelong glance) + bhājana (vessel, recipient): recipient of Your merciful sidelong glance"
     ]
@@ -2140,11 +2132,11 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
      "mukha-prabhā-parāsta-koṭi-śāradendu-maṇḍale=mukha (face) + prabhā (splendor) + parāsta (defeated) + koṭi (ten million) + śārada (autumnal) + indu (moon) + maṇḍala (disc): O You whose facial splendor defeats millions of autumn moons"
     ],
     [
-     "vicitra-citra-sañcarac-cakora-śāva-locane=vicitra (various) + citra (astonishing) + sañcarat (moving) + cakora (cakora bird) + ?śāva (young, cub) + locana (eye): O You whose eyes are restless like those of a young cakora, making various astonishing expressions at every moment"
+     "vicitra-citra-sañcarac-cakora-śāva-locane=vicitra (various) + citra (astonishing) + sañcarat (moving) + cakora (cakora bird) + śāva (young, cub) + locana (eye): O You whose eyes are restless like those of a young cakora, making various astonishing expressions at every moment"
     ],
     [
      "kadā=when",
-     "kariṣyasīha=?kariṣyasi (You will make) + iha (here, in this world): You will make here",
+     "kariṣyasīha=kariṣyasi (You will make) + iha (here, in this world): You will make here",
      "māṁ=me",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (mercy) + kaṭākṣa (sidelong glance) + bhājana (vessel, recipient): recipient of Your merciful sidelong glance"
     ]
@@ -2155,7 +2147,7 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
    "n": 5,
    "lines": [
     [
-     "madonmadāti-yauvane=?mada (intoxication) + unmadāti (exaltation: uncertain reading) + yauvana (youth): O You intoxicated by Your youthfulness",
+     "madonmadāti-yauvane=mada (intoxication) + unmadāti (exaltation: uncertain reading) + yauvana (youth): O You intoxicated by Your youthfulness",
      "pramoda-māna-maṇḍite=pramoda (delight, joy) + māna (amorous sulking, pique) + maṇḍita (adorned): O You adorned with the delightful ornament of sulky anger"
     ],
     [
@@ -2163,11 +2155,11 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
      "kalā-vilāsa-paṇḍite=kalā (art) + vilāsa (loving play) + paṇḍita (expert): O You most expert in the art of loving play"
     ],
     [
-     "ananya-dhanya-kuñja-rājya-kāma-keli-kovide=?ananya (exclusive, private) + dhanya (blessed, auspicious) + kuñja (grove) + rājya (realm) + kāma (love) + keli (play) + kovida (expert): O You most expert in the games of love in the realm of Your private and auspicious groves"
+     "ananya-dhanya-kuñja-rājya-kāma-keli-kovide=ananya (exclusive, private) + dhanya (blessed, auspicious) + kuñja (grove) + rājya (realm) + kāma (love) + keli (play) + kovida (expert): O You most expert in the games of love in the realm of Your private and auspicious groves"
     ],
     [
      "kadā=when",
-     "kariṣyasīha=?kariṣyasi (You will make) + iha (here, in this world): You will make here",
+     "kariṣyasīha=kariṣyasi (You will make) + iha (here, in this world): You will make here",
      "māṁ=me",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (mercy) + kaṭākṣa (sidelong glance) + bhājana (vessel, recipient): recipient of Your merciful sidelong glance"
     ]
@@ -2178,17 +2170,17 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
    "n": 6,
    "lines": [
     [
-     "aśeṣa-hāva-bhāva-dhīra-hīra-hāra-bhūṣite=?a-śeṣa (without remainder, all) + hāva (subtle amorous expression) + bhāva (emotion) + dhīra (steadiness, gravity) + hīra (diamond) + hāra (necklace) + bhūṣita (adorned): O You adorned with all the hāvas and bhāvas and a diamond necklace of steadiness"
+     "aśeṣa-hāva-bhāva-dhīra-hīra-hāra-bhūṣite=a-śeṣa (without remainder, all) + hāva (subtle amorous expression) + bhāva (emotion) + dhīra (steadiness, gravity) + hīra (diamond) + hāra (necklace) + bhūṣita (adorned): O You adorned with all the hāvas and bhāvas and a diamond necklace of steadiness"
     ],
     [
      "prabhūta-śāta-kumbha-kumbha-kumbhi-kumbha-sustani=prabhūta (abundant, great) + śāta-kumbha (gold) + kumbha (pot) + kumbhi (elephant) + kumbha (frontal protuberance) + su-stanī (with beautiful breasts): O You whose breasts are like great pots of gold, like the two mounds on an elephant’s head"
     ],
     [
-     "praśasta-manda-hāsya-cūrṇa-pūrṇa-saukhya-sāgare=?praśasta (glorious) + manda (gentle) + hāsya (smile) + cūrṇa (powder: meaning uncertain in the compound) + pūrṇa (full) + saukhya (bliss) + sāgara (ocean): O You whose glorious, gentle smile is an ocean full of bliss"
+     "praśasta-manda-hāsya-cūrṇa-pūrṇa-saukhya-sāgare=praśasta (glorious) + manda (gentle) + hāsya (smile) + cūrṇa (powder: meaning uncertain in the compound) + pūrṇa (full) + saukhya (bliss) + sāgara (ocean): O You whose glorious, gentle smile is an ocean full of bliss"
     ],
     [
      "kadā=when",
-     "kariṣyasīha=?kariṣyasi (You will make) + iha (here, in this world): You will make here",
+     "kariṣyasīha=kariṣyasi (You will make) + iha (here, in this world): You will make here",
      "māṁ=me",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (mercy) + kaṭākṣa (sidelong glance) + bhājana (vessel, recipient): recipient of Your merciful sidelong glance"
     ]
@@ -2199,18 +2191,18 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
    "n": 7,
    "lines": [
     [
-     "mṛṇāla-vāla-vallarī=mṛṇāla (lotus stem) + ?vāla (young, tender) + vallarī (creeper, stem)",
+     "mṛṇāla-vāla-vallarī=mṛṇāla (lotus stem) + vāla (young, tender) + vallarī (creeper, stem)",
      "taraṅga-raṅga-dor-late=taraṅga (wave) + raṅga (play, dance) + dor (arm) + latā (creeper): O You whose arms are like creepers dancing on the waves"
     ],
     [
      "latāgra-lāsya-lola-nīla-locanāvalokane=latā (creeper) + agra (tip) + lāsya (dance) + lola (swaying) + nīla (blue) + locana (eye) + avalokana (glance): O You whose glance from blue eyes is like the tips of creepers dancing and swaying"
     ],
     [
-     "lalal-lulan-milan-manojña-mugdha-mohanāśrite=?lalat (playing) + lulat (swaying) + milat (meeting) [uncertain reading] + manojña (charming) + mugdha (enchanted) + mohana (Mohana, the Enchanter) + āśrita (who has taken shelter): complex compound, meaning uncertain; the translation: You give shelter to Mana-mohana"
+     "lalal-lulan-milan-manojña-mugdha-mohanāśrite=lalat (playing) + lulat (swaying) + milat (meeting) [uncertain reading] + manojña (charming) + mugdha (enchanted) + mohana (Mohana, the Enchanter) + āśrita (who has taken shelter): complex compound, meaning uncertain; the translation: You give shelter to Mana-mohana"
     ],
     [
      "kadā=when",
-     "kariṣyasīha=?kariṣyasi (You will make) + iha (here, in this world): You will make here",
+     "kariṣyasīha=kariṣyasi (You will make) + iha (here, in this world): You will make here",
      "māṁ=me",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (mercy) + kaṭākṣa (sidelong glance) + bhājana (vessel, recipient): recipient of Your merciful sidelong glance"
     ]
@@ -2221,7 +2213,7 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
    "n": 8,
    "lines": [
     [
-     "suvarṇa-mālikāñcita-tri-rekha-kambu-kaṇṭhage=?suvarṇa (gold) + mālikā (necklace) + añcita (adorned) + tri (three) + rekhā (line) + kambu (conch) + kaṇṭha (neck) + ga (being): O You whose neck, like a conch, is marked with three lines and adorned with golden necklaces"
+     "suvarṇa-mālikāñcita-tri-rekha-kambu-kaṇṭhage=suvarṇa (gold) + mālikā (necklace) + añcita (adorned) + tri (three) + rekhā (line) + kambu (conch) + kaṇṭha (neck) + ga (being): O You whose neck, like a conch, is marked with three lines and adorned with golden necklaces"
     ],
     [
      "tri-sūtra-maṅgalī-guṇa-tri-ratna-dīpti-dīdhiti=tri-sūtra (three-stranded necklace) + maṅgalī (auspicious) + guṇa (thread) + tri (three) + ratna (jewel) + dīpti (light) + dīdhiti (ray, splendor): O You shining with three kinds of jewels on the auspicious tri-sūtra"
@@ -2231,7 +2223,7 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
     ],
     [
      "kadā=when",
-     "kariṣyasīha=?kariṣyasi (You will make) + iha (here, in this world): You will make here",
+     "kariṣyasīha=kariṣyasi (You will make) + iha (here, in this world): You will make here",
      "māṁ=me",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (mercy) + kaṭākṣa (sidelong glance) + bhājana (vessel, recipient): recipient of Your merciful sidelong glance"
     ]
@@ -2249,11 +2241,11 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
      "praśasta-ratna-kiṅkiṇī-kalāpa-madhya-mañjule=praśasta (excellent) + ratna (jewel) + kiṅkiṇī (little bell) + kalāpa (set, belt) + madhya (waist) + mañjula (charming, sweet): O You with a charming waist, where a belt of jeweled little bells rings"
     ],
     [
-     "karīndra-śuṇḍa-daṇḍikā-varoha-saubhagoruke=karīndra (king of elephants) + śuṇḍā (trunk) + daṇḍikā (small staff, elongated form) + ?varoha (descending, tapering) + saubhaga (beauty) + ūruka (thigh): O You with beautiful thighs that taper like the trunk of the king of elephants"
+     "karīndra-śuṇḍa-daṇḍikā-varoha-saubhagoruke=karīndra (king of elephants) + śuṇḍā (trunk) + daṇḍikā (small staff, elongated form) + varoha (descending, tapering) + saubhaga (beauty) + ūruka (thigh): O You with beautiful thighs that taper like the trunk of the king of elephants"
     ],
     [
      "kadā=when",
-     "kariṣyasīha=?kariṣyasi (You will make) + iha (here, in this world): You will make here",
+     "kariṣyasīha=kariṣyasi (You will make) + iha (here, in this world): You will make here",
      "māṁ=me",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (mercy) + kaṭākṣa (sidelong glance) + bhājana (vessel, recipient): recipient of Your merciful sidelong glance"
     ]
@@ -2264,17 +2256,17 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
    "n": 10,
    "lines": [
     [
-     "aneka-mantra-nāda-mañju-nūpurā-rava-skhalat-=aneka (many) + mantra (mantra) + nāda (sound) + mañju (sweet) + nūpura (ankle bell) + rava (tinkling) + ?skhalat (stumbling, faltering): continues in the next line"
+     "aneka-mantra-nāda-mañju-nūpurā-rava-skhalat-=aneka (many) + mantra (mantra) + nāda (sound) + mañju (sweet) + nūpura (ankle bell) + rava (tinkling) + skhalat (stumbling, faltering): continues in the next line"
     ],
     [
-     "samāja-rāja-haṁsa-vaṁśa-nikvaṇāti-gaurave=?samāja (flock) + rāja-haṁsa (royal swan) + vaṁśa (host) + nikvaṇa (cooing, warbling) + ati (beyond) + gaurava (majesty): uncertain compound; the sense: like (or surpassing) the warbling of a flock of royal swans"
+     "samāja-rāja-haṁsa-vaṁśa-nikvaṇāti-gaurave=samāja (flock) + rāja-haṁsa (royal swan) + vaṁśa (host) + nikvaṇa (cooing, warbling) + ati (beyond) + gaurava (majesty): uncertain compound; the sense: like (or surpassing) the warbling of a flock of royal swans"
     ],
     [
      "vilola-hema-vallarī-viḍambi-cāru-caṅkrame=vilola (swaying) + hema (gold) + vallarī (creeper) + viḍambi (imitating, mocking) + cāru (beautiful) + caṅkrama (gait): O You whose beautiful gait mocks a swaying golden creeper"
     ],
     [
      "kadā=when",
-     "kariṣyasīha=?kariṣyasi (You will make) + iha (here, in this world): You will make here",
+     "kariṣyasīha=kariṣyasi (You will make) + iha (here, in this world): You will make here",
      "māṁ=me",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (mercy) + kaṭākṣa (sidelong glance) + bhājana (vessel, recipient): recipient of Your merciful sidelong glance"
     ]
@@ -2285,17 +2277,17 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
    "n": 11,
    "lines": [
     [
-     "ananta-koṭi-viṣṇu-loka-namra-padmajārcite=?ananta (infinite) + koṭi (ten million) + viṣṇu-loka (worlds of Viṣṇu, Vaikuṇṭha) + namra (bowing) + padmajā (lotus-born: Lakṣmī) + arcita (worshiped): O You worshiped by Lakṣmī (Padmajā), mistress of infinite Vaikuṇṭhas"
+     "ananta-koṭi-viṣṇu-loka-namra-padmajārcite=ananta (infinite) + koṭi (ten million) + viṣṇu-loka (worlds of Viṣṇu, Vaikuṇṭha) + namra (bowing) + padmajā (lotus-born: Lakṣmī) + arcita (worshiped): O You worshiped by Lakṣmī (Padmajā), mistress of infinite Vaikuṇṭhas"
     ],
     [
      "himādrijā-pulomajā-viriñcajā-vara-prade=himādri-jā (born of the Himālaya: Pārvatī) + puloma-jā (daughter of Puloman: Indrāṇī) + viriñca-jā (born of Viriñci, Brahmā: Sarasvatī) + vara (benediction) + prada (giver): O You who bestow benedictions on Pārvatī, Indrāṇī and Sarasvatī"
     ],
     [
-     "apāra-siddhi-ṛddhi-digdha-sat-padāṅgulī-nakhe=a-pāra (limitless) + siddhi (perfection) + ṛddhi (prosperity) + ?digdha (smeared, pervaded) + sat (real, good) + pada (foot) + aṅgulī (toe) + nakha (nail): O You, a single toenail of whom gives rise to infinite perfections"
+     "apāra-siddhi-ṛddhi-digdha-sat-padāṅgulī-nakhe=a-pāra (limitless) + siddhi (perfection) + ṛddhi (prosperity) + digdha (smeared, pervaded) + sat (real, good) + pada (foot) + aṅgulī (toe) + nakha (nail): O You, a single toenail of whom gives rise to infinite perfections"
     ],
     [
      "kadā=when",
-     "kariṣyasīha=?kariṣyasi (You will make) + iha (here, in this world): You will make here",
+     "kariṣyasīha=kariṣyasi (You will make) + iha (here, in this world): You will make here",
      "māṁ=me",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (mercy) + kaṭākṣa (sidelong glance) + bhājana (vessel, recipient): recipient of Your merciful sidelong glance"
     ]
@@ -2308,7 +2300,7 @@ var BHAJAN_EN = [DAMODARASTAKAM_EN, {
     [
      "makheśvari=makha (sacrifice) + īśvarī (mistress): O Mistress of sacrifices",
      "kriyeśvari=kriyā (action) + īśvarī: O Mistress of all activities",
-     "svadheśvari=?svadhā (offering, svadhā mantra) + īśvarī: O Mistress of the mantras uttered during yajña",
+     "svadheśvari=svadhā (offering, svadhā mantra) + īśvarī: O Mistress of the mantras uttered during yajña",
      "sureśvari=sura (gods) + īśvarī: O Mistress of all the gods"
     ],
     [
@@ -2590,7 +2582,7 @@ var MANGALA_ES = [
     "n": 4,
     "lines": [
         [ "śubha=¦śubha – auspicioso", "dṛṣṭi=¦dṛṣṭi – mirada", "karô=¦karo – haz", "ebe=¦ebe – ahora", "(prabhu)=¦prabhu – oh Señor", "jagater{a}=¦jagatera – del mundo", "prati=¦prati – hacia" ],
-        [ "jāguk{a}=¦jāguka – que despierte", "hṛdaye=¦hṛdaye – en el corazón", "mor{a}=¦mora – ?mi", "sumaṅgalā=¦sumaṅgalā – sumamente auspicioso", "rati=¦rati – apego" ] ],
+        [ "jāguk{a}=¦jāguka – que despierte", "hṛdaye=¦hṛdaye – en el corazón", "mor{a}=¦mora – mi", "sumaṅgalā=¦sumaṅgalā – sumamente auspicioso", "rati=¦rati – apego" ] ],
     "tr": "[¡Oh Señor!] Concede Tu mirada benéfica al mundo, ahora mismo. Que despierte en mi corazón ese rati tan auspicioso."
    },
    {
@@ -2617,7 +2609,7 @@ var MANGALA_ES = [
    {
     "n": 8,
     "lines": [
-        [ "jhā̃jhar{a}=¦jhājhara – ?whompers", "kā̃sar{a}=¦kāsara – gong", "ghaṇṭā=¦ghaṇṭā – campana", "śaṅkha=¦śaṅkha – caracola", "karatāl{a}=¦karatāla – karatālas" ],
+        [ "jhā̃jhar{a}=¦jhājhara – whompers", "kā̃sar{a}=¦kāsara – gong", "ghaṇṭā=¦ghaṇṭā – campana", "śaṅkha=¦śaṅkha – caracola", "karatāl{a}=¦karatāla – karatālas" ],
         [ "maṅgal{a}=¦maṅgala – auspicioso", "mṛdaṅga=¦mṛdaṅga – tambor mṛdaṅga", "bāje=¦bāje – resuenan", "param{a}=¦parama – supremo", "rasāla=¦rasāla – dulzura" ] ],
     "tr": "Grandes címbalos, gongs, campanas, caracolas, karatālas y auspiciosos mṛdaṅgas resuenan dulcísimamente."
    },
@@ -3154,7 +3146,7 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
      "sudīrgha-netra-paṅkajaṁ=su (muy) + dīrgha (largo) + netra (ojo) + paṅkaja (loto): con ojos de loto muy largos"
     ],
     [
-     "śikhi-śikhaṇḍa-mūrdhajam=śikhin (pavo real) + śikhaṇḍa (pluma) + mūrdhaja (?lit. “nacido en la cabeza”, es decir, el cabello): con plumas de pavo real en la cabeza"
+     "śikhi-śikhaṇḍa-mūrdhajam=śikhin (pavo real) + śikhaṇḍa (pluma) + mūrdhaja (lit. “nacido en la cabeza”, es decir, el cabello): con plumas de pavo real en la cabeza"
     ],
     [
      "anaṅga-koṭi-mohanaṁ=anaṅga (sin cuerpo: Kāmadeva, Cupido) + koṭi (diez millones) + mohana (que encanta): que encanta a millones de Cupidos"
@@ -3173,7 +3165,7 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
      "sunāsikāgra-mauktikaṁ=su (hermosa) + nāsikā (nariz) + agra (punta) + mauktika (perla): una perla en la punta de la hermosa nariz"
     ],
     [
-     "svacchanda-danta-paṅktikam=?svacchanda (espontáneo, por sí mismo; significado incierto en el compuesto) + danta (diente) + paṅkti (hilera): hileras de dientes que brillan naturalmente"
+     "svacchanda-danta-paṅktikam=svacchanda (espontáneo, por sí mismo; significado incierto en el compuesto) + danta (diente) + paṅkti (hilera): hileras de dientes que brillan naturalmente"
     ],
     [
      "navāmbudāṅga-cikkaṇaṁ=nava (fresco, nuevo) + ambuda (nube) + aṅga (cuerpo) + cikkaṇa (suave, brillante): con un cuerpo que brilla como una nube de lluvia recién formada"
@@ -3231,7 +3223,7 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
      "sugandha-aṅga-saurabham=su-gandha (buena fragancia) + aṅga (cuerpo) + saurabha (fragancia): con un cuerpo de fragancia deliciosa"
     ],
     [
-     "uro-virāji-kaustubham=uras (pecho) + ?virāji (brillando) + kaustubha (la gema Kaustubha): en el pecho brilla la gema Kaustubha"
+     "uro-virāji-kaustubham=uras (pecho) + virāji (brillando) + kaustubha (la gema Kaustubha): en el pecho brilla la gema Kaustubha"
     ],
     [
      "sphurac-chrīvatsa-lāñchanaṁ=sphurat (brillando) + śrīvatsa (la marca Śrīvatsa) + lāñchana (marca, señal): marcado con la brillante señal de Śrīvatsa"
@@ -3250,7 +3242,7 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
      "vṛndāvana-sunāgaraṁ=Vṛndāvana + su (muy) + nāgara (refinado; amante hábil): el hábil amante de Vṛndāvana"
     ],
     [
-     "vilāsānuga-vāsasam=vilāsa (juego, pasatiempo) + ?anuga (que sigue, adecuado a) + vāsas (prenda): con una prenda adecuada a Sus pasatiempos"
+     "vilāsānuga-vāsasam=vilāsa (juego, pasatiempo) + anuga (que sigue, adecuado a) + vāsas (prenda): con una prenda adecuada a Sus pasatiempos"
     ],
     [
      "surendra-garva-mocanaṁ=surendra (Indra, rey de los dioses) + garva (orgullo) + mocana (que libera): que libera a Indra de su orgullo"
@@ -3290,17 +3282,17 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
      "śrī-nanda-nandanāṣṭakaṁ=śrī (sagrado) + nanda-nandana (hijo de Nanda) + aṣṭaka (conjunto de ocho, ocho versos): los ocho versos sobre el hijo de Nanda"
     ],
     [
-     "paṭhed=?que uno recite (optativo de paṭh)",
+     "paṭhed=que uno recite (optativo de paṭh)",
      "yaḥ=quienes",
      "śraddhayānvitaḥ=śraddhayā (con fe) + anvita (dotado): dotado de fe"
     ],
     [
-     "tared=?que uno cruce (optativo de tṛ)",
+     "tared=que uno cruce (optativo de tṛ)",
      "bhavābdhiṁ=bhava (existencia material) + abdhi (océano): el océano de la existencia material",
      "dustaraṁ=dus (difícil) + tara (de cruzar): insuperable"
     ],
     [
-     "labhet=?que uno obtenga (optativo de labh)",
+     "labhet=que uno obtenga (optativo de labh)",
      "tad-aṅghri-yugmakam=tad (Sus) + aṅghri (pie) + yugmaka (par): el par de Sus pies"
     ]
    ],
@@ -3329,7 +3321,7 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
     ],
     [
      "kadā=cuándo",
-     "kariṣyasīha=?kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
+     "kariṣyasīha=kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
      "māṁ=a mí",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (misericordia) + kaṭākṣa (mirada de soslayo) + bhājana (recipiente, receptor): receptor de Tu misericordiosa mirada de soslayo"
     ]
@@ -3343,7 +3335,7 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
      "aśoka-vṛkṣa-vallarī-vitāna-maṇḍapa-sthite=aśoka (árbol aśoka) + vṛkṣa (árbol) + vallarī (enredadera) + vitāna (dosel, entrelazado) + maṇḍapa (pabellón) + sthita (que permanece, presente): oh Tú, presente en un pabellón de enredaderas entrelazadas en árboles aśoka"
     ],
     [
-     "pravāla-vāla-pallava-prabhāruṇāṅghri-komale=?pravāla (coral) + vāla (joven, tierno: lectura incierta) + pallava (brote) + prabhā (esplendor) + aruṇa (rojizo) + aṅghri (pie) + komala (tierno): oh Tú de pies tiernos y rojizos, con el esplendor del coral y de los brotes frescos"
+     "pravāla-vāla-pallava-prabhāruṇāṅghri-komale=pravāla (coral) + vāla (joven, tierno: lectura incierta) + pallava (brote) + prabhā (esplendor) + aruṇa (rojizo) + aṅghri (pie) + komala (tierno): oh Tú de pies tiernos y rojizos, con el esplendor del coral y de los brotes frescos"
     ],
     [
      "varābhaya-sphurat-kare=vara (bendición) + abhaya (ausencia de temor) + sphurat (brillante) + kara (mano): oh Tú cuya mano [alzada] brilla, concediendo bendiciones y ausencia de temor",
@@ -3351,7 +3343,7 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
     ],
     [
      "kadā=cuándo",
-     "kariṣyasīha=?kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
+     "kariṣyasīha=kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
      "māṁ=a mí",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (misericordia) + kaṭākṣa (mirada de soslayo) + bhājana (recipiente, receptor): receptor de Tu misericordiosa mirada de soslayo"
     ]
@@ -3362,20 +3354,20 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
    "n": 3,
    "lines": [
     [
-     "anaṅga-raṅga-maṅgala-prasaṅga-bhaṅgura-bhruvāṁ=?anaṅga (amor, Cupido) + raṅga (escenario) + maṅgala (auspicioso) + prasaṅga (conversación, ocasión) + bhaṅgura (curvado) + bhrū (ceja): (con) las cejas curvadas en el curso de una conversación auspiciosa en el escenario del amor"
+     "anaṅga-raṅga-maṅgala-prasaṅga-bhaṅgura-bhruvāṁ=anaṅga (amor, Cupido) + raṅga (escenario) + maṅgala (auspicioso) + prasaṅga (conversación, ocasión) + bhaṅgura (curvado) + bhrū (ceja): (con) las cejas curvadas en el curso de una conversación auspiciosa en el escenario del amor"
     ],
     [
-     "savibhramaṁ=?sa (con) + vibhrama (desconcierto, asombro): con asombro",
-     "sasambhramaṁ=?sa (con) + sambhrama (agitación, asombro): con agitación",
+     "savibhramaṁ=sa (con) + vibhrama (desconcierto, asombro): con asombro",
+     "sasambhramaṁ=sa (con) + sambhrama (agitación, asombro): con agitación",
      "dṛganta-bāṇa-pātanaiḥ=dṛś (ojo) + anta (esquina) + bāṇa (flecha) + pātana (disparo): disparando las flechas de las esquinas de los ojos (miradas de soslayo)"
     ],
     [
      "nirantaraṁ=sin interrupción, continuamente",
-     "vaśī-kṛta-pratīti-nanda-nandane=?vaśī-kṛta (puesto bajo control, subyugado) + pratīti (convicción, certeza: significado incierto en el compuesto) + nanda-nandana (hijo de Nanda): oh Tú que has subyugado al hijo de Nanda"
+     "vaśī-kṛta-pratīti-nanda-nandane=vaśī-kṛta (puesto bajo control, subyugado) + pratīti (convicción, certeza: significado incierto en el compuesto) + nanda-nandana (hijo de Nanda): oh Tú que has subyugado al hijo de Nanda"
     ],
     [
      "kadā=cuándo",
-     "kariṣyasīha=?kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
+     "kariṣyasīha=kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
      "māṁ=a mí",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (misericordia) + kaṭākṣa (mirada de soslayo) + bhājana (recipiente, receptor): receptor de Tu misericordiosa mirada de soslayo"
     ]
@@ -3392,11 +3384,11 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
      "mukha-prabhā-parāsta-koṭi-śāradendu-maṇḍale=mukha (rostro) + prabhā (esplendor) + parāsta (vencido) + koṭi (diez millones) + śārada (de otoño) + indu (luna) + maṇḍala (disco): oh Tú cuyo esplendor facial vence a millones de lunas de otoño"
     ],
     [
-     "vicitra-citra-sañcarac-cakora-śāva-locane=vicitra (diversas) + citra (asombrosas) + sañcarat (que se mueven) + cakora (pájaro cakora) + ?śāva (joven, cría) + locana (ojo): oh Tú cuyos ojos son inquietos como los de un joven cakora, haciendo diversas expresiones asombrosas en cada momento"
+     "vicitra-citra-sañcarac-cakora-śāva-locane=vicitra (diversas) + citra (asombrosas) + sañcarat (que se mueven) + cakora (pájaro cakora) + śāva (joven, cría) + locana (ojo): oh Tú cuyos ojos son inquietos como los de un joven cakora, haciendo diversas expresiones asombrosas en cada momento"
     ],
     [
      "kadā=cuándo",
-     "kariṣyasīha=?kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
+     "kariṣyasīha=kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
      "māṁ=a mí",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (misericordia) + kaṭākṣa (mirada de soslayo) + bhājana (recipiente, receptor): receptor de Tu misericordiosa mirada de soslayo"
     ]
@@ -3407,7 +3399,7 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
    "n": 5,
    "lines": [
     [
-     "madonmadāti-yauvane=?mada (embriaguez) + unmadāti (exaltación: lectura incierta) + yauvana (juventud): oh Tú embriagada por Tu juventud",
+     "madonmadāti-yauvane=mada (embriaguez) + unmadāti (exaltación: lectura incierta) + yauvana (juventud): oh Tú embriagada por Tu juventud",
      "pramoda-māna-maṇḍite=pramoda (deleite, alegría) + māna (enfurruñamiento amoroso, enojo) + maṇḍita (adornado): oh Tú adornada con el deleitoso adorno de la ira enfurruñada"
     ],
     [
@@ -3415,11 +3407,11 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
      "kalā-vilāsa-paṇḍite=kalā (arte) + vilāsa (juego amoroso) + paṇḍita (experto): oh Tú, la más experta en el arte del juego amoroso"
     ],
     [
-     "ananya-dhanya-kuñja-rājya-kāma-keli-kovide=?ananya (exclusivo, privado) + dhanya (bendecido, auspicioso) + kuñja (arboleda) + rājya (reino) + kāma (amor) + keli (juego) + kovida (experto): oh Tú, la más experta en los juegos del amor en el reino de Tus arboledas privadas y auspiciosas"
+     "ananya-dhanya-kuñja-rājya-kāma-keli-kovide=ananya (exclusivo, privado) + dhanya (bendecido, auspicioso) + kuñja (arboleda) + rājya (reino) + kāma (amor) + keli (juego) + kovida (experto): oh Tú, la más experta en los juegos del amor en el reino de Tus arboledas privadas y auspiciosas"
     ],
     [
      "kadā=cuándo",
-     "kariṣyasīha=?kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
+     "kariṣyasīha=kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
      "māṁ=a mí",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (misericordia) + kaṭākṣa (mirada de soslayo) + bhājana (recipiente, receptor): receptor de Tu misericordiosa mirada de soslayo"
     ]
@@ -3430,17 +3422,17 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
    "n": 6,
    "lines": [
     [
-     "aśeṣa-hāva-bhāva-dhīra-hīra-hāra-bhūṣite=?a-śeṣa (sin resto, todos) + hāva (expresión amorosa sutil) + bhāva (emoción) + dhīra (firmeza, gravedad) + hīra (diamante) + hāra (collar) + bhūṣita (adornado): oh Tú adornada con todos los hāvas y bhāvas y un collar de diamantes de firmeza"
+     "aśeṣa-hāva-bhāva-dhīra-hīra-hāra-bhūṣite=a-śeṣa (sin resto, todos) + hāva (expresión amorosa sutil) + bhāva (emoción) + dhīra (firmeza, gravedad) + hīra (diamante) + hāra (collar) + bhūṣita (adornado): oh Tú adornada con todos los hāvas y bhāvas y un collar de diamantes de firmeza"
     ],
     [
      "prabhūta-śāta-kumbha-kumbha-kumbhi-kumbha-sustani=prabhūta (abundante, grande) + śāta-kumbha (oro) + kumbha (vasija) + kumbhi (elefante) + kumbha (protuberancia frontal) + su-stanī (de hermosos pechos): oh Tú cuyos pechos son como grandes vasijas de oro, como los dos montículos en la cabeza de un elefante"
     ],
     [
-     "praśasta-manda-hāsya-cūrṇa-pūrṇa-saukhya-sāgare=?praśasta (glorioso) + manda (suave) + hāsya (sonrisa) + cūrṇa (polvo: significado incierto en el compuesto) + pūrṇa (lleno) + saukhya (bienaventuranza) + sāgara (océano): oh Tú cuya gloriosa y suave sonrisa es un océano lleno de bienaventuranza"
+     "praśasta-manda-hāsya-cūrṇa-pūrṇa-saukhya-sāgare=praśasta (glorioso) + manda (suave) + hāsya (sonrisa) + cūrṇa (polvo: significado incierto en el compuesto) + pūrṇa (lleno) + saukhya (bienaventuranza) + sāgara (océano): oh Tú cuya gloriosa y suave sonrisa es un océano lleno de bienaventuranza"
     ],
     [
      "kadā=cuándo",
-     "kariṣyasīha=?kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
+     "kariṣyasīha=kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
      "māṁ=a mí",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (misericordia) + kaṭākṣa (mirada de soslayo) + bhājana (recipiente, receptor): receptor de Tu misericordiosa mirada de soslayo"
     ]
@@ -3451,18 +3443,18 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
    "n": 7,
    "lines": [
     [
-     "mṛṇāla-vāla-vallarī=mṛṇāla (tallo de loto) + ?vāla (joven, tierno) + vallarī (enredadera, tallo)",
+     "mṛṇāla-vāla-vallarī=mṛṇāla (tallo de loto) + vāla (joven, tierno) + vallarī (enredadera, tallo)",
      "taraṅga-raṅga-dor-late=taraṅga (ola) + raṅga (juego, danza) + dor (brazo) + latā (enredadera): oh Tú cuyos brazos son como enredaderas que bailan sobre las olas"
     ],
     [
      "latāgra-lāsya-lola-nīla-locanāvalokane=latā (enredadera) + agra (punta) + lāsya (danza) + lola (que se mece) + nīla (azul) + locana (ojo) + avalokana (mirada): oh Tú cuya mirada de ojos azules es como las puntas de las enredaderas que bailan y se mecen"
     ],
     [
-     "lalal-lulan-milan-manojña-mugdha-mohanāśrite=?lalat (jugando) + lulat (meciéndose) + milat (encontrando) [lectura incierta] + manojña (encantador) + mugdha (hechizado) + mohana (Mohana, el Encantador) + āśrita (que ha tomado refugio): compuesto complejo, significado incierto; la traducción: Tú das refugio a Mana-mohana"
+     "lalal-lulan-milan-manojña-mugdha-mohanāśrite=lalat (jugando) + lulat (meciéndose) + milat (encontrando) [lectura incierta] + manojña (encantador) + mugdha (hechizado) + mohana (Mohana, el Encantador) + āśrita (que ha tomado refugio): compuesto complejo, significado incierto; la traducción: Tú das refugio a Mana-mohana"
     ],
     [
      "kadā=cuándo",
-     "kariṣyasīha=?kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
+     "kariṣyasīha=kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
      "māṁ=a mí",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (misericordia) + kaṭākṣa (mirada de soslayo) + bhājana (recipiente, receptor): receptor de Tu misericordiosa mirada de soslayo"
     ]
@@ -3473,7 +3465,7 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
    "n": 8,
    "lines": [
     [
-     "suvarṇa-mālikāñcita-tri-rekha-kambu-kaṇṭhage=?suvarṇa (oro) + mālikā (collar) + añcita (adornado) + tri (tres) + rekhā (línea) + kambu (caracola) + kaṇṭha (cuello) + ga (estando): oh Tú cuyo cuello, como una caracola, está marcado con tres líneas y adornado con collares de oro"
+     "suvarṇa-mālikāñcita-tri-rekha-kambu-kaṇṭhage=suvarṇa (oro) + mālikā (collar) + añcita (adornado) + tri (tres) + rekhā (línea) + kambu (caracola) + kaṇṭha (cuello) + ga (estando): oh Tú cuyo cuello, como una caracola, está marcado con tres líneas y adornado con collares de oro"
     ],
     [
      "tri-sūtra-maṅgalī-guṇa-tri-ratna-dīpti-dīdhiti=tri-sūtra (collar de tres hebras) + maṅgalī (auspicioso) + guṇa (hilo) + tri (tres) + ratna (joya) + dīpti (luz) + dīdhiti (rayo, esplendor): oh Tú que resplandeces con tres clases de joyas en el auspicioso tri-sūtra"
@@ -3483,7 +3475,7 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
     ],
     [
      "kadā=cuándo",
-     "kariṣyasīha=?kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
+     "kariṣyasīha=kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
      "māṁ=a mí",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (misericordia) + kaṭākṣa (mirada de soslayo) + bhājana (recipiente, receptor): receptor de Tu misericordiosa mirada de soslayo"
     ]
@@ -3501,11 +3493,11 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
      "praśasta-ratna-kiṅkiṇī-kalāpa-madhya-mañjule=praśasta (excelente) + ratna (joya) + kiṅkiṇī (campanilla) + kalāpa (conjunto, cinturón) + madhya (cintura) + mañjula (encantadora, dulce): oh Tú de encantadora cintura, donde tintinea un cinturón de campanillas con joyas"
     ],
     [
-     "karīndra-śuṇḍa-daṇḍikā-varoha-saubhagoruke=karīndra (rey de los elefantes) + śuṇḍā (trompa) + daṇḍikā (vara pequeña, forma alargada) + ?varoha (descendente, que se afina) + saubhaga (belleza) + ūruka (muslo): oh Tú de hermosos muslos que se afinan como la trompa del rey de los elefantes"
+     "karīndra-śuṇḍa-daṇḍikā-varoha-saubhagoruke=karīndra (rey de los elefantes) + śuṇḍā (trompa) + daṇḍikā (vara pequeña, forma alargada) + varoha (descendente, que se afina) + saubhaga (belleza) + ūruka (muslo): oh Tú de hermosos muslos que se afinan como la trompa del rey de los elefantes"
     ],
     [
      "kadā=cuándo",
-     "kariṣyasīha=?kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
+     "kariṣyasīha=kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
      "māṁ=a mí",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (misericordia) + kaṭākṣa (mirada de soslayo) + bhājana (recipiente, receptor): receptor de Tu misericordiosa mirada de soslayo"
     ]
@@ -3516,17 +3508,17 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
    "n": 10,
    "lines": [
     [
-     "aneka-mantra-nāda-mañju-nūpurā-rava-skhalat-=aneka (muchos) + mantra (mantra) + nāda (sonido) + mañju (dulce) + nūpura (campanilla del tobillo) + rava (tintineo) + ?skhalat (tropezando, vacilando): continúa en la línea siguiente"
+     "aneka-mantra-nāda-mañju-nūpurā-rava-skhalat-=aneka (muchos) + mantra (mantra) + nāda (sonido) + mañju (dulce) + nūpura (campanilla del tobillo) + rava (tintineo) + skhalat (tropezando, vacilando): continúa en la línea siguiente"
     ],
     [
-     "samāja-rāja-haṁsa-vaṁśa-nikvaṇāti-gaurave=?samāja (bandada) + rāja-haṁsa (cisne real) + vaṁśa (multitud) + nikvaṇa (arrullo, trino) + ati (más allá) + gaurava (majestad): compuesto incierto; el sentido: como (o superando) el trino de una bandada de cisnes reales"
+     "samāja-rāja-haṁsa-vaṁśa-nikvaṇāti-gaurave=samāja (bandada) + rāja-haṁsa (cisne real) + vaṁśa (multitud) + nikvaṇa (arrullo, trino) + ati (más allá) + gaurava (majestad): compuesto incierto; el sentido: como (o superando) el trino de una bandada de cisnes reales"
     ],
     [
      "vilola-hema-vallarī-viḍambi-cāru-caṅkrame=vilola (que se mece) + hema (oro) + vallarī (enredadera) + viḍambi (que imita, que se burla) + cāru (hermoso) + caṅkrama (andar): oh Tú cuyo hermoso andar se burla de una enredadera dorada que se mece"
     ],
     [
      "kadā=cuándo",
-     "kariṣyasīha=?kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
+     "kariṣyasīha=kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
      "māṁ=a mí",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (misericordia) + kaṭākṣa (mirada de soslayo) + bhājana (recipiente, receptor): receptor de Tu misericordiosa mirada de soslayo"
     ]
@@ -3537,17 +3529,17 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
    "n": 11,
    "lines": [
     [
-     "ananta-koṭi-viṣṇu-loka-namra-padmajārcite=?ananta (infinito) + koṭi (diez millones) + viṣṇu-loka (mundos de Viṣṇu, Vaikuṇṭha) + namra (que se inclina) + padmajā (nacida del loto: Lakṣmī) + arcita (adorada): oh Tú adorada por Lakṣmī (Padmajā), señora de infinitos Vaikuṇṭhas"
+     "ananta-koṭi-viṣṇu-loka-namra-padmajārcite=ananta (infinito) + koṭi (diez millones) + viṣṇu-loka (mundos de Viṣṇu, Vaikuṇṭha) + namra (que se inclina) + padmajā (nacida del loto: Lakṣmī) + arcita (adorada): oh Tú adorada por Lakṣmī (Padmajā), señora de infinitos Vaikuṇṭhas"
     ],
     [
      "himādrijā-pulomajā-viriñcajā-vara-prade=himādri-jā (nacida del Himālaya: Pārvatī) + puloma-jā (hija de Puloman: Indrāṇī) + viriñca-jā (nacida de Viriñci, Brahmā: Sarasvatī) + vara (bendición) + prada (dador): oh Tú que concedes bendiciones a Pārvatī, Indrāṇī y Sarasvatī"
     ],
     [
-     "apāra-siddhi-ṛddhi-digdha-sat-padāṅgulī-nakhe=a-pāra (ilimitada) + siddhi (perfección) + ṛddhi (prosperidad) + ?digdha (untado, impregnado) + sat (real, bueno) + pada (pie) + aṅgulī (dedo) + nakha (uña): oh Tú, cuya sola uña del pie da origen a infinitas perfecciones"
+     "apāra-siddhi-ṛddhi-digdha-sat-padāṅgulī-nakhe=a-pāra (ilimitada) + siddhi (perfección) + ṛddhi (prosperidad) + digdha (untado, impregnado) + sat (real, bueno) + pada (pie) + aṅgulī (dedo) + nakha (uña): oh Tú, cuya sola uña del pie da origen a infinitas perfecciones"
     ],
     [
      "kadā=cuándo",
-     "kariṣyasīha=?kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
+     "kariṣyasīha=kariṣyasi (harás) + iha (aquí, en este mundo): harás aquí",
      "māṁ=a mí",
      "kṛpā-kaṭākṣa-bhājanam?=kṛpā (misericordia) + kaṭākṣa (mirada de soslayo) + bhājana (recipiente, receptor): receptor de Tu misericordiosa mirada de soslayo"
     ]
@@ -3560,7 +3552,7 @@ var BHAJAN_ES = [DAMODARASTAKAM_ES, {
     [
      "makheśvari=makha (sacrificio) + īśvarī (señora): oh Señora de los sacrificios",
      "kriyeśvari=kriyā (acción) + īśvarī: oh Señora de todas las actividades",
-     "svadheśvari=?svadhā (ofrenda, mantra svadhā) + īśvarī: oh Señora de los mantras pronunciados durante el yajña",
+     "svadheśvari=svadhā (ofrenda, mantra svadhā) + īśvarī: oh Señora de los mantras pronunciados durante el yajña",
      "sureśvari=sura (dioses) + īśvarī: oh Señora de todos los dioses"
     ],
     [
@@ -3839,7 +3831,7 @@ var MANGALA_RU = [
     "n": 4,
     "lines": [
         [ "śubha=¦śubha – благоприятный", "dṛṣṭi=¦dṛṣṭi – взгляд", "karô=¦karo – сделай", "ebe=¦ebe – сейчас", "(prabhu)=¦prabhu – о Господь", "jagater{a}=¦jagatera – мира", "prati=¦prati – к" ],
-        [ "jāguk{a}=¦jāguka – пусть пробудится", "hṛdaye=¦hṛdaye – в сердце", "mor{a}=¦mora – ?мой", "sumaṅgalā=¦sumaṅgalā – в высшей степени благоприятная", "rati=¦rati – привязанность" ] ],
+        [ "jāguk{a}=¦jāguka – пусть пробудится", "hṛdaye=¦hṛdaye – в сердце", "mor{a}=¦mora – мой", "sumaṅgalā=¦sumaṅgalā – в высшей степени благоприятная", "rati=¦rati – привязанность" ] ],
     "tr": "[О Господь!] Даруй Свой благой взгляд миру, прямо сейчас. Пусть в моём сердце пробудится эта высшая благая рати."
    },
    {
@@ -3866,7 +3858,7 @@ var MANGALA_RU = [
    {
     "n": 8,
     "lines": [
-        [ "jhā̃jhar{a}=¦jhājhara – ?whompers", "kā̃sar{a}=¦kāsara – гонг", "ghaṇṭā=¦ghaṇṭā – колокол", "śaṅkha=¦śaṅkha – раковина", "karatāl{a}=¦karatāla – караталы" ],
+        [ "jhā̃jhar{a}=¦jhājhara – whompers", "kā̃sar{a}=¦kāsara – гонг", "ghaṇṭā=¦ghaṇṭā – колокол", "śaṅkha=¦śaṅkha – раковина", "karatāl{a}=¦karatāla – караталы" ],
         [ "maṅgal{a}=¦maṅgala – благоприятный", "mṛdaṅga=¦mṛdaṅga – барабан мриданга", "bāje=¦bāje – звучат", "param{a}=¦parama – высшая", "rasāla=¦rasāla – сладость" ] ],
     "tr": "Большие тарелки, гонги, колокола, раковины, карталы и благие мриданги звучат сладчайшим образом."
    },
@@ -4406,7 +4398,7 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
      "sudīrgha-netra-paṅkajaṁ=су (очень) + диргха (длинный) + нетра (глаз) + панкаджа (лотос): с очень длинными лотосными глазами"
     ],
     [
-     "śikhi-śikhaṇḍa-mūrdhajam=шикхин (павлин) + шикханда (перо) + мурдхаджа (?букв. «рождённый на голове», т. е. волосы): с павлиньими перьями на голове"
+     "śikhi-śikhaṇḍa-mūrdhajam=шикхин (павлин) + шикханда (перо) + мурдхаджа (букв. «рождённый на голове», т. е. волосы): с павлиньими перьями на голове"
     ],
     [
      "anaṅga-koṭi-mohanaṁ=ананга (бестелесный: Камадева, Купидон) + коти (десять миллионов) + мохана (очаровывающий): очаровывающий миллионы Купидонов"
@@ -4425,7 +4417,7 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
      "sunāsikāgra-mauktikaṁ=су (прекрасный) + насика (нос) + агра (кончик) + мауктика (жемчужина): жемчужина на кончике прекрасного носа"
     ],
     [
-     "svacchanda-danta-paṅktikam=?сваччханда (самопроизвольный, сам по себе; значение в составном слове неясно) + данта (зуб) + панкти (ряд): ряды зубов, сияющие естественным образом"
+     "svacchanda-danta-paṅktikam=сваччханда (самопроизвольный, сам по себе; значение в составном слове неясно) + данта (зуб) + панкти (ряд): ряды зубов, сияющие естественным образом"
     ],
     [
      "navāmbudāṅga-cikkaṇaṁ=нава (свежий, новый) + амбуда (туча) + анга (тело) + чиккана (гладкий, сияющий): с телом, сияющим, как свежая дождевая туча"
@@ -4483,7 +4475,7 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
      "sugandha-aṅga-saurabham=су-гандха (хороший аромат) + анга (тело) + саурабха (благоухание): с телом восхитительного благоухания"
     ],
     [
-     "uro-virāji-kaustubham=урас (грудь) + ?вираджи (сияющий) + каустубха (самоцвет Каустубха): на груди сияет самоцвет Каустубха"
+     "uro-virāji-kaustubham=урас (грудь) + вираджи (сияющий) + каустубха (самоцвет Каустубха): на груди сияет самоцвет Каустубха"
     ],
     [
      "sphurac-chrīvatsa-lāñchanaṁ=спхурат (сияющий) + шриватса (знак Шриватса) + ланчхана (знак, отметина): отмеченный сияющим знаком Шриватса"
@@ -4502,7 +4494,7 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
      "vṛndāvana-sunāgaraṁ=Вриндавана + су (очень) + нагара (утончённый; искусный возлюбленный): искусный возлюбленный Вриндавана"
     ],
     [
-     "vilāsānuga-vāsasam=виласа (игра, развлечение) + ?ануга (следующий, подходящий) + васас (одежда): с одеждой, подходящей для Его игр"
+     "vilāsānuga-vāsasam=виласа (игра, развлечение) + ануга (следующий, подходящий) + васас (одежда): с одеждой, подходящей для Его игр"
     ],
     [
      "surendra-garva-mocanaṁ=сурендра (Индра, царь богов) + гарва (гордыня) + мочана (освобождающий): освобождающий Индру от гордыни"
@@ -4542,17 +4534,17 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
      "śrī-nanda-nandanāṣṭakaṁ=шри (священный) + нанда-нандана (сын Нанды) + аштака (набор из восьми, восемь стихов): восемь стихов о сыне Нанды"
     ],
     [
-     "paṭhed=?пусть прочтёт (оптатив от патх)",
+     "paṭhed=пусть прочтёт (оптатив от патх)",
      "yaḥ=кто",
      "śraddhayānvitaḥ=шраддхая (с верой) + анвита (наделённый): наделённый верой"
     ],
     [
-     "tared=?пусть преодолеет (оптатив от три)",
+     "tared=пусть преодолеет (оптатив от три)",
      "bhavābdhiṁ=бхава (материальное существование) + абдхи (океан): океан материального существования",
      "dustaraṁ=дус (трудный) + тара (преодолимый): непреодолимый"
     ],
     [
-     "labhet=?пусть обретёт (оптатив от лабх)",
+     "labhet=пусть обретёт (оптатив от лабх)",
      "tad-aṅghri-yugmakam=тад (Его) + ангхри (стопа) + югмака (пара): пара Его стоп"
     ]
    ],
@@ -4581,7 +4573,7 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
     ],
     [
      "kadā=когда",
-     "kariṣyasīha=?каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
+     "kariṣyasīha=каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
      "māṁ=меня",
      "kṛpā-kaṭākṣa-bhājanam?=крипа (милость) + катакша (взгляд искоса) + бхаджана (сосуд, получатель): получатель Твоего милостивого взгляда искоса"
     ]
@@ -4595,7 +4587,7 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
      "aśoka-vṛkṣa-vallarī-vitāna-maṇḍapa-sthite=ашока (дерево ашока) + врикша (дерево) + валлари (лиана) + витана (полог, переплетение) + мандапа (беседка) + стхита (пребывающая, присутствующая): О Ты, пребывающая в беседке из лиан, обвивающих деревья ашока"
     ],
     [
-     "pravāla-vāla-pallava-prabhāruṇāṅghri-komale=?правала (коралл) + вала (молодой, нежный: чтение неясно) + паллава (росток) + прабха (блеск) + аруна (красноватый) + ангхри (стопа) + комала (нежный): О Ты с нежными красноватыми стопами, с блеском коралла и свежих ростков"
+     "pravāla-vāla-pallava-prabhāruṇāṅghri-komale=правала (коралл) + вала (молодой, нежный: чтение неясно) + паллава (росток) + прабха (блеск) + аруна (красноватый) + ангхри (стопа) + комала (нежный): О Ты с нежными красноватыми стопами, с блеском коралла и свежих ростков"
     ],
     [
      "varābhaya-sphurat-kare=вара (благословение) + абхая (бесстрашие) + спхурат (сияющая) + кара (рука): О Ты, чья [поднятая] рука сияет, даруя благословения и бесстрашие",
@@ -4603,7 +4595,7 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
     ],
     [
      "kadā=когда",
-     "kariṣyasīha=?каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
+     "kariṣyasīha=каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
      "māṁ=меня",
      "kṛpā-kaṭākṣa-bhājanam?=крипа (милость) + катакша (взгляд искоса) + бхаджана (сосуд, получатель): получатель Твоего милостивого взгляда искоса"
     ]
@@ -4614,20 +4606,20 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
    "n": 3,
    "lines": [
     [
-     "anaṅga-raṅga-maṅgala-prasaṅga-bhaṅgura-bhruvāṁ=?ананга (любовь, Купидон) + ранга (сцена) + мангала (благой) + прасанга (беседа, случай) + бхангура (изогнутый) + бхру (бровь): (с) бровями, изогнутыми в ходе благой беседы на сцене любви"
+     "anaṅga-raṅga-maṅgala-prasaṅga-bhaṅgura-bhruvāṁ=ананга (любовь, Купидон) + ранга (сцена) + мангала (благой) + прасанга (беседа, случай) + бхангура (изогнутый) + бхру (бровь): (с) бровями, изогнутыми в ходе благой беседы на сцене любви"
     ],
     [
-     "savibhramaṁ=?са (с) + вибхрама (смущение, изумление): с изумлением",
-     "sasambhramaṁ=?са (с) + самбхрама (волнение, изумление): с волнением",
+     "savibhramaṁ=са (с) + вибхрама (смущение, изумление): с изумлением",
+     "sasambhramaṁ=са (с) + самбхрама (волнение, изумление): с волнением",
      "dṛganta-bāṇa-pātanaiḥ=дриш (глаз) + анта (уголок) + бана (стрела) + патана (пускание): пуская стрелы уголков глаз (взглядов искоса)"
     ],
     [
      "nirantaraṁ=без перерыва, непрерывно",
-     "vaśī-kṛta-pratīti-nanda-nandane=?ваши-крита (подчинённый, покорённый) + пратити (убеждённость, уверенность: значение в составном слове неясно) + нанда-нандана (сын Нанды): О Ты, покорившая сына Нанды"
+     "vaśī-kṛta-pratīti-nanda-nandane=ваши-крита (подчинённый, покорённый) + пратити (убеждённость, уверенность: значение в составном слове неясно) + нанда-нандана (сын Нанды): О Ты, покорившая сына Нанды"
     ],
     [
      "kadā=когда",
-     "kariṣyasīha=?каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
+     "kariṣyasīha=каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
      "māṁ=меня",
      "kṛpā-kaṭākṣa-bhājanam?=крипа (милость) + катакша (взгляд искоса) + бхаджана (сосуд, получатель): получатель Твоего милостивого взгляда искоса"
     ]
@@ -4644,11 +4636,11 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
      "mukha-prabhā-parāsta-koṭi-śāradendu-maṇḍale=мукха (лик) + прабха (блеск) + параста (побеждённый) + коти (десять миллионов) + шарада (осенний) + инду (луна) + мандала (диск): О Ты, чей блеск лика побеждает миллионы осенних лун"
     ],
     [
-     "vicitra-citra-sañcarac-cakora-śāva-locane=вичитра (различный) + читра (удивительный) + санчарат (движущийся) + чакора (птица чакора) + ?шава (молодой, детёныш) + лочана (глаз): О Ты, чьи глаза беспокойны, как у молодой чакоры, в каждое мгновение делая различные удивительные выражения"
+     "vicitra-citra-sañcarac-cakora-śāva-locane=вичитра (различный) + читра (удивительный) + санчарат (движущийся) + чакора (птица чакора) + шава (молодой, детёныш) + лочана (глаз): О Ты, чьи глаза беспокойны, как у молодой чакоры, в каждое мгновение делая различные удивительные выражения"
     ],
     [
      "kadā=когда",
-     "kariṣyasīha=?каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
+     "kariṣyasīha=каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
      "māṁ=меня",
      "kṛpā-kaṭākṣa-bhājanam?=крипа (милость) + катакша (взгляд искоса) + бхаджана (сосуд, получатель): получатель Твоего милостивого взгляда искоса"
     ]
@@ -4659,7 +4651,7 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
    "n": 5,
    "lines": [
     [
-     "madonmadāti-yauvane=?мада (опьянение) + унмадати (воодушевление: чтение неясно) + яувана (юность): О Ты, опьянённая Своей юностью",
+     "madonmadāti-yauvane=мада (опьянение) + унмадати (воодушевление: чтение неясно) + яувана (юность): О Ты, опьянённая Своей юностью",
      "pramoda-māna-maṇḍite=прамода (восторг, радость) + мана (любовная обида, досада) + мандита (украшенная): О Ты, украшенная восхитительным украшением обиженного гнева"
     ],
     [
@@ -4667,11 +4659,11 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
      "kalā-vilāsa-paṇḍite=кала (искусство) + виласа (любовная игра) + пандита (сведущая): О Ты, самая искусная в искусстве любовной игры"
     ],
     [
-     "ananya-dhanya-kuñja-rājya-kāma-keli-kovide=?ананья (исключительный, уединённый) + дханья (благословенный, благой) + кунджа (роща) + раджья (владения) + кама (любовь) + кели (игра) + ковида (сведущая): О Ты, самая сведущая в играх любви во владениях Твоих уединённых и благих рощ"
+     "ananya-dhanya-kuñja-rājya-kāma-keli-kovide=ананья (исключительный, уединённый) + дханья (благословенный, благой) + кунджа (роща) + раджья (владения) + кама (любовь) + кели (игра) + ковида (сведущая): О Ты, самая сведущая в играх любви во владениях Твоих уединённых и благих рощ"
     ],
     [
      "kadā=когда",
-     "kariṣyasīha=?каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
+     "kariṣyasīha=каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
      "māṁ=меня",
      "kṛpā-kaṭākṣa-bhājanam?=крипа (милость) + катакша (взгляд искоса) + бхаджана (сосуд, получатель): получатель Твоего милостивого взгляда искоса"
     ]
@@ -4682,17 +4674,17 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
    "n": 6,
    "lines": [
     [
-     "aśeṣa-hāva-bhāva-dhīra-hīra-hāra-bhūṣite=?а-шеша (без остатка, все) + хава (тонкое любовное выражение) + бхава (эмоция) + дхира (стойкость, серьёзность) + хира (бриллиант) + хара (ожерелье) + бхушита (украшенная): О Ты, украшенная всеми хавами и бхавами и бриллиантовым ожерельем стойкости"
+     "aśeṣa-hāva-bhāva-dhīra-hīra-hāra-bhūṣite=а-шеша (без остатка, все) + хава (тонкое любовное выражение) + бхава (эмоция) + дхира (стойкость, серьёзность) + хира (бриллиант) + хара (ожерелье) + бхушита (украшенная): О Ты, украшенная всеми хавами и бхавами и бриллиантовым ожерельем стойкости"
     ],
     [
      "prabhūta-śāta-kumbha-kumbha-kumbhi-kumbha-sustani=прабхута (обильный, великий) + шата-кумбха (золото) + кумбха (кувшин) + кумбхи (слон) + кумбха (лобная выпуклость) + су-стани (с прекрасной грудью): О Ты, чья грудь подобна великим золотым кувшинам, подобным двум холмам на голове слона"
     ],
     [
-     "praśasta-manda-hāsya-cūrṇa-pūrṇa-saukhya-sāgare=?прашаста (славный) + манда (нежный) + хасья (улыбка) + чурна (порошок: значение в составном слове неясно) + пурна (полный) + саукхья (блаженство) + сагара (океан): О Ты, чья славная, нежная улыбка — океан, полный блаженства"
+     "praśasta-manda-hāsya-cūrṇa-pūrṇa-saukhya-sāgare=прашаста (славный) + манда (нежный) + хасья (улыбка) + чурна (порошок: значение в составном слове неясно) + пурна (полный) + саукхья (блаженство) + сагара (океан): О Ты, чья славная, нежная улыбка — океан, полный блаженства"
     ],
     [
      "kadā=когда",
-     "kariṣyasīha=?каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
+     "kariṣyasīha=каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
      "māṁ=меня",
      "kṛpā-kaṭākṣa-bhājanam?=крипа (милость) + катакша (взгляд искоса) + бхаджана (сосуд, получатель): получатель Твоего милостивого взгляда искоса"
     ]
@@ -4703,18 +4695,18 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
    "n": 7,
    "lines": [
     [
-     "mṛṇāla-vāla-vallarī=мринала (стебель лотоса) + ?вала (молодой, нежный) + валлари (лиана, стебель)",
+     "mṛṇāla-vāla-vallarī=мринала (стебель лотоса) + вала (молодой, нежный) + валлари (лиана, стебель)",
      "taraṅga-raṅga-dor-late=таранга (волна) + ранга (игра, танец) + дор (рука) + лата (лиана): О Ты, чьи руки подобны лианам, танцующим на волнах"
     ],
     [
      "latāgra-lāsya-lola-nīla-locanāvalokane=лата (лиана) + агра (кончик) + ласья (танец) + лола (колышущийся) + нила (синий) + лочана (глаз) + авалокана (взгляд): О Ты, чей взгляд синих глаз подобен кончикам лиан, танцующих и колышущихся"
     ],
     [
-     "lalal-lulan-milan-manojña-mugdha-mohanāśrite=?лалат (играющий) + лулат (колышущийся) + милат (встречающийся) [чтение неясно] + маногья (очаровательный) + мугдха (очарованный) + мохана (Мохана, Очаровывающий) + ашрита (нашедший прибежище): сложное составное слово, значение неясно; перевод: Ты даёшь прибежище Мана-мохане"
+     "lalal-lulan-milan-manojña-mugdha-mohanāśrite=лалат (играющий) + лулат (колышущийся) + милат (встречающийся) [чтение неясно] + маногья (очаровательный) + мугдха (очарованный) + мохана (Мохана, Очаровывающий) + ашрита (нашедший прибежище): сложное составное слово, значение неясно; перевод: Ты даёшь прибежище Мана-мохане"
     ],
     [
      "kadā=когда",
-     "kariṣyasīha=?каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
+     "kariṣyasīha=каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
      "māṁ=меня",
      "kṛpā-kaṭākṣa-bhājanam?=крипа (милость) + катакша (взгляд искоса) + бхаджана (сосуд, получатель): получатель Твоего милостивого взгляда искоса"
     ]
@@ -4725,7 +4717,7 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
    "n": 8,
    "lines": [
     [
-     "suvarṇa-mālikāñcita-tri-rekha-kambu-kaṇṭhage=?суварна (золото) + малика (ожерелье) + анчита (украшенная) + три (три) + рекха (линия) + камбу (раковина) + кантха (шея) + га (пребывающая): О Ты, чья шея, подобно раковине, отмечена тремя линиями и украшена золотыми ожерельями"
+     "suvarṇa-mālikāñcita-tri-rekha-kambu-kaṇṭhage=суварна (золото) + малика (ожерелье) + анчита (украшенная) + три (три) + рекха (линия) + камбу (раковина) + кантха (шея) + га (пребывающая): О Ты, чья шея, подобно раковине, отмечена тремя линиями и украшена золотыми ожерельями"
     ],
     [
      "tri-sūtra-maṅgalī-guṇa-tri-ratna-dīpti-dīdhiti=три-сутра (трёхнитное ожерелье) + мангали (благое) + гуна (нить) + три (три) + ратна (самоцвет) + дипти (свет) + дидхити (луч, блеск): О Ты, сияющая тремя видами самоцветов на благой три-сутре"
@@ -4735,7 +4727,7 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
     ],
     [
      "kadā=когда",
-     "kariṣyasīha=?каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
+     "kariṣyasīha=каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
      "māṁ=меня",
      "kṛpā-kaṭākṣa-bhājanam?=крипа (милость) + катакша (взгляд искоса) + бхаджана (сосуд, получатель): получатель Твоего милостивого взгляда искоса"
     ]
@@ -4753,11 +4745,11 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
      "praśasta-ratna-kiṅkiṇī-kalāpa-madhya-mañjule=прашаста (превосходный) + ратна (самоцвет) + кинкини (колокольчик) + калапа (набор, пояс) + мадхья (талия) + манджула (очаровательный, сладкий): О Ты с очаровательной талией, где звенит пояс из колокольчиков с самоцветами"
     ],
     [
-     "karīndra-śuṇḍa-daṇḍikā-varoha-saubhagoruke=кариндра (царь слонов) + шунда (хобот) + дандика (небольшой жезл, вытянутая форма) + ?вароха (спускающийся, сужающийся) + саубхага (красота) + урука (бедро): О Ты с прекрасными бёдрами, сужающимися, как хобот царя слонов"
+     "karīndra-śuṇḍa-daṇḍikā-varoha-saubhagoruke=кариндра (царь слонов) + шунда (хобот) + дандика (небольшой жезл, вытянутая форма) + вароха (спускающийся, сужающийся) + саубхага (красота) + урука (бедро): О Ты с прекрасными бёдрами, сужающимися, как хобот царя слонов"
     ],
     [
      "kadā=когда",
-     "kariṣyasīha=?каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
+     "kariṣyasīha=каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
      "māṁ=меня",
      "kṛpā-kaṭākṣa-bhājanam?=крипа (милость) + катакша (взгляд искоса) + бхаджана (сосуд, получатель): получатель Твоего милостивого взгляда искоса"
     ]
@@ -4768,17 +4760,17 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
    "n": 10,
    "lines": [
     [
-     "aneka-mantra-nāda-mañju-nūpurā-rava-skhalat-=анека (многие) + мантра (мантра) + нада (звук) + манджу (сладкий) + нупура (колокольчик на щиколотке) + рава (звон) + ?скхалат (спотыкающийся, запинающийся): продолжение на следующей строке"
+     "aneka-mantra-nāda-mañju-nūpurā-rava-skhalat-=анека (многие) + мантра (мантра) + нада (звук) + манджу (сладкий) + нупура (колокольчик на щиколотке) + рава (звон) + скхалат (спотыкающийся, запинающийся): продолжение на следующей строке"
     ],
     [
-     "samāja-rāja-haṁsa-vaṁśa-nikvaṇāti-gaurave=?самаджа (стая) + раджа-хамса (царственный лебедь) + вамша (сонм) + никвана (воркование, щебет) + ати (превосходящий) + гаурава (величие): неясное составное слово; смысл: подобно (или превосходя) щебету стаи царственных лебедей"
+     "samāja-rāja-haṁsa-vaṁśa-nikvaṇāti-gaurave=самаджа (стая) + раджа-хамса (царственный лебедь) + вамша (сонм) + никвана (воркование, щебет) + ати (превосходящий) + гаурава (величие): неясное составное слово; смысл: подобно (или превосходя) щебету стаи царственных лебедей"
     ],
     [
      "vilola-hema-vallarī-viḍambi-cāru-caṅkrame=вилола (колышущийся) + хема (золото) + валлари (лиана) + видамби (подражающий, насмехающийся) + чару (прекрасный) + чанкрама (поступь): О Ты, чья прекрасная поступь насмехается над колышущейся золотой лианой"
     ],
     [
      "kadā=когда",
-     "kariṣyasīha=?каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
+     "kariṣyasīha=каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
      "māṁ=меня",
      "kṛpā-kaṭākṣa-bhājanam?=крипа (милость) + катакша (взгляд искоса) + бхаджана (сосуд, получатель): получатель Твоего милостивого взгляда искоса"
     ]
@@ -4789,17 +4781,17 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
    "n": 11,
    "lines": [
     [
-     "ananta-koṭi-viṣṇu-loka-namra-padmajārcite=?ананта (бесконечный) + коти (десять миллионов) + вишну-лока (миры Вишну, Вайкунтха) + намра (склоняющаяся) + падмаджа (рождённая из лотоса: Лакшми) + арчита (почитаемая): О Ты, которой поклоняется Лакшми (Падмаджа), владычица бесконечных Вайкунтх"
+     "ananta-koṭi-viṣṇu-loka-namra-padmajārcite=ананта (бесконечный) + коти (десять миллионов) + вишну-лока (миры Вишну, Вайкунтха) + намра (склоняющаяся) + падмаджа (рождённая из лотоса: Лакшми) + арчита (почитаемая): О Ты, которой поклоняется Лакшми (Падмаджа), владычица бесконечных Вайкунтх"
     ],
     [
      "himādrijā-pulomajā-viriñcajā-vara-prade=химадри-джа (рождённая Гималаями: Парвати) + пулома-джа (дочь Пуломана: Индрани) + виринча-джа (рождённая Виринчи, Брахмой: Сарасвати) + вара (благословение) + прада (дарующая): О Ты, дарующая благословения Парвати, Индрани и Сарасвати"
     ],
     [
-     "apāra-siddhi-ṛddhi-digdha-sat-padāṅgulī-nakhe=а-пара (безграничный) + сиддхи (совершенство) + риддхи (процветание) + ?дигдха (пропитанный, пронизанный) + сат (истинный, благой) + пада (стопа) + ангули (палец ноги) + накха (ноготь): О Ты, один ноготь на пальце ноги которой порождает бесконечные совершенства"
+     "apāra-siddhi-ṛddhi-digdha-sat-padāṅgulī-nakhe=а-пара (безграничный) + сиддхи (совершенство) + риддхи (процветание) + дигдха (пропитанный, пронизанный) + сат (истинный, благой) + пада (стопа) + ангули (палец ноги) + накха (ноготь): О Ты, один ноготь на пальце ноги которой порождает бесконечные совершенства"
     ],
     [
      "kadā=когда",
-     "kariṣyasīha=?каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
+     "kariṣyasīha=каришьяси (Ты сделаешь) + иха (здесь, в этом мире): Ты сделаешь здесь",
      "māṁ=меня",
      "kṛpā-kaṭākṣa-bhājanam?=крипа (милость) + катакша (взгляд искоса) + бхаджана (сосуд, получатель): получатель Твоего милостивого взгляда искоса"
     ]
@@ -4812,7 +4804,7 @@ var BHAJAN_RU = [DAMODARASTAKAM_RU, {
     [
      "makheśvari=макха (жертвоприношение) + ишвари (владычица): О владычица жертвоприношений",
      "kriyeśvari=крия (действие) + ишвари: О владычица всех действий",
-     "svadheśvari=?свадха (подношение, мантра свадха) + ишвари: О владычица мантр, произносимых во время яджны",
+     "svadheśvari=свадха (подношение, мантра свадха) + ишвари: О владычица мантр, произносимых во время яджны",
      "sureśvari=сура (боги) + ишвари: О владычица всех богов"
     ],
     [
@@ -4878,7 +4870,8 @@ var SECTIONS = [
 var UI = {
   soon: ["Testo in arrivo", "Text coming soon", "Texto próximamente", "Текст скоро появится"],
   soonMsg: ["Il testo di questo canto non è ancora stato inserito.", "The text of this song has not been added yet.", "El texto de este canto aún no se ha añadido.", "Текст этого песнопения ещё не добавлен."],
-  hint: ["Tocca una parola per vederne il significato; toccala di nuovo per chiuderlo. Parola per parola è generato con l'IA.", "Tap a word to see its meaning; tap it again to close it. The word-by-word is AI-generated.", "Toca una palabra para ver su significado; tócala de nuevo para cerrarlo. Palabra por palabra está generado con IA.", "Нажмите на слово, чтобы увидеть его значение; нажмите ещё раз, чтобы закрыть. Пословный перевод создан с помощью ИИ."],
+  hint: ["Tocca una parola per vederne il significato; toccala di nuovo per chiuderlo.", "Tap a word to see its meaning; tap it again to close it.", "Toca una palabra para ver su significado; tócala de nuevo para cerrarlo.", "Нажмите на слово, чтобы увидеть его значение; нажмите ещё раз, чтобы закрыть."],
+  aiNote: ["Parola per parola è generato con l'IA.", "The word-by-word is AI-generated.", "Palabra por palabra está generado con IA.", "Пословный перевод создан с помощью ИИ."],
   prev: ["Precedente", "Previous", "Anterior", "Предыдущее"], list: ["Elenco", "List", "Lista", "Список"], lastSong: ["Ultimo canto", "Last song", "Último canto", "Последнее песнопение"], next: ["Successivo", "Next", "Siguiente", "Следующее"],
   theme: ["Tema", "Theme", "Tema", "Тема"], auto: ["Auto", "Auto", "Auto", "Авто"], day: ["Giorno", "Day", "Día", "День"], night: ["Notte", "Night", "Noche", "Ночь"],
   language: ["Lingua", "Language", "Idioma", "Язык"], textSize: ["Grandezza del testo", "Text size", "Tamaño del texto", "Размер текста"], smaller: ["Più piccolo", "Smaller", "Más pequeño", "Меньше"], bigger: ["Più grande", "Bigger", "Más grande", "Больше"],
@@ -4887,7 +4880,7 @@ var UI = {
   langSoon: ["Questa lingua arriverà presto", "This language is coming soon", "Este idioma llegará pronto", "Этот язык появится позже"],
   noEn: ["", "English is not available for this section yet: it is shown in Italian.", "Esta sección aún no está disponible en inglés: se muestra en italiano.", "Для этого раздела английский пока недоступен: показан итальянский."],
   back: ["Indietro", "Back", "Atrás", "Назад"], settings: ["Impostazioni", "Settings", "Ajustes", "Настройки"],
-  cont: ["Continua", "Continue", "Continuar", "Продолжить"], studyDesc: ["Studia l'Aṣṭakam con vari esercizi", "Study the Aṣṭakam with various exercises", "Estudia el Aṣṭakam con varios ejercicios", "Изучайте Аштаку с помощью разных упражнений"],
+  studyDesc: ["Studia l'Aṣṭakam con vari esercizi", "Study the Aṣṭakam with various exercises", "Estudia el Aṣṭakam con varios ejercicios", "Изучайте Аштаку с помощью разных упражнений"],
   itOnly: ["", "This song is shown in Italian for now.", "Este canto se muestra por ahora en italiano.", "Это песнопение пока показано на итальянском."],
   tipSet: ["Traduzione e parola per parola sono nelle impostazioni", "Translation and word-by-word are in settings", "Traducción y palabra por palabra están en los ajustes", "Перевод и пословный перевод находятся в настройках"],
   studyTitle: ["Studio del Dāmodarāṣṭakam", "Dāmodarāṣṭakam study", "Estudio del Dāmodarāṣṭakam", "Изучение Дамодараштаки"],
@@ -4930,13 +4923,12 @@ var ICON = {
   gear: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>',
   chev: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>',
   left: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>',
-  ext: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg>',
-  play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg>'
+  ext: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg>'
 };
 
 /* ============ IMPOSTAZIONI ============ */
 var KEY = "kartika-v2";
-var S = { theme: "auto", vs: 0, mode: "trad", tr: true, wbw: false, gl: false, last: null, wl: false, hintSeen: false, instSeen: false, lang: "en" };
+var S = { theme: "auto", vs: 0, mode: "trad", tr: true, wbw: false, gl: false, hintSeen: false, instSeen: false, lang: "en" };
 try { var j = localStorage.getItem(KEY); if (j) { var o = JSON.parse(j); for (var k in o) { if (k in S) S[k] = o[k]; } } } catch (e) {}
 /* prima apertura (nessuna lingua salvata): usa la lingua del telefono se è una delle quattro */
 try {
@@ -4963,18 +4955,6 @@ function applyTheme() {
   $$('[data-act="theme-set"]').forEach(function (x) { x.setAttribute("aria-pressed", String(x.dataset.val === S.theme)); });
 }
 setInterval(function () { if (S.theme === "auto") applyTheme(); }, 300000);
-
-/* schermo acceso */
-var lock = null;
-function setWake() {
-  if (!("wakeLock" in navigator)) return Promise.resolve(false);
-  if (S.wl && !lock) {
-    return navigator.wakeLock.request("screen").then(function (l) { lock = l; l.addEventListener("release", function () { lock = null; }); return true; }).catch(function () { return false; });
-  }
-  if (!S.wl && lock) { var l = lock; lock = null; return l.release().then(function () { return true; }).catch(function () { return false; }); }
-  return Promise.resolve(true);
-}
-document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible" && S.wl) setWake(); });
 
 var tt = null;
 function toast(m) { var t = $("#toast"); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(function () { t.hidden = true; }, 2800); }
@@ -5035,11 +5015,6 @@ function sil(t) { return esc(t).replace(/\{/g, '<span class="sil">').replace(/\}
 function parseW(s) { var i = s.indexOf("="); var g = s.slice(i + 1); return { t: s.slice(0, i), g: g.charAt(0) === "?" ? g.slice(1) : g, q: g.charAt(0) === "?" }; }
 
 function renderHome() {
-  var cont = "";
-  if (S.last && SECTIONS[S.last[0]] && SONGS(S.last[0])[S.last[1]] && !SONGS(S.last[0])[S.last[1]].soon) {
-    var ls = SONGS(S.last[0])[S.last[1]];
-    cont = '<div class="center"><button type="button" class="cont" data-act="song" data-s="' + S.last[0] + '" data-n="' + S.last[1] + '" aria-label="' + T("cont") + ': ' + esc(SKT(ls.title)) + '">' + ICON.play + '<span class="cont-k">' + T("cont") + '</span><span class="cont-v">' + esc(SKT(ls.title)) + '</span></button></div>';
-  }
   var tiles = SECTIONS.map(function (s, i) {
     return '<button type="button" class="vtile" data-act="sect" data-s="' + i + '"><span class="vt"><span class="vi">' + esc(STITLE(i)) + '</span><span class="vd" hidden></span></span>' + ICON.chev + '</button>';
   }).join("") + '<button type="button" class="vtile study" data-act="study"><span class="vt"><span class="vi">' + (S.lang === "ru" ? "Дамодараштака" : "Dāmodarāṣṭakam") + '</span><span class="vd">' + T("studyDesc") + '</span></span>' + ICON.chev + '</button>';
@@ -5122,6 +5097,8 @@ function glBox(v) {
   }); });
   return '<div class="glbox"><span class="gln">' + v.n + '</span> ' + items.join("; ") + '.</div>';
 }
+/* canti con il parola per parola generato con l'IA: Śrī Nanda-nandanāṣṭakam e Śrī Rādhā-kṛpā-kaṭākṣa (Bhajan di Kārtika, 2° e 3°) */
+function aiWbw(si, n) { return SECTIONS[si].id === "bhajan" && (n === 1 || n === 2); }
 function renderSong(si, n) {
   var song = SONGS(si)[n], h = "", showTr = S.tr, showW = S.wbw, hasGl = true;
   if (song.soon) {
@@ -5129,6 +5106,7 @@ function renderSong(si, n) {
   } else {
     var sz = S.vs ? S.vs : 0;
     if (showW && song.wbwSrc) h += '<p class="hint">' + esc(song.wbwSrc) + '</p>';
+    else if (aiWbw(si, n) && (showW || S.gl)) h += '<p class="hint">' + (showW ? T("hint") + " " : "") + T("aiNote") + '</p>';
     else if (showW && !S.hintSeen) h += '<p class="hint" id="wHint">' + T("hint") + '</p>';
     if (song.intro && showTr) h += '<p class="note" style="text-align:center">' + esc(song.intro) + '</p>';
     song.verses.forEach(function (v, vi) {
@@ -5211,7 +5189,6 @@ function render() {
   else {
     var sg = SONGS(view.s)[view.n];
     tb.innerHTML = '<h1>' + esc(SKT(sg.title)) + '</h1><p>' + esc(STITLE(view.s)) + '</p>';
-    if (!sg.soon) { S.last = [view.s, view.n]; save(); }
     renderSong(view.s, view.n);
     if (notIt() && sg.itOnly) toast(T("itOnly"));
     if (tipSec !== view.s) { tipSec = view.s; showTip(); }
@@ -5301,7 +5278,7 @@ document.addEventListener("click", async function (e) {
   } catch (err) { b.textContent = T("updOff"); }
   setTimeout(function () { b.textContent = T("updCheck"); delete b.dataset.busy; }, 2500);
 });
-var APP_VER = "1.26";
+var APP_VER = "1.0";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;
@@ -5340,7 +5317,7 @@ function setHtml() {
     + '</div></div>';
   if (view.v !== "home") h += '<div><div class="aa-l">' + T("language") + '</div><div class="seg seg4" role="group" aria-label="' + T("language") + '">' + [["en", "English"], ["it", "Italiano"], ["es", "Español"], ["ru", "Русский"]].map(function (l) { return '<button type="button" data-act="lang" data-val="' + l[0] + '" lang="' + l[0] + '" aria-pressed="' + (l[0] === S.lang) + '">' + l[1] + '</button>'; }).join("") + '</div></div>';
   if (view.v === "song") {
-    h += '<div><div class="aa-l">' + T("textSize") + '</div><div class="aa-row"><button type="button" class="gbtn" data-act="vs-minus" aria-label="' + T("smaller") + '">A−</button><span id="aa-val">' + (S.vs ? S.vs + " px" : T("auto")) + '</span><button type="button" class="gbtn" data-act="vs-plus" aria-label="' + T("bigger") + '">A+</button><button type="button" class="chip" data-act="vs-auto" aria-pressed="' + !S.vs + '">' + T("auto") + '</button></div></div>';
+    h += '<div><div class="aa-l">' + T("textSize") + '</div><div class="aa-row"><button type="button" class="gbtn" data-act="vs-minus" aria-label="' + T("smaller") + '">A−</button><span id="aa-val">' + (S.vs ? S.vs + " px" : T("auto")) + '</span><button type="button" class="gbtn" data-act="vs-plus" aria-label="' + T("bigger") + '">A+</button>' + (S.vs ? '<button type="button" class="chip" data-act="vs-auto" aria-pressed="false">' + T("auto") + '</button>' : '') + '</div></div>';
     var tri = true;
     h += '<div><div class="aa-l">' + T("show") + '</div><div class="seg seg4" role="group" aria-label="' + T("show") + '"><button type="button" data-act="tog-tr" aria-pressed="' + !!S.tr + '">' + T("translation") + '</button>'
       + (tri ? '<button type="button" data-act="tog-gl" aria-pressed="' + !!S.gl + '">' + T("glShort") + '</button>' : '')
@@ -5348,7 +5325,7 @@ function setHtml() {
       + (view.s === 0 && view.n === 0 ? '<div class="seg" role="group" style="margin-top:6px"><button type="button" data-act="tog-gl" aria-pressed="' + !!S.gl + '">' + T("glShort") + '</button></div>' : '') + '</div>';
   }
   if (view.v === "study" && studyVerse) {
-    h += '<div><div class="aa-l">' + T("textSize") + '</div><div class="aa-row"><button type="button" class="gbtn" data-act="st-vs-minus" aria-label="' + T("smaller") + '">A−</button><span id="aa-val">' + esc(studySt.vs) + '</span><button type="button" class="gbtn" data-act="st-vs-plus" aria-label="' + T("bigger") + '">A+</button><button type="button" class="chip" data-act="st-vs-auto" aria-pressed="' + (studySt.vs === "Auto") + '">' + T("auto") + '</button></div></div>';
+    h += '<div><div class="aa-l">' + T("textSize") + '</div><div class="aa-row"><button type="button" class="gbtn" data-act="st-vs-minus" aria-label="' + T("smaller") + '">A−</button><span id="aa-val">' + esc(studySt.vs) + '</span><button type="button" class="gbtn" data-act="st-vs-plus" aria-label="' + T("bigger") + '">A+</button>' + (studySt.vs !== "Auto" ? '<button type="button" class="chip" data-act="st-vs-auto" aria-pressed="false">' + T("auto") + '</button>' : '') + '</div></div>';
     h += '<div><div class="aa-l">Devanāgarī</div><button type="button" class="chip" data-act="st-dev" aria-pressed="' + !!studySt.dev + '" style="width:100%">' + (studySt.dev ? T("devHide") : T("devShow")) + '</button></div>';
   }
   if (!isInstalled()) h += '<div><button type="button" class="chip inst-open" data-act="howto">' + T("instHow") + '</button></div>';

@@ -270,6 +270,20 @@ body.song.bars-off #vnav{transform:translateY(160%);opacity:0;pointer-events:non
 #inst-dlg .inst-prim{background:var(--accent);color:var(--on-accent)}
 #set-pop .inst-open{width:100%;min-height:44px}
 @media (prefers-reduced-motion:reduce){#inst-dlg{animation:none}#inst-dlg .inst-big{transition:none}}
+/* === Tablet e computer (prova solo in inglese): niente bande ai lati, sfondo e barre a tutta larghezza, colonna del testo più larga === */
+@media (min-width:600px){
+html[lang="en"]{--colw:720px}
+html[lang="en"] .wrap{max-width:var(--colw)}
+html[lang="en"] .topbar{left:0;transform:none;width:100%;padding-left:max(16px,calc((100vw - var(--colw))/2 + 16px),calc(env(safe-area-inset-left,0px) + 16px));padding-right:max(16px,calc((100vw - var(--colw))/2 + 16px),calc(env(safe-area-inset-right,0px) + 16px))}
+html[lang="en"] body.song.bars-off .topbar{transform:translateY(-130%)}
+html[lang="en"] #bg{left:0;right:0;width:auto;transform:none;--bw:max(min(100vw,var(--colw)),61vh);--w:min(100vw,var(--colw))}
+html[lang="en"] #bgb{inset:-60px;-webkit-mask-image:none;mask-image:none}
+html[lang="en"] #bg::after{-webkit-mask-image:none;mask-image:none}
+html[lang="en"] #bg::before{inset:0 auto 0 50%;width:min(100%,var(--colw));transform:translateX(-50%)}
+html[lang="en"] #vnav{width:min(calc(var(--colw) - 32px),calc(100% - 32px))}
+html[lang="en"] #set-pop,html[lang="en"] #tip{right:max(16px,calc((100vw - var(--colw))/2 + 16px))}
+html[lang="en"] #lang-pop{right:max(16px,calc((100vw - var(--colw))/2 + 68px))}
+}
 </style>
 
 <div id="bg" aria-hidden="true"><div id="bgb"></div></div>

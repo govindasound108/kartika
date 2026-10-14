@@ -86,7 +86,7 @@ body:not(.home) .topbar{height:calc(var(--ah) + 18px);padding-bottom:18px;backgr
 .gbtn[aria-expanded="true"]{color:var(--accent)}
 #b-back{grid-column:1}
 button.updbtn .updok{color:#2f9e5b;font-weight:700}
-button.updbtn{margin-left:8px;padding:6px 12px;border-radius:999px;border:1px solid var(--hair,rgba(120,80,30,.25));background:color-mix(in srgb,var(--ground) 70%,transparent);color:var(--soft);font:500 12.5px/1 var(--f-serif);letter-spacing:.02em;cursor:pointer;-webkit-tap-highlight-color:transparent}
+button.updbtn{margin-left:2px;padding:6px 8px;border:0;border-radius:999px;background:none;color:var(--soft);opacity:.7;font:500 14px/1 var(--f-serif);letter-spacing:0;cursor:pointer;-webkit-tap-highlight-color:transparent;vertical-align:middle}
 p.appver{margin:18px 0 6px;text-align:center;font:500 13px/1.2 var(--f-serif);letter-spacing:.06em;color:var(--soft);opacity:.8}
 #tb-t h1.brand{font:600 29px/1.1 var(--f-serif);letter-spacing:.01em;color:var(--ink);overflow:visible;text-shadow:0 0 3px var(--ti-sh),0 1px 1px var(--ti-sh),0 0 6px var(--ti-glow)}
 .blogo{grid-column:1;display:flex;align-items:center;gap:6px;justify-self:start;pointer-events:none}
@@ -5436,7 +5436,8 @@ var UI = {
   devShow: ["Mostra la devanāgarī", "Show the devanāgarī", "Mostrar la devanāgarī", "Показать деванагари"], devHide: ["Nascondi la devanāgarī", "Hide the devanāgarī", "Ocultar la devanāgarī", "Скрыть деванагари"],
   glShort: ["Parola per parola", "Word by word", "Palabra por palabra", "Пословный перевод"],
   glTap: ["Tocca", "Tap", "Tocar", "Нажатие"],
-  updCheck: ["↻ Controlla aggiornamenti", "↻ Check for updates", "↻ Buscar actualizaciones", "↻ Проверить обновления"],
+  updCheck: ["↻", "↻", "↻", "↻"],
+  updTitle: ["Controlla aggiornamenti", "Check for updates", "Buscar actualizaciones", "Проверить обновления"],
   updBusy: ["Controllo…", "Checking…", "Comprobando…", "Проверка…"],
   updGet: ["Scarico V ", "Downloading V ", "Descargando V ", "Загрузка V "],
   updOk: ["Sei aggiornato ✓", "You're up to date ✓", "Estás al día ✓", "У вас последняя версия ✓"],
@@ -5568,7 +5569,7 @@ function renderHome() {
     if (s.enOnly && S.lang !== "en") return "";
     return '<button type="button" class="vtile" data-act="sect" data-s="' + i + '"><span class="vt"><span class="vi">' + esc(STITLE(i)) + '</span><span class="vd" hidden></span></span>' + ICON.chev + '</button>';
   }).join("") + '<button type="button" class="vtile study" data-act="study"><span class="vt"><span class="vi">' + (S.lang === "ru" ? "Дамодараштака" : "Dāmodarāṣṭakam") + '</span><span class="vd">' + T("studyDesc") + '</span></span>' + ICON.chev + '</button>';
-  $("#home").innerHTML = '<div class="hero"></div><div class="vlist enter">' + tiles + '</div><p class="appver">V ' + APP_VER + ' <button type="button" class="updbtn" data-upd>' + T("updCheck") + '</button></p>';
+  $("#home").innerHTML = '<div class="hero"></div><div class="vlist enter">' + tiles + '</div><p class="appver">V ' + APP_VER + ' <button type="button" class="updbtn" data-upd aria-label="' + T("updTitle") + '" title="' + T("updTitle") + '">' + T("updCheck") + '</button></p>';
 }
 function renderSect(si) {
   var s = SECTIONS[si];

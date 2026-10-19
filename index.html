@@ -5829,12 +5829,14 @@ document.addEventListener("click", async function (e) {
   try {
     var t = await fetch("index.html?u=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.text(); });
     var m = t.match(/APP_VER = "(\d[^"]*)"/);
-    if (m && m[1] !== APP_VER) { b.textContent = T("updGet") + m[1] + "…"; await appHardRefresh(); return; }
+    var bm = t.match(/var BUILD_ID = "([0-9a-f]+)"/);
+    if ((m && m[1] !== APP_VER) || (bm && bm[1] !== BUILD_ID)) { b.textContent = T("updGet") + (m ? m[1] : APP_VER) + "…"; await appHardRefresh(); return; }
     b.innerHTML = esc(T("updOk").replace(/\s*✓\s*$/, "")) + ' <span class="updok">✓</span>';
   } catch (err) { b.textContent = T("updOff"); }
   setTimeout(function () { b.textContent = T("updCheck"); delete b.dataset.busy; }, 2500);
 });
 var APP_VER = "2.0";
+var BUILD_ID = "d5cc4b211b";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;

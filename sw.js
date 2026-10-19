@@ -1,6 +1,6 @@
 /* Kārtika — service worker: tutto in cache al primo avvio, poi funziona senza rete.
    Per pubblicare un aggiornamento, cambia il numero di VERSION. */
-const VERSION = "kartika-v202";
+const VERSION = "kartika-v203";
 const CORE = ["./", "index.html", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png"];
 const FONTS_CSS = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Noto+Serif+Devanagari:wght@400;600&display=swap";
 
@@ -49,6 +49,8 @@ self.addEventListener("fetch", (e) => {
   if (e.request.method !== "GET") return;
   e.respondWith((async () => {
     const uu = new URL(e.request.url);
+    /* il controllo del tasto "aggiorna" (index.html?u=...) deve sempre chiedere alla rete, mai alla copia salvata */
+    if (uu.origin === location.origin && uu.searchParams.has("u")) return fetch(new Request(e.request.url, { cache: "no-store" }));
     const isPage = e.request.mode === "navigate" || (uu.origin === location.origin && (uu.pathname.endsWith("/") || uu.pathname.endsWith("index.html") || uu.pathname.endsWith("sw.js") === false && uu.pathname.endsWith(".html")));
     if (isPage) {
       /* Apertura istantanea: si mostra subito la copia salvata e, in background, si scarica

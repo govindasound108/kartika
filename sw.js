@@ -1,6 +1,6 @@
 /* Kārtika — service worker: tutto in cache al primo avvio, poi funziona senza rete.
    Per pubblicare un aggiornamento, cambia il numero di VERSION. */
-const VERSION = "kartika-v200";
+const VERSION = "kartika-v201";
 const CORE = ["./", "index.html", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png"];
 const FONTS_CSS = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Noto+Serif+Devanagari:wght@400;600&display=swap";
 
@@ -32,12 +32,16 @@ self.addEventListener("fetch", (e) => {
     const uu = new URL(e.request.url);
     const isPage = e.request.mode === "navigate" || (uu.origin === location.origin && (uu.pathname.endsWith("/") || uu.pathname.endsWith("index.html") || uu.pathname.endsWith("sw.js") === false && uu.pathname.endsWith(".html")));
     if (isPage) {
-      try {
-        const fresh = await fetch(new Request(e.request.url, { cache: "no-store" }));
-        if (fresh.ok) { (await caches.open(VERSION)).put(e.request, fresh.clone()); return fresh; }
-      } catch (_) {}
+      /* Apertura istantanea: si mostra subito la copia salvata e, in background, si scarica
+         la versione nuova (visibile alla prossima apertura). Così il segnale debole non blocca mai l'avvio. */
       const old = await caches.match(e.request, { ignoreSearch: true }) || await caches.match("index.html");
+      const refresh = fetch(new Request(e.request.url, { cache: "no-store" }))
+        .then(async (r) => { if (r.ok) await (await caches.open(VERSION)).put(e.request, r.clone()); return r; })
+        .catch(() => null);
+      e.waitUntil(refresh);
       if (old) return old;
+      const fresh = await refresh;
+      if (fresh && fresh.ok) return fresh;
     }
     const hit = await caches.match(e.request);
     if (hit) return hit;

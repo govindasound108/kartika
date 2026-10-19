@@ -120,7 +120,8 @@ body[data-bg="g"] #bg{--cur:var(--img-g);--bs:var(--w) auto;--bp:50% 60px;--m0a:
 #bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--veil-top) 0%,var(--veil-top) 30%,color-mix(in srgb,var(--veil-mid) 62%,transparent) 62%,color-mix(in srgb,var(--veil-mid) 62%,transparent) 100%)}
 body.home{padding-block-end:40px}
 #home{min-height:calc(100vh + 110px)}
-.hero{height:max(335px,42vh)}
+.hero{height:max(335px,42vh);position:relative}
+.inst-link{position:absolute;left:50%;top:calc(env(safe-area-inset-top,0px) + 58px);transform:translateX(-50%);white-space:nowrap;text-shadow:0 0 6px var(--ti-sh)}
 .hh{text-align:center;position:relative;padding:0 10px 14px}
 #home .hh{margin-top:-64px}
 .hdev{font:600 38px/1.2 var(--f-dev);letter-spacing:.02em;margin:0 0 2px;
@@ -5444,6 +5445,7 @@ var UI = {
   updOk: ["Sei aggiornato ✓", "You're up to date ✓", "Estás al día ✓", "У вас последняя версия ✓"],
   updOff: ["Nessuna connessione", "No connection", "Sin conexión", "Нет соединения"],
   instHow: ["Come installare l'app", "How to install the app", "Cómo instalar la app", "Как установить приложение"],
+  instLink: ["Installa l'app", "Install the app", "Instala la app", "Установить приложение"],
   instClose: ["Chiudi", "Close", "Cerrar", "Закрыть"], instBack: ["Indietro", "Back", "Atrás", "Назад"], instDone: ["Ho capito", "Got it", "Entendido", "Понятно"],
   instTitle: ["Installa Kārtika sul telefono", "Install Kārtika on your phone", "Instala Kārtika en tu teléfono", "Установите Kārtika на телефон"],
   instLead: ["Si apre con un tocco, come le altre app, e funziona anche senza internet.", "It opens with one tap, like any other app, and works without internet.", "Se abre con un toque, como cualquier otra app, y funciona sin internet.", "Оно открывается одним нажатием, как любое другое приложение, и работает без интернета."],
@@ -5565,12 +5567,16 @@ var view = { v: "home" };
 function sil(t) { return esc(t).replace(/\{/g, '<span class="sil">').replace(/\}/g, '</span>'); }
 function parseW(s) { var i = s.indexOf("="); var g = s.slice(i + 1); return { t: s.slice(0, i), g: g.charAt(0) === "?" ? g.slice(1) : g, q: g.charAt(0) === "?" }; }
 
+function instLinkHtml() {
+  /* link "Installa l'app" sotto il titolo: solo nel browser di telefono/tablet, mai nell'app installata */
+  return (isPhoneOrTablet() && !isInstalled()) ? '<button type="button" class="chip inst-link" data-act="instlink">' + esc(T("instLink")) + '</button>' : "";
+}
 function renderHome() {
   var tiles = SECTIONS.map(function (s, i) {
     if (s.enOnly && S.lang !== "en") return "";
     return '<button type="button" class="vtile" data-act="sect" data-s="' + i + '"><span class="vt"><span class="vi">' + esc(STITLE(i)) + '</span><span class="vd" hidden></span></span>' + ICON.chev + '</button>';
   }).join("") + '<button type="button" class="vtile study" data-act="study"><span class="vt"><span class="vi">' + (S.lang === "ru" ? "Дамодараштака" : "Dāmodarāṣṭakam") + '</span><span class="vd">' + T("studyDesc") + '</span></span>' + ICON.chev + '</button>';
-  $("#home").innerHTML = '<div class="hero"></div><div class="vlist enter">' + tiles + '</div><p class="appver">V ' + APP_VER + ' <button type="button" class="updbtn" data-upd aria-label="' + T("updTitle") + '" title="' + T("updTitle") + '">' + T("updCheck") + '</button></p>';
+  $("#home").innerHTML = '<div class="hero">' + instLinkHtml() + '</div><div class="vlist enter">' + tiles + '</div><p class="appver">V ' + APP_VER + ' <button type="button" class="updbtn" data-upd aria-label="' + T("updTitle") + '" title="' + T("updTitle") + '">' + T("updCheck") + '</button></p>';
 }
 function renderSect(si) {
   var s = SECTIONS[si];
@@ -5835,8 +5841,8 @@ document.addEventListener("click", async function (e) {
   } catch (err) { b.textContent = T("updOff"); }
   setTimeout(function () { b.textContent = T("updCheck"); delete b.dataset.busy; }, 2500);
 });
-var APP_VER = "2.0";
-var BUILD_ID = "d5cc4b211b";
+var APP_VER = "2.0.1";
+var BUILD_ID = "566ccdb179";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;
@@ -5955,6 +5961,7 @@ document.addEventListener("click", function (e) {
   }
   if (act === "theme-cycle") { S.theme = S.theme === "auto" ? "light" : S.theme === "light" ? "dark" : "auto"; save(); applyTheme(); paintSetBtn(); toast(themeLabel()); return; }
   if (act === "set") { if ($("#set-pop").hidden) openSet(); else closeSet(); return; }
+  if (act === "instlink") { openInstall(a); return; }
   if ($("#set-pop").contains(a)) {
     if (act === "lang") {
       var lv = a.dataset.val;
@@ -5988,7 +5995,7 @@ document.addEventListener("click", function (e) {
 });
 
 /* ============ POP-UP "COME INSTALLARE L'APP" ============ */
-/* compare da solo una sola volta, solo nel browser (mai nell'app installata); si riapre dalle impostazioni */
+/* compare da solo a ogni apertura nel browser (mai nell'app installata); si riapre dal link sotto il titolo e dalle impostazioni */
 var INST_ICON = {
   share: '<svg class="inst-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10H7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1"></path><path d="M12 15V3M8.5 6.5L12 3l3.5 3.5"></path></svg>',
   dots: '<svg class="inst-i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.4"></circle><circle cx="12" cy="12" r="1.4"></circle><circle cx="12" cy="19" r="1.4"></circle></svg>'
@@ -6054,8 +6061,8 @@ function isPhoneOrTablet() {
   return false;
 }
 function maybeShowInstall() {
-  if (!isPhoneOrTablet() || isInstalled() || S.instSeen) return;
-  S.instSeen = true; save();
+  /* a ogni apertura dal browser (telefono/tablet), mai nell'app installata */
+  if (!isPhoneOrTablet() || isInstalled()) return;
   setTimeout(function () { if ($("#inst-ov").hidden) openInstall(null); }, 700);
 }
 

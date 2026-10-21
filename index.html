@@ -173,7 +173,7 @@ body.home .vtile{background:linear-gradient(140deg,color-mix(in srgb,var(--lq-a)
 .fitbox{text-align:center}
 .fitline{white-space:nowrap;line-height:1.6;font:600 21px/1.6 var(--f-serif)}
 .rule{height:1px;background:var(--hair);margin:8px 6px 10px}
-.trad{font:400 14.5px/1.6 var(--f-ui);color:var(--soft);margin:6px 0 0;padding:2px 6px 4px;text-wrap:pretty}
+.trad{font:500 14.5px/1.6 var(--f-ui);color:var(--soft);margin:6px 0 0;padding:2px 6px 4px;text-wrap:pretty}
 .note{font:400 13px/1.45 var(--f-ui);color:var(--soft);margin:8px 6px 0}
 .w{background:none;border:0;border-bottom:1px solid var(--mark);padding:0 2px;font:inherit;font-style:inherit;cursor:pointer;color:inherit;border-radius:6px;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .w[aria-pressed="true"]{background:var(--sel-bg);border-bottom-color:var(--accent)}
@@ -197,9 +197,9 @@ body.home .vtile{background:linear-gradient(140deg,color-mix(in srgb,var(--lq-a)
 .glbtn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .glbtn[aria-pressed="true"]{color:var(--sel-ink);background:linear-gradient(140deg,var(--lq-sel-a),var(--lq-sel-b));box-shadow:inset 0 1px 1px var(--lq-in),0 6px 14px -9px rgba(90,50,10,.35)}
 .glbox{display:none;margin:12px 4px 0;font:400 14.5px/1.65 var(--f-ui);color:var(--soft);text-wrap:pretty}
+#song.gl-on .glbox+.trad{margin-top:14px}
 #song.gl-on .glbox{display:block}
 .glbox b{font-weight:600;color:var(--ink)}
-.glbox .gln{display:inline-grid;place-items:center;min-width:19px;height:19px;margin-right:3px;border:1.5px solid var(--accent);border-radius:50%;font:600 11px var(--f-ui);color:var(--accent);vertical-align:1px}
 
 /* impostazioni e finestrella della parola */
 #set-pop{position:fixed;z-index:12;top:calc(var(--ah) + 6px);right:max(16px,calc((100vw - 560px)/2 + 16px));width:min(290px,calc(100vw - 32px));padding:16px;border-radius:26px;display:grid;gap:14px;
@@ -5657,7 +5657,7 @@ function glBox(v) {
     }
   }); });
   /* segue la grandezza scelta come la traduzione (80% del verso, minimo 14 px); in Auto resta com'è */
-  return '<div class="glbox"' + (S.vs ? ' style="font-size:' + Math.max(14, Math.round(S.vs * 0.8)) + 'px"' : '') + '><span class="gln">' + v.n + '</span> ' + items.join("; ") + '.</div>';
+  return '<div class="glbox"' + (S.vs ? ' style="font-size:' + Math.max(14, Math.round(S.vs * 0.8)) + 'px"' : '') + '>' + items.join("; ") + '.</div>';
 }
 /* canti con il parola per parola generato con l'IA: Śrī Nanda-nandanāṣṭakam e Śrī Rādhā-kṛpā-kaṭākṣa (Bhajan di Kārtika, 2° e 3°) */
 function aiWbw(si, n) { return (SECTIONS[si].id === "bhajan" && (n === 1 || n === 2)) || (SECTIONS[si].id === "madhyahna" && n === 2); }
@@ -5845,8 +5845,8 @@ document.addEventListener("click", async function (e) {
   } catch (err) { b.textContent = T("updOff"); }
   setTimeout(function () { b.textContent = T("updCheck"); delete b.dataset.busy; }, 2500);
 });
-var APP_VER = "2.0.3";
-var BUILD_ID = "fb973e315b";
+var APP_VER = "2.0.4";
+var BUILD_ID = "331a787263";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;

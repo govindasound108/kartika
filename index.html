@@ -214,7 +214,7 @@ body.home .vtile{background:linear-gradient(140deg,color-mix(in srgb,var(--lq-a)
 .aa-row .gbtn{width:44px;height:44px;font:600 15px var(--f-serif)}
 #aa-val{flex:1;text-align:center;font:600 15px var(--f-ui);color:var(--ink)}
 #set-pop .seg.aa-seg button{font:500 15px/1.15 var(--f-ui)}
-#set-pop .seg.aa-seg button.aa-step{font:600 16px var(--f-serif)}
+#set-pop .seg.aa-seg button.aa-step{font:600 16px var(--f-serif);-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
 #set-pop .seg.aa-seg button.aa-mid{flex:1.5 1 0}
 .chip{min-height:40px;padding:0 14px;border:0;border-radius:999px;cursor:pointer;font:500 13.5px var(--f-ui);color:var(--ink);background:var(--gl-btn);-webkit-backdrop-filter:blur(6px) saturate(1.5);backdrop-filter:blur(6px) saturate(1.5)}
 .chip[aria-pressed="true"]{background:linear-gradient(140deg,var(--lq-sel-a),var(--lq-sel-b));color:var(--sel-ink);font-weight:600;box-shadow:inset 0 1px 1px var(--lq-in)}
@@ -293,6 +293,13 @@ html[lang] #lang-pop{right:max(16px,calc((100vw - var(--colw))/2 + 68px))}
 }
 /* impostazioni: i tap veloci su A− / A+ non fanno zoom (niente zoom da doppio tap) */
 #set-pop,#set-pop *,#aa-pop,#aa-pop *{touch-action:manipulation}
+/* impostazioni: mai più alte dello schermo visibile, scorrono al loro interno */
+#set-pop{max-height:calc(100vh - var(--ah) - 14px - env(safe-area-inset-bottom,0px));max-height:calc(100dvh - var(--ah) - 14px - env(safe-area-inset-bottom,0px));overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+/* in orizzontale (telefono): due colonne, lontano da notch e barra in basso */
+@media (orientation:landscape) and (max-height:520px){
+  #set-pop,html[lang] #set-pop{width:min(560px,calc(100vw - 32px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px)));grid-template-columns:1fr 1fr;gap:12px 16px;padding:14px 16px;align-items:start;right:max(16px,calc(env(safe-area-inset-right,0px) + 16px))}
+  #set-pop > div:has(.seg5),#set-pop > div:has(.inst-open){grid-column:1 / -1}
+}
 </style>
 
 <div id="bg" aria-hidden="true"><div id="bgb"></div></div>
@@ -7572,9 +7579,9 @@ var UI = {
   updOk: ["Sei aggiornato ✓", "You're up to date ✓", "Estás al día ✓", "У вас последняя версия ✓"],
   updOff: ["Nessuna connessione", "No connection", "Sin conexión", "Нет соединения"],
   instHow: ["Come installare l'app", "How to install the app", "Cómo instalar la app", "Как установить приложение"],
-  instLink: ["Installa l'app", "Install the app", "Instala la app", "Установить приложение"],
+  instLink: ["Come installare l'app", "How to install the app", "Instala la app", "Установить приложение"],
   instClose: ["Chiudi", "Close", "Cerrar", "Закрыть"], instBack: ["Indietro", "Back", "Atrás", "Назад"], instDone: ["Ho capito", "Got it", "Entendido", "Понятно"],
-  instTitle: ["Installa Kārtika sul telefono", "Install Kārtika on your phone", "Instala Kārtika en tu teléfono", "Установите Kārtika на телефон"],
+  instTitle: ["Come installare l'app", "How to install the app", "Instala Kārtika en tu teléfono", "Установите Kārtika на телефон"],
   instLead: ["Si apre con un tocco, come le altre app, e funziona anche senza internet.", "It opens with one tap, like any other app, and works without internet.", "Se abre con un toque, como cualquier otra app, y funciona sin internet.", "Оно открывается одним нажатием, как любое другое приложение, и работает без интернета."],
   instIos: ["iPhone", "iPhone", "iPhone", "iPhone"], instAnd: ["Android", "Android", "Android", "Android"],
   instIosT: ["Su iPhone", "On iPhone", "En iPhone", "На iPhone"], instAndT: ["Su Android", "On Android", "En Android", "На Android"],
@@ -7702,7 +7709,7 @@ function renderHome() {
   var tiles = SECTIONS.map(function (s, i) {
     if (s.enOnly && S.lang !== "en") return "";
     return '<button type="button" class="vtile" data-act="sect" data-s="' + i + '"><span class="vt"><span class="vi">' + esc(STITLE(i)) + '</span><span class="vd" hidden></span></span>' + ICON.chev + '</button>';
-  }).join("") + '<button type="button" class="vtile study" data-act="study"><span class="vt"><span class="vi">' + (S.lang === "ru" ? "Дамодараштака" : "Dāmodarāṣṭakam") + '</span><span class="vd">' + T("studyDesc") + '</span></span>' + ICON.chev + '</button>';
+  }).join("") + '<button type="button" class="vtile study" data-act="study"><span class="vt"><span class="vi">' + (S.lang === "it" ? "Studio del Dāmodarāṣṭakam" : S.lang === "en" ? "Study: Dāmodarāṣṭakam" : S.lang === "ru" ? "Дамодараштака" : "Dāmodarāṣṭakam") + '</span><span class="vd">' + T("studyDesc") + '</span></span>' + ICON.chev + '</button>';
   $("#home").innerHTML = '<div class="hero">' + instLinkHtml() + '</div><div class="vlist enter">' + tiles + '</div><p class="appver">V ' + APP_VER + ' <button type="button" class="updbtn" data-upd aria-label="' + T("updTitle") + '" title="' + T("updTitle") + '">' + T("updCheck") + '</button></p>';
 }
 function renderSect(si) {
@@ -7970,7 +7977,7 @@ document.addEventListener("click", async function (e) {
   setTimeout(function () { b.textContent = T("updCheck"); delete b.dataset.busy; }, 2500);
 });
 var APP_VER = "2.0.5";
-var BUILD_ID = "75de1ec672";
+var BUILD_ID = "b097327f3e";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;
@@ -7991,7 +7998,7 @@ window.addEventListener("message", function (e) {
   if (!studyFrame || e.source !== studyFrame.contentWindow || !e.data || e.data.kartika !== 1) return;
   var d = e.data;
   if (d.ready) { syncStudy(); try { studyFrame.contentWindow.postMessage({ kartika: 1, img: HERO }, "*"); } catch (x) {} }
-  if (d.st) { studySt = d.st; if (!$("#set-pop").hidden) $("#set-pop").innerHTML = setHtml(); }
+  if (d.st) { studySt = d.st; if (!$("#set-pop").hidden && !holdOn) $("#set-pop").innerHTML = setHtml(); }
   if ("athome" in d) {
     studyHome = !!d.athome; studyVerse = !!d.verse;
     document.body.classList.toggle("studyhome", studyHome && view.v === "study");
@@ -8001,6 +8008,43 @@ window.addEventListener("message", function (e) {
   if (d.toggleSettings) { if ($("#set-pop").hidden) openSet(); else closeSet(); }
 });
 function studyCmd(c) { try { studyFrame.contentWindow.postMessage({ kartika: 1, cmd: c }, "*"); } catch (x) {} }
+
+/* A− / A+: un tocco = un passo; tenendo premuto il testo cresce o cala da solo */
+var holdT = 0, holdI = 0, holdOn = false, holdFired = false;
+function vsStep(dir) {
+  var cs = S.vs; if (!cs) { var fl = $("#song .fitline"); cs = fl ? Math.round(parseFloat(getComputedStyle(fl).fontSize)) : 0; if (!cs || isNaN(cs)) cs = 19; }
+  var nv = Math.max(13, Math.min(35, cs + dir));
+  if (nv === S.vs) return false;
+  S.vs = nv; save(); renderSong(view.s, view.n); return true;
+}
+function holdHalt() { clearTimeout(holdT); clearInterval(holdI); holdT = holdI = 0; }
+function holdStop() {
+  holdHalt();
+  if (holdOn) { holdOn = false; var p = $("#set-pop"); if (p && !p.hidden) p.innerHTML = setHtml(); }
+}
+function holdStep(act) {
+  if (act === "vs-minus" || act === "vs-plus") { if (!vsStep(act === "vs-plus" ? 1 : -1)) holdHalt(); }
+  else studyCmd(act === "st-vs-plus" ? "vs-plus" : "vs-minus");
+}
+document.addEventListener("pointerdown", function (e) {
+  var b = e.target.closest && e.target.closest('#set-pop [data-act="vs-minus"],#set-pop [data-act="vs-plus"],#set-pop [data-act="st-vs-minus"],#set-pop [data-act="st-vs-plus"]');
+  if (!b) return;
+  holdStop(); holdFired = false;
+  var act = b.dataset.act;
+  holdT = setTimeout(function () {
+    holdFired = true; holdOn = true;
+    holdI = setInterval(function () { holdStep(act); }, 110);
+    holdStep(act);
+  }, 450);
+});
+["pointerup", "pointercancel"].forEach(function (ev) { document.addEventListener(ev, holdStop); });
+document.addEventListener("visibilitychange", holdStop);
+document.addEventListener("contextmenu", function (e) { if (e.target.closest && e.target.closest("#set-pop .aa-step")) e.preventDefault(); });
+document.addEventListener("click", function (e) {
+  if (!holdFired) return;
+  holdFired = false;
+  if (e.target.closest && e.target.closest("#set-pop .aa-step")) { e.stopImmediatePropagation(); e.preventDefault(); }
+}, true);
 
 /* ============ IMPOSTAZIONI (finestra) ============ */
 function setHtml() {
@@ -8101,10 +8145,7 @@ document.addEventListener("click", function (e) {
     }
     else if (act === "theme-set") { S.theme = a.dataset.val; save(); applyTheme(); }
     else if (act === "howto") { openInstall(a); }
-    else if (act === "vs-minus" || act === "vs-plus") {
-      var cs = S.vs; if (!cs) { var fl = $("#song .fitline"); cs = fl ? Math.round(parseFloat(getComputedStyle(fl).fontSize)) : 0; if (!cs || isNaN(cs)) cs = 19; }
-      S.vs = Math.max(13, Math.min(30, cs + (act === "vs-plus" ? 1 : -1))); save(); renderSong(view.s, view.n); $("#set-pop").innerHTML = setHtml();
-    }
+    else if (act === "vs-minus" || act === "vs-plus") { vsStep(act === "vs-plus" ? 1 : -1); $("#set-pop").innerHTML = setHtml(); }
     else if (act === "vs-auto") { S.vs = 0; save(); renderSong(view.s, view.n); $("#set-pop").innerHTML = setHtml(); }
     else if (act === "st-vs-minus") studyCmd("vs-minus");
     else if (act === "st-vs-plus") studyCmd("vs-plus");

@@ -7856,6 +7856,29 @@ function fitVerse() {
 window.addEventListener("resize", function () { fitVerse(); closeWord(); });
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitVerse);
 
+/* ============ SCHERMO ACCESO (solo dentro i canti e nello studio) ============ */
+var wakeSentinel = null, wakeBusy = false;
+function wantWake() { return view.v === "song" || view.v === "study"; }
+function syncWake() {
+  try {
+    if (!("wakeLock" in navigator)) return;
+    if (wantWake() && document.visibilityState === "visible") {
+      if (wakeSentinel || wakeBusy) return;
+      wakeBusy = true;
+      navigator.wakeLock.request("screen").then(function (l) {
+        wakeBusy = false;
+        if (!wantWake()) { l.release().catch(function () {}); return; }
+        wakeSentinel = l;
+        l.addEventListener("release", function () { if (wakeSentinel === l) wakeSentinel = null; });
+      }).catch(function () { wakeBusy = false; });
+    } else if (wakeSentinel) {
+      var wl = wakeSentinel; wakeSentinel = null; wl.release().catch(function () {});
+    }
+  } catch (e) { wakeBusy = false; }
+}
+document.addEventListener("visibilitychange", syncWake);
+document.addEventListener("pointerup", function () { if (wantWake() && !wakeSentinel) syncWake(); }, { passive: true });
+
 function render() {
   if ((view.v === "sect" || view.v === "song") && SECTIONS[view.s].enOnly && S.lang !== "en") view = { v: "home" };
   document.documentElement.setAttribute("lang", S.lang); hideTip(); if (view.v !== "song") tipSec = -1;
@@ -7872,6 +7895,7 @@ function render() {
   $("#song").hidden = view.v !== "song";
   $("#study").hidden = view.v !== "study";
   b.classList.toggle("study", view.v === "study");
+  syncWake();
   b.classList.toggle("studyhome", view.v === "study" && studyHome);
   b.classList.toggle("studyverse", view.v === "study" && studyVerse);
   $("#vnav").hidden = view.v !== "song";
@@ -7976,8 +8000,8 @@ document.addEventListener("click", async function (e) {
   } catch (err) { b.textContent = T("updOff"); }
   setTimeout(function () { b.textContent = T("updCheck"); delete b.dataset.busy; }, 2500);
 });
-var APP_VER = "2.0.5";
-var BUILD_ID = "b097327f3e";
+var APP_VER = "2.0.6";
+var BUILD_ID = "c15b67b7a2";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;

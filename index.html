@@ -7977,13 +7977,21 @@ function go(v) { view = v; render(); window.scrollTo(0, 0); }
   setInterval(fit,1500);setTimeout(fit,300);
 })();
 /* ============ STUDIO DEL DĀMODARĀṢṬAKAM (app incorporata) ============ */
-/* controlla aggiornamenti / aggiorna l'app (i progressi restano salvati) */
-async function appHardRefresh() {
+/* controlla aggiornamenti / aggiorna l'app (i progressi restano salvati).
+   La versione nuova (già scaricata dal controllo) viene salvata nelle copie offline PRIMA di ricaricare, e non si cancella più nulla:
+   se la rete cade a metà, l'app si apre comunque (con la versione precedente) e riprova alla prossima apertura. */
+async function appHardRefresh(html) {
   try {
-    var regs = (navigator.serviceWorker && await navigator.serviceWorker.getRegistrations()) || [];
-    await Promise.all(regs.map(function (r) { return r.unregister(); }));
-    var ks = (window.caches && await caches.keys()) || [];
-    await Promise.all(ks.map(function (k) { return caches.delete(k); }));
+    if (html && html.indexOf("</html>") !== -1 && html.indexOf("var BUILD_ID") !== -1 && window.caches) {
+      var urls = [new URL("./", document.baseURI).href, new URL("index.html", document.baseURI).href];
+      var ks = await caches.keys();
+      for (var i = 0; i < ks.length; i++) {
+        var c = await caches.open(ks[i]);
+        for (var j = 0; j < urls.length; j++) await c.put(urls[j], new Response(html, { headers: { "Content-Type": "text/html; charset=utf-8" } }));
+      }
+    }
+    var reg = navigator.serviceWorker && await navigator.serviceWorker.getRegistration();
+    if (reg) await reg.update().catch(function () {});
   } catch (e) {}
   location.reload();
 }
@@ -7995,13 +8003,13 @@ document.addEventListener("click", async function (e) {
     var t = await fetch("index.html?u=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.text(); });
     var m = t.match(/APP_VER = "(\d[^"]*)"/);
     var bm = t.match(/var BUILD_ID = "([0-9a-f]+)"/);
-    if ((m && m[1] !== APP_VER) || (bm && bm[1] !== BUILD_ID)) { b.textContent = T("updGet") + (m ? m[1] : APP_VER) + "…"; await appHardRefresh(); return; }
+    if ((m && m[1] !== APP_VER) || (bm && bm[1] !== BUILD_ID)) { b.textContent = T("updGet") + (m ? m[1] : APP_VER) + "…"; await appHardRefresh(t); return; }
     b.innerHTML = esc(T("updOk").replace(/\s*✓\s*$/, "")) + ' <span class="updok">✓</span>';
   } catch (err) { b.textContent = T("updOff"); }
   setTimeout(function () { b.textContent = T("updCheck"); delete b.dataset.busy; }, 2500);
 });
-var APP_VER = "2.0.6";
-var BUILD_ID = "c15b67b7a2";
+var APP_VER = "2.0.7";
+var BUILD_ID = "ebfb7ec7cc";
 var studyFrame = null;
 function renderStudy() {
   if (studyFrame) return;

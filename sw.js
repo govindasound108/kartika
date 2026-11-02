@@ -1,7 +1,12 @@
 /* Kārtika — service worker: tutto in cache al primo avvio, poi funziona senza rete.
    Per pubblicare un aggiornamento, cambia il numero di VERSION. */
-const VERSION = "kartika-v206";
-const CORE = ["./", "index.html", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png"];
+const VERSION = "kartika-v207";
+/* Indispensabile: senza questo file l'app non può aprirsi offline. Se non si scarica (anche dopo i nuovi tentativi)
+   l'installazione si ferma e riparte alla prossima apertura con la rete. */
+const REQUIRED = ["index.html"];
+/* Facoltativi: non devono mai bloccare l'installazione (con segnale debole basta un file che non arriva).
+   Se ne manca qualcuno, si salva da solo alla prima volta che l'app lo richiede. */
+const OPTIONAL = ["./", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png"];
 const FONTS_CSS = "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Noto+Serif+Devanagari:wght@400;600&display=swap";
 
 /* Salva i font in cache; se mancano (o ne mancano dei pezzi) ci riprova a ogni apertura, in background. */
@@ -28,10 +33,25 @@ async function cacheFonts() {
   } catch (_) {} finally { fontsBusy = false; }
 }
 
+/* Scarica un file dalla rete (mai dalla copia del browser), con qualche nuovo tentativo se la connessione è debole. */
+async function getFresh(u, tries) {
+  let last;
+  for (let i = 0; i < tries; i++) {
+    try {
+      const r = await fetch(new Request(u, { cache: "reload" }));
+      if (r.ok) return r;
+      last = new Error(u + " " + r.status);
+    } catch (err) { last = err; }
+    if (i < tries - 1) await new Promise((res) => setTimeout(res, 1000 * (i + 1)));
+  }
+  throw last;
+}
+
 self.addEventListener("install", (e) => {
   e.waitUntil((async () => {
     const c = await caches.open(VERSION);
-    await Promise.all(CORE.map(async (u) => { const r = await fetch(new Request(u, { cache: "reload" })); if (!r.ok) throw new Error(u); await c.put(u, r); }));
+    await Promise.all(REQUIRED.map(async (u) => { await c.put(u, await getFresh(u, 3)); }));
+    await Promise.all(OPTIONAL.map(async (u) => { try { await c.put(u, await getFresh(u, 2)); } catch (_) {} }));
     /* i font non devono mai bloccare l'installazione: massimo 8 secondi, poi si riprova alle aperture successive */
     await Promise.race([cacheFonts(), new Promise((res) => setTimeout(res, 8000))]);
     self.skipWaiting();

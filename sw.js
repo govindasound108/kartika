@@ -1,6 +1,6 @@
 /* Kārtika — service worker: tutto in cache al primo avvio, poi funziona senza rete.
    Per pubblicare un aggiornamento, cambia il numero di VERSION. */
-const VERSION = "kartika-v207";
+const VERSION = "kartika-v208";
 /* Indispensabile: senza questo file l'app non può aprirsi offline. Se non si scarica (anche dopo i nuovi tentativi)
    l'installazione si ferma e riparte alla prossima apertura con la rete. */
 const REQUIRED = ["index.html"];
@@ -60,7 +60,8 @@ self.addEventListener("install", (e) => {
 
 self.addEventListener("activate", (e) => {
   e.waitUntil((async () => {
-    for (const k of await caches.keys()) if (k !== VERSION) await caches.delete(k);
+    /* su github.io le app dello stesso account condividono l'archivio: si cancellano solo le cache di Kārtika */
+    for (const k of await caches.keys()) if (k.startsWith("kartika-") && k !== VERSION) await caches.delete(k);
     await self.clients.claim();
   })());
 });
